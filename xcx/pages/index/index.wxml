@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container" bindtap="bindViewTap">
+  <view class="img">
+    <image src="../../img/logo.png" mode="aspectFit" style="width: 140px; height: 140px;"></image>
+  </view>
+  <view class="nr"></view>
+  <view class="icon">
+    <i-icon type="like_fill" size="50" color="#ff585d" />
+  </view>
+  <view class="nr"></view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="text1">江大云助手 爱 您!\n</text>
+    <i-progress percent="{{ percent }}" status="{{ status }}"></i-progress>
+  </view>
+  <view class="usermotto1">
+    <text class="text2" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全心全意服务江大学子\n</text>
+    <text class="text2">Copyright © 2019 by Pro_SS\n</text>
+  </view>
+</view>

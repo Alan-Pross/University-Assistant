@@ -1,0 +1,21 @@
+<i-message id="message" />
+<view class="nr"></view>
+<i-cell-group>
+  <i-cell title="江大校区">
+    <i-switch value="{{switch1}}" size="large" bind:change="onChange" slot="footer">
+      <view slot="open">北区</view>
+      <view slot="close">南区</view>
+    </i-switch>
+  </i-cell>
+  <i-cell title="楼栋" label="例如：校区为\"北区\"楼栋为\"1\"表示\"北一\"">
+    <view style="padding: 16px">
+      <i-input-number value="{{ value1 }}" min="1" max="20" bindchange="handleChange1" />
+    </view>
+  </i-cell>
+  <i-cell title="寝室号">
+    <i-input value="{{ value2 }}" type="number" placeholder="请输入寝室号" maxlength="3" />
+  </i-cell>
+  <i-cell>
+    <i-button bind:click="handleClick" type="primary" shape="circle">查询</i-button>
+  </i-cell>
+</i-cell-group>

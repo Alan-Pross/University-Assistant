@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "i-progress": "../../dist/progress/index",
+    "i-icon": "../../dist/icon/index"
+  }
+}

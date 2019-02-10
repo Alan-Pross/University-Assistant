@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "江大云助手",
+  "usingComponents": {
+    "i-card": "../../dist/card/index",
+    "i-notice-bar": "../../dist/notice-bar/index",
+    "i-load-more": "../../dist/load-more/index",
+    "i-toast": "../../dist/toast/index"
+  }
+}

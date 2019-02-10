@@ -1,0 +1,10 @@
+<i-message id="message" />
+<view class="nr"></view>
+<i-cell-group>
+  <i-cell title="学生学号">
+    <i-input value="{{ value1 }}" type="number" placeholder="请输入学号" maxlength="12" />
+  </i-cell>
+  <i-cell>
+    <i-button bind:click="handleClick" type="primary" shape="circle">查询</i-button>
+  </i-cell>
+</i-cell-group>
