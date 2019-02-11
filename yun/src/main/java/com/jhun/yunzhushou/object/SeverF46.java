@@ -1,4 +1,4 @@
-package com.jhun.xiaozhushou.object;
+package com.jhun.yunzhushou.object;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlImage;
@@ -8,16 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 //四六级查询服务类
-public class Sever46 {
+public class SeverF46 {
     public String openid;
     public HtmlPage page;
     public HtmlImage img;
     public WebClient webClient;
 
     //所有正在服务的列表
-    public static Map<String, Sever46> Map46 = new HashMap<String, Sever46>();
+    public static Map<String, SeverF46> Map46 = new HashMap<String, SeverF46>();
 
-   public Sever46(String openid, HtmlPage page, HtmlImage img, WebClient webClient){
+   public SeverF46(String openid, HtmlPage page, HtmlImage img, WebClient webClient){
         this.openid = openid;
         this.page = page;
         this.img = img;
@@ -25,8 +25,8 @@ public class Sever46 {
     }
 
     //查询为openid用户服务的浏览器和信息
-    public static Sever46 get(String openid){
-       Sever46 sl = null;
+    public static SeverF46 get(String openid){
+       SeverF46 sl = null;
        try {
            sl = Map46.get(openid);
        } catch (NullPointerException e){
@@ -36,6 +36,7 @@ public class Sever46 {
 
     //关闭浏览器并清空信息
     public void close(){
+        webClient.getCookieManager().clearCookies();
         this.webClient.close();
         Map46.remove(this.openid);
         this.openid = null;

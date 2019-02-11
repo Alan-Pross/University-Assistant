@@ -2,8 +2,8 @@ const { $Message } = require('../../dist/base/index');
 const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
-    a3result: 'http://94.191.42.64:1234/xzs/a3result',
-    a3getimg: 'http://94.191.42.64:1234/xzs/a3getimg?openid=',
+    a3result: 'http://94.191.42.64:1234/yzs/a4result',
+    a3getimg: 'http://94.191.42.64:1234/yzs/a4getimg?openid=',
     yzmimg: '',
     openid: '',
     zkzh: '',

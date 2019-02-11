@@ -1,4 +1,4 @@
-package com.jhun.xiaozhushou.object;
+package com.jhun.yunzhushou.object;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +9,6 @@ public class PowerRate {
     public String CurrentRate;
     public String CurrentWH;
     public String CurrentW;
-
-    public PowerRate() {}
 
     public PowerRate(String CurrentRate, String CurrentWH, String CurrentW) {
         this.CurrentRate = CurrentRate;

@@ -1,4 +1,4 @@
-package com.jhun.xiaozhushou.tools;
+package com.jhun.yunzhushou.tools;
 
 public class Tools {
     //用于阻塞当前线程

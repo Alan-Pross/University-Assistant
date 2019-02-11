@@ -1,12 +1,12 @@
-package com.jhun.xiaozhushou;
+package com.jhun.yunzhushou;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class XiaozhushouApplication {
+public class YunzhushouApplication {
     public static void main(String[] args) {
-        SpringApplication.run(XiaozhushouApplication.class, args);
+        SpringApplication.run(YunzhushouApplication.class, args);
     }
 }
 

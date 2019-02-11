@@ -1,4 +1,4 @@
-package com.jhun.xiaozhushou;
+package com.jhun.yunzhushou;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

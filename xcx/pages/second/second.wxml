@@ -23,7 +23,7 @@
   <view slot="footer">忘了考号？没关系我们帮你找回！</view>
 </i-card>
 <view class="nr"></view>
-<button open-type="contact" bindcontact="handleContact">
+<button open-type="contact">
   <i-card extra="意见建议" thumb="../../img/last.jpg">
     <view slot="content">小程序不足之处</view>
     <view slot="footer">麻烦留言告诉我</view>

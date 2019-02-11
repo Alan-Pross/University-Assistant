@@ -1,4 +1,4 @@
-package com.jhun.xiaozhushou.object;
+package com.jhun.yunzhushou.object;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,8 +8,6 @@ public class PEReport {
 
     public String TiaoYuan;
     public String M400;
-
-    public PEReport() {}
 
     public PEReport(String TiaoYuan, String M400) {
         this.TiaoYuan = TiaoYuan;

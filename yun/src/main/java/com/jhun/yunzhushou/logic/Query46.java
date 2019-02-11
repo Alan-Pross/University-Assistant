@@ -1,9 +1,9 @@
-package com.jhun.xiaozhushou.logic;
+package com.jhun.yunzhushou.logic;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
-import com.jhun.xiaozhushou.object.Sever46;
+import com.jhun.yunzhushou.object.SeverQ46;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,9 +12,12 @@ import java.util.Map;
 
 //四六级成绩查询方法
 public class Query46 {
+
+    final private static String img_path = "C:/YZS/query46img";
+
     public static String getImg(String openid) throws IOException {
         //如果服务此用户的浏览器已存在，关闭这个浏览器
-        if (Sever46.get(openid) != null) Sever46.get(openid).close();
+        if (SeverQ46.get(openid) != null) SeverQ46.get(openid).close();
 
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
@@ -36,7 +39,7 @@ public class Query46 {
         HtmlImage img = (HtmlImage) page.getByXPath("//img[@id='stu_reg_vcode']").get(0);
 
         //保存图片
-        File file = new File("C:/XZS/img/" + openid + ".jpg");
+        File file = new File(img_path + "/a3" + openid + ".jpg");
         if (!file.exists()) {
             if (!file.getParentFile().exists())
                 file.getParentFile().getParentFile().mkdir();
@@ -45,13 +48,13 @@ public class Query46 {
         img.saveAs(file);
 
         //保存此网页信息
-        Sever46.Map46.put(openid, new Sever46(openid, page, img, webClient));
+        SeverQ46.Map46.put(openid, new SeverQ46(openid, page, img, webClient));
 
         //100秒后关闭浏览器
         Runnable r = () -> {
             try {
                 Thread.sleep(100000);
-                Sever46.get(openid).close();
+                SeverQ46.get(openid).close();
             } catch (Exception e) {
                 System.out.println(openid + "的浏览器已关闭");
             }
@@ -59,20 +62,20 @@ public class Query46 {
         };
         new Thread(r).start();
 
-        return openid + ".jpg";
+        return "a3" + openid + ".jpg";
     }
 
     public static Map<String, Object> result(String openid, String zkzhs, String xms, String yzms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
 
         //返回
-        if (Sever46.get(openid) == null) {
+        if (SeverQ46.get(openid) == null) {
             map.put("error", "已超时或不存在");
             return map;
         }
 
         //得到服务此用户的网页
-        HtmlPage page = Sever46.get(openid).page;
+        HtmlPage page = SeverQ46.get(openid).page;
 
         //得到表单
         HtmlForm form = page.getFormByName("form1");
@@ -133,7 +136,7 @@ public class Query46 {
         map.put("r8", r8);
         map.put("r9", r9);
         map.put("r12", r12);
-        Sever46.get(openid).close();
+        SeverQ46.get(openid).close();
         return map;
     }
 }
