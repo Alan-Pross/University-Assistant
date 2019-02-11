@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView print;
+    static TextView print;
     Button open;
     Button close;
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         isClosing = true;
     }
 
-    public void print(String s){
+    public static void print(String s){
         print.setText(print.getText() + "\n" + s);
     }
 

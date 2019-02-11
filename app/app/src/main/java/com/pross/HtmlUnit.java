@@ -10,12 +10,17 @@ import com.pross.object.PEReport;
 import com.pross.object.PowerRate;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class HtmlUnit {
 
     public static PowerRate a1get(String qsh) throws IOException {
+        PowerRate pr = null;
+
+        //如果是110表示是一次空查询
+        if(qsh.equals("110")){
+            return pr;
+        }
+
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
@@ -45,12 +50,17 @@ public class HtmlUnit {
             e.printStackTrace();
         }
 
-        PowerRate pr = null;
         return pr;
     }
 
     public static PEReport a2get(String xh) throws IOException {
-        Map<String, Object> map = new HashMap<String, Object>();
+        PEReport pr = null;
+
+        //如果是110表示是一次空查询
+        if(xh.equals("110")){
+            return pr;
+        }
+
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
@@ -75,14 +85,11 @@ public class HtmlUnit {
             xh1.setValueAttribute(xh);
             //xh2.setValueAttribute(XH);
             HtmlPage nextpage = button.click();
-            map.put("nextpage.asXml()", nextpage.asXml());
 
         } catch (NullPointerException e) {
             e.printStackTrace();
-            map.put("page.asXml()", page.asXml());
         }
 
-        PEReport pr = null;
         return pr;
     }
 }

@@ -1,7 +1,7 @@
 package com.jhun.xiaozhushou.api;
 
 import com.jhun.xiaozhushou.R;
-import com.jhun.xiaozhushou.logic.QueryPower;
+import com.jhun.xiaozhushou.logic.QueryPE;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +18,7 @@ public class A2Controller {
         Map<String, Object> map = new HashMap<String, Object>();
 
         //返回体测成绩查询结果
-        map.putAll(QueryPower.get(xh));
+        map.putAll(QueryPE.get(xh));
 
         return R.ok(map);
     }

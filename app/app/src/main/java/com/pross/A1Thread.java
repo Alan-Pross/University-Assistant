@@ -26,10 +26,15 @@ public class A1Thread extends Thread {
             //如果查询队列为空，加入一个110的空查询
             if(!(ListPower.size() > 0)){
                 ListPower.add("110");
+            } else{
+                MainActivity.print("A1Thread:开始电费查询" + ListPower.get(0));
             }
 
             //获得结果
             PowerRate pr = HtmlUnit.a1get(ListPower.get(0));
+
+            //从查询队列中删除
+            ListPower.remove(0);
 
             //构建上传参数
             ArrayList<NameValuePair> NVPdata = new ArrayList<NameValuePair>();
@@ -38,6 +43,7 @@ public class A1Thread extends Thread {
             NVPdata.addAll(pr.toNVP());
 
             //开始上传请求
+            MainActivity.print("A1Thread:上传" + NVPdata.toString());
             new HttpThread(a1,NVPdata,new Handler(){
                 @Override
                 public void handleMessage(Message result) {
@@ -49,6 +55,7 @@ public class A1Thread extends Thread {
                     String qsh = js.getString("qsh");
                     if(!qsh.equals("110")){
                         ListPower.add(qsh);
+                        MainActivity.print("A1Thread:收到查询请求" + qsh);
                     }
                 }
             }).start();

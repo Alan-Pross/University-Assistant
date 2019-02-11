@@ -26,10 +26,15 @@ public class A2Thread extends Thread {
             //如果查询队列为空，加入一个110的空查询
             if(!(ListPE.size() > 0)){
                 ListPE.add("110");
+            } else{
+                MainActivity.print("A2Thread:开始电费查询" + ListPE.get(0));
             }
 
             //获得结果
             PEReport pr = HtmlUnit.a2get(ListPE.get(0));
+
+            //从查询队列中删除
+            ListPE.remove(0);
 
             //构建上传参数
             ArrayList<NameValuePair> NVPdata = new ArrayList<NameValuePair>();
@@ -38,6 +43,7 @@ public class A2Thread extends Thread {
             NVPdata.addAll(pr.toNVP());
 
             //开始上传请求
+            MainActivity.print("A2Thread:上传" + NVPdata.toString());
             new HttpThread(a2,NVPdata,new Handler(){
                 @Override
                 public void handleMessage(Message result) {
@@ -49,6 +55,7 @@ public class A2Thread extends Thread {
                     String xh = js.getString("xh");
                     if(!xh.equals("110")){
                         ListPE.add(xh);
+                        MainActivity.print("A2Thread:收到查询请求" + xh);
                     }
                 }
             }).start();

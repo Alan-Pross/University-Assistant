@@ -16,23 +16,28 @@ public class TransA1A2Controller {
 
     //反式接口 用于获取电费
     @RequestMapping(value = "/transa1")
-    public R transa1(String qsh, PowerRate pr) {
+    public R transa1(String qsh, String CurrentRate, String CurrentWH, String CurrentW) {
         if (qsh.isEmpty()) return R.error("transa1:qsh=null");
-        if (pr == null) return R.error("transa1:pr=null");
-        System.out.println("transa1:qsh=" + qsh + "&pr=" + pr);
+        if (CurrentRate.isEmpty()) return R.error("transa1:CurrentRate=null");
+        if (CurrentWH.isEmpty()) return R.error("transa1:CurrentRate=null");
+        if (CurrentW.isEmpty()) return R.error("transa1:CurrentRate=null");
+        PowerRate pr = new PowerRate(CurrentRate,CurrentWH,CurrentW);
         Map<String, Object> map = new HashMap<String, Object>();
 
         if(!qsh.equals("110")){
             //写入结果
             QueryPower.set(qsh, pr);
-        } else {
-            //表示无需查询
-            map.put("qsh","110");
+
+            //从查询队列中删除
+            QueryPower.MapPowerWaiting.remove(qsh);
         }
 
         //如果队列中有需要查询的，返回给它
         if (QueryPower.MapPowerWaiting.size() > 0) {
             map.put("qsh", QueryPower.MapPowerWaiting.get(0));
+        } else {
+            //表示无需查询
+            map.put("qsh","110");
         }
 
         return R.ok(map);
@@ -43,21 +48,22 @@ public class TransA1A2Controller {
     public R transa2(String xh, PEReport pr) {
         if (xh.isEmpty()) return R.error("transa2:xh=null");
         if (pr == null) return R.error("transa2:pr=null");
-        System.out.println("transa2:xh=" + xh + "&pr=" + pr);
         Map<String, Object> map = new HashMap<String, Object>();
 
         if(!xh.equals("110")){
             //写入结果
             QueryPE.set(xh, pr);
-        } else {
-            //表示无需查询
-            map.put("xh","110");
+
+            //从查询队列中删除
+            QueryPE.MapPEWaiting.remove(xh);
         }
-        //写入结果
 
         //如果队列中有需要查询的，返回给它
         if (QueryPE.MapPEWaiting.size() > 0) {
             map.put("xh", QueryPE.MapPEWaiting.get(0));
+        } else {
+            //表示无需查询
+            map.put("xh","110");
         }
 
         return R.ok(map);
