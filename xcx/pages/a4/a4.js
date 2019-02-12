@@ -70,7 +70,7 @@ Page({
     }, function () {
       $Toast.hide()
       $Toast({
-        content: '连接服务器失败',
+        content: '找回失败，请检查身份证号和验证码',
         type: 'error'
       });
     })
@@ -86,20 +86,13 @@ Page({
     network.getrequest(self.data.a4getimg + self.data.openid, null, function (res) {
       $Toast.hide()
       console.log(res)
-      if (res.code == '500') {
-        $Toast({
-          content: '未知错误，请反馈我们',
-          type: 'warning',
-        });
-        return;
-      }
       wx.redirectTo({
         url: '../a4/a4?id=' + self.data.openid
       })
     }, function () {
       $Toast.hide()
       $Toast({
-        content: '连接服务器失败',
+        content: '连接服务器失败，请留言反馈给我们',
         type: 'error'
       });
     })

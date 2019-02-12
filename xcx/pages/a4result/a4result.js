@@ -1,26 +1,23 @@
+const { $Message } = require('../../dist/base/index');
 Page({
   data: {
-    r1: '',
-    r2: '',
-    r3: '',
-    r6: '',
-    r7: '',
-    r8: '',
-    r9: '',
-    r12: '',
-    zkzh: ''
+    url: ''
+  },
+  handleClick: function() {
+    wx.setClipboardData({
+      data: this.data.url,
+      success: function (res) {
+        $Message({
+          content: '复制成功，快粘贴到浏览器下载吧!',
+          duration: 0,
+          type: 'success'
+        });
+      }
+    })
   },
   onLoad: function(option) {
     this.setData({
-      r1: option.r1,
-      r2: option.r2,
-      r3: option.r3,
-      r6: option.r6,
-      r7: option.r7,
-      r8: option.r8,
-      r9: option.r9,
-      r12: option.r12,
-      zkzh: option.zkzh
+      url: option.url
     })
   }
 })

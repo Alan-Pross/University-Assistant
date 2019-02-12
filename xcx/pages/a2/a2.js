@@ -7,7 +7,7 @@ Page({
   },
   handleClick: function () {
     $Message({
-      content: '抱歉，此功能未完成',
+      content: '抱歉，此功能未开通',
       type: 'warning'
     });
   }
