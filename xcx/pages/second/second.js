@@ -1,8 +1,8 @@
 const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
-    a3getimg: "http://94.191.42.64:1234/yzs/a3getimg?openid=",
-    a4getimg: "http://94.191.42.64:1234/yzs/a4getimg?openid=",
+    a3getimg: "/a3getimg?openid=",
+    a4getimg: "/a4getimg?openid=",
     id: ""
   },
   a1: function() {

@@ -2,7 +2,7 @@ const { $Message } = require('../../dist/base/index');
 const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
-    a5result: 'http://94.191.42.64:1234/yzs/a5result',
+    a5result: '/a5result',
     sfzh: '',
     xm: ''
   },

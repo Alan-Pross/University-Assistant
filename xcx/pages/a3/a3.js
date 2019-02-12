@@ -2,8 +2,8 @@ const { $Message } = require('../../dist/base/index');
 const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
-    a3result: 'http://94.191.42.64:1234/yzs/a3result',
-    a3getimg: 'http://94.191.42.64:1234/yzs/a3getimg?openid=',
+    a3result: '/a3result',
+    a3getimg: '/a3getimg?openid=',
     yzmimg: '',
     openid: '',
     zkzh: '',
@@ -100,7 +100,7 @@ Page({
   onLoad: function(option) {
     this.setData({
       openid: option.id,
-      yzmimg: 'http://94.191.42.64:1234/yzs/a3' + option.id + '.jpg'
+      yzmimg: 'https://www.jhuncloud.com/yzs/a3' + option.id + '.jpg'
     })
   }
 })

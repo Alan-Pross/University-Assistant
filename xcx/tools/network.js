@@ -1,6 +1,6 @@
 function getrequest(url, params, success, fail) {
   wx.request({
-    url: url,
+    url: 'https://www.jhuncloud.com/yzs' + url,
     data: params,
     header: {
       'content-type': 'application/x-www-form-urlencoded'

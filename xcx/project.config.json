@@ -9,10 +9,10 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.2.0",
 	"appid": "wxce125623779978d6",
 	"projectname": "%E6%B1%9F%E5%A4%A7%E4%BA%91%E5%8A%A9%E6%89%8B",
 	"debugOptions": {
