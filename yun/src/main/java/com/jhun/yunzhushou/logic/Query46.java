@@ -13,7 +13,7 @@ import java.util.Map;
 //四六级成绩查询方法
 public class Query46 {
 
-    final private static String img_path = "C:/YZS/query46img";
+    final private static String img_path = "C:/YZS/img/";
 
     public static String getImg(String openid) throws IOException {
         //如果服务此用户的浏览器已存在，关闭这个浏览器
@@ -39,7 +39,7 @@ public class Query46 {
         HtmlImage img = (HtmlImage) page.getByXPath("//img[@id='stu_reg_vcode']").get(0);
 
         //保存图片
-        File file = new File(img_path + "/a3" + openid + ".jpg");
+        File file = new File(img_path + "a3" + openid + ".jpg");
         if (!file.exists()) {
             if (!file.getParentFile().exists())
                 file.getParentFile().getParentFile().mkdir();
@@ -97,12 +97,7 @@ public class Query46 {
         HtmlPage nextPage = cx.click();
 
         //得到成绩表格
-        HtmlTable table = null;
-        try {
-            table = (HtmlTable) nextPage.getByXPath("//table[@class='cetTable']").get(0);
-        } catch (Exception e) {
-            System.out.println(nextPage.getXmlEncoding());
-        }
+        HtmlTable table = (HtmlTable) nextPage.getByXPath("//table[@class='cetTable']").get(0);
 
         //姓名
         String r1 = table.getCellAt(0, 1).asText();
@@ -136,6 +131,8 @@ public class Query46 {
         map.put("r8", r8);
         map.put("r9", r9);
         map.put("r12", r12);
+
+        //查询完毕关闭浏览器
         SeverQ46.get(openid).close();
         return map;
     }

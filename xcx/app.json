@@ -6,7 +6,9 @@
     "pages/a2/a2",
     "pages/a3/a3",
     "pages/a3result/a3result",
-    "pages/a4/a4"
+    "pages/a4/a4",
+    "pages/a4result/a4result",
+    "pages/a5/a5"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -2,17 +2,17 @@ const { $Message } = require('../../dist/base/index');
 const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
-    a3result: 'http://94.191.42.64:1234/yzs/a4result',
-    a3getimg: 'http://94.191.42.64:1234/yzs/a4getimg?openid=',
+    a4result: 'http://94.191.42.64:1234/yzs/a4result',
+    a4getimg: 'http://94.191.42.64:1234/yzs/a4getimg?openid=',
     yzmimg: '',
     openid: '',
-    zkzh: '',
+    sfzh: '',
     xm: '',
     yzm: ''
   },
-  zkzhsInput: function (event) {
+  sfzhsInput: function (event) {
     this.setData({
-      zkzh: event.detail.detail.value
+      sfzh: event.detail.detail.value
     })
   },
   xmsInput: function (event) {
@@ -27,9 +27,9 @@ Page({
   },
   handleClick: function (option) {
     var self = this;
-    if (this.data.zkzh.length != 15) {
+    if (this.data.sfzh.length != 18) {
       $Message({
-        content: '准考证号为15位',
+        content: '身份证号为18位',
         type: 'warning'
       });
       return;
@@ -41,7 +41,7 @@ Page({
       });
       return;
     }
-    if (this.data.xm.length < 1) {
+    if (this.data.yzm.length < 1) {
       $Message({
         content: '请输入验证码',
         type: 'warning'
@@ -54,25 +54,18 @@ Page({
       duration: 0
     });
     var network = require('../../tools/network.js')
-    network.getrequest(self.data.a3result, self.data, function (res) {
+    network.getrequest(self.data.a4result, self.data, function (res) {
       $Toast.hide()
       console.log(res)
-      if (res.error == '已超时或不存在'){
+      if (res.error == '已超时或不存在') {
         $Toast({
           content: '已超时,请点击验证码刷新',
           type: 'warning',
         });
         return;
       }
-      if (res.code == '500') {
-        $Toast({
-          content: '未知错误，请反馈我们',
-          type: 'warning',
-        });
-        return;
-      }
       wx.redirectTo({
-        url: '../a3result/a3result?zkzh=' + self.data.zkzh + '&r1=' + res.r1 + '&r2=' + res.r2 + '&r3=' + res.r3 + '&r6=' + res.r6 + '&r7=' + res.r7 + '&r8=' + res.r8 + '&r9=' + res.r9 + '&r12=' + res.r12
+        url: '../a4result/a4result?url=' + res.url
       })
     }, function () {
       $Toast.hide()
@@ -83,13 +76,14 @@ Page({
     })
   },
   reyzm: function (option) {
+    var self = this;
     $Toast({
       content: '加载中',
       type: 'loading',
       duration: 0
     });
     var network = require("../../tools/network.js")
-    network.getrequest(self.data.a3getimg + self.data.openid, null, function (res) {
+    network.getrequest(self.data.a4getimg + self.data.openid, null, function (res) {
       $Toast.hide()
       console.log(res)
       if (res.code == '500') {
@@ -100,7 +94,7 @@ Page({
         return;
       }
       wx.redirectTo({
-        url: '../a3/a3?id=' + self.data.openid
+        url: '../a4/a4?id=' + self.data.openid
       })
     }, function () {
       $Toast.hide()
@@ -110,10 +104,10 @@ Page({
       });
     })
   },
-  onLoad: function(option) {
+  onLoad: function (option) {
     this.setData({
       openid: option.id,
-      yzmimg: 'http://94.191.42.64:1234/xzs/' + option.id + '.jpg'
+      yzmimg: 'http://94.191.42.64:1234/yzs/a4' + option.id + '.jpg'
     })
   }
 })

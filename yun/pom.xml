@@ -9,10 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jhun</groupId>
-    <artifactId>xiaozhushou</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>xiaozhushou</name>
-    <description>Yun project for jhun xiaozhushou</description>
+    <artifactId>YZS</artifactId>
+    <name>YZS</name>
+    <description>Yun project for jhun-cloud</description>
 
     <properties>
         <java.version>1.8</java.version>

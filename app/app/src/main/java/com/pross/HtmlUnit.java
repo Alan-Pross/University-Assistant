@@ -1,8 +1,5 @@
 package com.pross;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
-import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
@@ -21,17 +18,8 @@ public class HtmlUnit {
             return pr;
         }
 
-        //打开浏览器
-        WebClient webClient = new WebClient(BrowserVersion.CHROME);
-
-        //支持AJAX
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-
-        //超时时间
-        webClient.getOptions().setTimeout(10000);
-
         //进入网页
-        HtmlPage page = webClient.getPage("https://www.baidu.com/");
+        HtmlPage page = MainActivity.webClient.getPage("https://www.baidu.com/");
 
         //加载js
         //webClient.waitForBackgroundJavaScript(10000);
@@ -61,17 +49,8 @@ public class HtmlUnit {
             return pr;
         }
 
-        //打开浏览器
-        WebClient webClient = new WebClient(BrowserVersion.CHROME);
-
-        //支持AJAX
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-
-        //超时时间
-        webClient.getOptions().setTimeout(10000);
-
         //进入网页
-        HtmlPage page = webClient.getPage("https://www.baidu.com/");
+        HtmlPage page = MainActivity.webClient.getPage("https://www.baidu.com/");
 
         //加载js
         //webClient.waitForBackgroundJavaScript(10000);

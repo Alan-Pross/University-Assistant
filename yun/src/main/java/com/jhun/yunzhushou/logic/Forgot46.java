@@ -13,7 +13,7 @@ import java.util.Map;
 //四六级考号找回方法
 public class Forgot46 {
 
-    final private static String img_path = "C:/YZS/forgot46img";
+    final private static String img_path = "C:/YZS/img/";
 
     public static String getImg(String openid) throws IOException {
         //如果服务此用户的浏览器已存在，关闭这个浏览器
@@ -41,7 +41,7 @@ public class Forgot46 {
 
         System.out.println("img_path=" + img_path);
         //保存图片
-        File file = new File(img_path + "/a4" + openid + ".jpg");
+        File file = new File(img_path + "a4" + openid + ".jpg");
         if (!file.exists()) {
             if (!file.getParentFile().exists())
                 file.getParentFile().getParentFile().mkdir();
@@ -104,6 +104,8 @@ public class Forgot46 {
         //截取字符串并填入SID
         map.put("url", "http://cet.etest.net.cn/Home/DownTestTicket?SID=" + t.asXml().substring(48, 176));
 
+        //查询完毕关闭浏览器
+        SeverF46.get(openid).close();
         return map;
     }
 }

@@ -1,5 +1,5 @@
 <i-notice-bar icon="systemprompt" loop>
-  江大云助手预计2019年2月25日正式上线！
+  江汉大学将于2月25日周一正式上课！
 </i-notice-bar>
 <i-toast id="toast" />
 <view class="nr"></view>
@@ -23,10 +23,15 @@
   <view slot="footer">忘了考号？没关系我们帮你找回！</view>
 </i-card>
 <view class="nr"></view>
+<i-card extra="普通话成绩查询" thumb="../../img/a5.jpg" bindtap="a5">
+  <view slot="content">输入姓名身份证号</view>
+  <view slot="footer">你看俺滴铺通话彪不标准？</view>
+</i-card>
+<view class="nr"></view>
 <button open-type="contact">
   <i-card extra="意见建议" thumb="../../img/last.jpg">
     <view slot="content">小程序不足之处</view>
-    <view slot="footer">麻烦留言告诉我</view>
+    <view slot="footer">麻烦留言告诉我，我们一定会回复</view>
   </i-card>
 </button>
 <view class="nr"></view>
