@@ -6,13 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
-import com.gargoylesoftware.htmlunit.WebClient;
-
 public class MainActivity extends AppCompatActivity {
-
-    final static WebClient webClient = new WebClient(BrowserVersion.CHROME);
 
     static TextView print;
     Button open;
@@ -32,19 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
         print("--欢迎使用江大云助手安卓服务器--");
         print("别看人家这么丑，人家可是服务器呢");
-
-        //支持AJAX
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-
-        //超时时间
-        webClient.getOptions().setTimeout(10000);
     }
 
     public void open(View v){
         print("开启服务");
         OpenServer.start();
         print("服务已关闭");
-        webClient.close();
         sleep(1);
         finish();
     }

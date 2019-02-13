@@ -100,7 +100,7 @@ Page({
   onLoad: function (option) {
     this.setData({
       openid: option.id,
-      yzmimg: 'https://www.jhuncloud.com/yzs/a4' + option.id + '.jpg'
+      yzmimg: 'https://www.jhuncloud.com/a4' + option.id + '.jpg'
     })
   }
 })

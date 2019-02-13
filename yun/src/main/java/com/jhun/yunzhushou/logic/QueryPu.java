@@ -17,6 +17,10 @@ public class QueryPu {
         Map<String, Object> map = new HashMap<String, Object>();
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
+        // 取消css支持
+        webClient.getOptions().setCssEnabled(false);
+        //超时时间
+        webClient.getOptions().setTimeout(10000);
 
         //进入网页
         HtmlPage page = webClient.getPage("http://www.cltt.org/studentscore");

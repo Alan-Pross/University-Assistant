@@ -21,7 +21,6 @@ public class Query46 {
 
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
-
         //超时时间
         webClient.getOptions().setTimeout(10000);
 

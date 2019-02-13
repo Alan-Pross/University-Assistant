@@ -42,6 +42,7 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+    this.goProgress()
   },
   goProgress: function () {
     var self = this;
@@ -57,7 +58,6 @@ Page({
           setTimeout(function () {
             wx.redirectTo({
               url: '../second/second?id=' + self.data.userInfo.nickName
-              //url: '../a3result/a3result'
             })
           }, 100)
         );
