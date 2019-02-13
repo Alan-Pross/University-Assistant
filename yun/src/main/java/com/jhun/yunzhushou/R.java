@@ -51,7 +51,13 @@ public class R extends HashMap<String, Object> {
     public static R ok(Map<String, Object> map) {
         R r = new R();
         r.putAll(map);
-        System.out.println(r.toString());
+        try {
+            if(map.get("xh") == "110" || map.get("qsh") == "110"){
+                return r;
+            }
+        } catch (NullPointerException e){
+            System.out.println(r.toString());
+        }
         return r;
     }
 

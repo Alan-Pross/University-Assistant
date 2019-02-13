@@ -21,7 +21,6 @@ android {
     packagingOptions {
         pickFirst 'META-INF/*'
     }
-    useLibrary 'org.apache.http.legacy'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -39,4 +38,6 @@ dependencies {
 
     implementation 'xyz.nulldev.huandroid:huandroid:2.30.01'
     implementation 'com.alibaba:fastjson:1.1.70.android'
+    implementation 'com.yanzhenjie.nohttp:nohttp:1.1.11'
+    implementation 'com.yanzhenjie.nohttp:okhttp:1.1.11'
 }

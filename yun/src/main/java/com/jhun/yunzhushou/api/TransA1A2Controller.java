@@ -17,10 +17,6 @@ public class TransA1A2Controller {
     //反式接口 用于获取电费
     @RequestMapping(value = "/transa1")
     public R transa1(String qsh, String CurrentRate, String CurrentWH, String CurrentW) {
-        if (qsh.isEmpty()) return R.error("transa1:qsh=null");
-        if (CurrentRate.isEmpty()) return R.error("transa1:CurrentRate=null");
-        if (CurrentWH.isEmpty()) return R.error("transa1:CurrentRate=null");
-        if (CurrentW.isEmpty()) return R.error("transa1:CurrentRate=null");
         PowerRate pr = new PowerRate(CurrentRate, CurrentWH, CurrentW);
         Map<String, Object> map = new HashMap<String, Object>();
 
@@ -46,9 +42,6 @@ public class TransA1A2Controller {
     //反式接口 用于获取体测成绩
     @RequestMapping(value = "/transa2")
     public R transa2(String xh, String TiaoYuan, String M400) {
-        if (xh.isEmpty()) return R.error("transa2:xh=null");
-        if (TiaoYuan.isEmpty()) return R.error("transa2:TiaoYuan=null");
-        if (M400.isEmpty()) return R.error("transa2:M400=null");
         PEReport pr = new PEReport(TiaoYuan, M400);
         Map<String, Object> map = new HashMap<String, Object>();
 

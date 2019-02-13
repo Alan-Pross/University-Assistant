@@ -1,7 +1,6 @@
 package com.jhun.yunzhushou.api;
 
 import com.jhun.yunzhushou.R;
-import com.jhun.yunzhushou.logic.Forgot46;
 import com.jhun.yunzhushou.logic.QueryPu;
 import com.jhun.yunzhushou.tools.Tools;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -17,6 +17,7 @@ public class PEReport {
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>();
         map.put("TiaoYuan", TiaoYuan);
+        map.put("M400", M400);
         return map;
     }
 
