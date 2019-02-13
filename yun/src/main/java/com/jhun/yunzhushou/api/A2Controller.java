@@ -2,6 +2,7 @@ package com.jhun.yunzhushou.api;
 
 import com.jhun.yunzhushou.R;
 import com.jhun.yunzhushou.logic.QueryPE;
+import com.jhun.yunzhushou.tools.Tools;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,8 @@ public class A2Controller {
         //返回体测成绩查询结果
         map.putAll(QueryPE.get(xh));
 
+        //记录查询信息
+        Tools.logi("./logi/queryPower.txt", xh);
         return R.ok(map);
     }
 }

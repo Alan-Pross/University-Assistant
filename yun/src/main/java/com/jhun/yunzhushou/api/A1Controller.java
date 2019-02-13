@@ -2,6 +2,7 @@ package com.jhun.yunzhushou.api;
 
 import com.jhun.yunzhushou.R;
 import com.jhun.yunzhushou.logic.QueryPower;
+import com.jhun.yunzhushou.tools.Tools;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,8 @@ public class A1Controller {
         //返回电费查询结果
         map.putAll(QueryPower.get(qsh));
 
+        //记录查询信息
+        Tools.logi("./logi/queryPower.txt", qsh);
         return R.ok(map);
     }
 }

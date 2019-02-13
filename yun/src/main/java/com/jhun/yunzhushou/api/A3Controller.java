@@ -2,6 +2,7 @@ package com.jhun.yunzhushou.api;
 
 import com.jhun.yunzhushou.R;
 import com.jhun.yunzhushou.logic.Query46;
+import com.jhun.yunzhushou.tools.Tools;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,6 @@ public class A3Controller {
 
         try {
             //返回验证码图片名称
-
             map.put("img", Query46.getImg(openid));
         } catch (IOException e) {
             return R.error(e.toString());
@@ -42,6 +42,11 @@ public class A3Controller {
             return R.error(e.toString());
         }
 
+        //记录查询信息
+        map.put("openid", openid);
+        map.put("zkzh", zkzh);
+        map.put("xm", xm);
+        Tools.logi("./logi/query46.txt", map.toString());
         return R.ok(map);
     }
 }
