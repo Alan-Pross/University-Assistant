@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         String txt = System.currentTimeMillis() / 1000 + ".txt";
         //限制上传log大小在1M以内
         String log = print.getText().toString();
-        if (log.length() > 900000) log = log.substring(0, 800000);
+        if (log.length() > 1000000) log = log.substring(0, 900000);
         //开始上传请求
         Request<String> stringPostRequest = NoHttp.createStringRequest(url, RequestMethod.POST);
         //构建上传参数
@@ -101,11 +101,12 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.requestQueues.add(2, stringPostRequest, new SimpleResponseListener<String>() {
             @Override
             public void onStart(int what) {
+                MainActivity.print("开始发送log信息");
             }
 
             @Override
             public void onSucceed(int what, Response<String> response) {
-                MainActivity.print("发送AppLog:" + txt);
+                MainActivity.print("发送完毕:" + txt);
             }
 
             @Override
@@ -131,12 +132,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static boolean isWifiConnected() {
-        ConnectivityManager mConnectivityManager = (ConnectivityManager) mainActivity
+        ConnectivityManager connectivityManager = (ConnectivityManager) mainActivity
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo mWiFiNetworkInfo = mConnectivityManager
-                .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (mWiFiNetworkInfo != null) {
-            return mWiFiNetworkInfo.isAvailable();
+        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetInfo != null
+                && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+            return true;
         }
         return false;
     }
