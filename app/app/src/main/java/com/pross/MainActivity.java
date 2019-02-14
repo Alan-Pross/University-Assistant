@@ -5,12 +5,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     static RequestQueue requestQueues;
     static MainActivity mainActivity;
 
-    long mPressedTime = 0;
     public static boolean exit = false;
 
     @Override
@@ -51,21 +50,21 @@ public class MainActivity extends AppCompatActivity {
         Logger.setTag("NoHttp:");// 打印Log的tag。
         requestQueues = NoHttp.newRequestQueue();
 
-        FontStyle fontStyle = new FontStyle(this, "1.ttf");
+        FontStyle fontStyle = new FontStyle(this, "yh.ttf");
         fontStyle.setTypeface(print, false);
     }
 
     @Override
     public void onBackPressed() {
-        long mNowTime = System.currentTimeMillis();//获取第一次按键时间
-        if ((mNowTime - mPressedTime) > 1500) {//比较两次按键时间差
-            Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
-            mPressedTime = mNowTime;
-        } else {//退出程序
+        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
+        vibrator.vibrate(200);
+        if(!isClosed){
             close.setEnabled(false);
             isClosed = true;
             print("关闭服务中");
             exit = true;
+        } else {
+            stopApp();
         }
     }
 
@@ -75,18 +74,21 @@ public class MainActivity extends AppCompatActivity {
         isClosed = false;
         OpenServer.start();
 
+        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
+        vibrator.vibrate(200);
     }
 
     public void close(View v) {
         close.setEnabled(false);
         isClosed = true;
-        print("关闭服务中,请等待3秒");
+        print("关闭服务中");
 
-
+        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
+        vibrator.vibrate(200);
     }
 
     public void log(View v) {
-        String url = "/applog";
+        String url = "https://www.jhuncloud.com/applog";
         String txt = System.currentTimeMillis() / 1000 + ".txt";
         //限制上传log大小在1M以内
         String log = print.getText().toString();

@@ -26,5 +26,4 @@ public class OpenServer {
         MainActivity.print("(_____ \\         / _____) _____)");
         MainActivity.print(" ______           ______ ______");
     }
-
 }
