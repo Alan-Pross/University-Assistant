@@ -14,6 +14,7 @@ import java.util.List;
 
 public class A1Thread extends Thread {
 
+    public static boolean a1stop = false;
     final public static String a1 = "https://www.jhuncloud.com/transa1";
     public static List<String> ListPower = new ArrayList();
 
@@ -76,6 +77,11 @@ public class A1Thread extends Thread {
             } catch (InterruptedException e){
             }
         }
+        a1stop = true;
         MainActivity.print("A1Thread已关闭");
+        if(A2Thread.a2stop){
+            if(MainActivity.exit) MainActivity.stopApp();
+            else MainActivity.openButton();
+        }
     }
 }

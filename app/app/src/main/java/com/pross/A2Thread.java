@@ -14,6 +14,7 @@ import java.util.List;
 
 public class A2Thread extends Thread {
 
+    public static boolean a2stop = false;
     final public static String a2 = "https://www.jhuncloud.com/transa2";
     public static List<String> ListPE = new ArrayList();
 
@@ -75,6 +76,11 @@ public class A2Thread extends Thread {
             } catch (InterruptedException e) {
             }
         }
+        a2stop = true;
         MainActivity.print("A2Thread已关闭");
+        if(A1Thread.a1stop){
+            if(MainActivity.exit) MainActivity.stopApp();
+            else MainActivity.openButton();
+        }
     }
 }
