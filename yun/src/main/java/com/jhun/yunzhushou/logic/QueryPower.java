@@ -23,10 +23,17 @@ public class QueryPower {
         //把学号放入需要查询的列表中
         MapPowerWaiting.add(qsh);
 
+        //处理超时
+        int wait = 3;
         //等待查询结果
         Tools.Sleep(3);
         while (!find(qsh)) {
+            if(wait > 9) {
+                map.put("error","服务器可能没开");
+                return map;
+            }
             Tools.Sleep(1);
+            wait++;
         }
 
         //返回查询结果

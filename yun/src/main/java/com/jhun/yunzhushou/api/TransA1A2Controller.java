@@ -21,11 +21,13 @@ public class TransA1A2Controller {
         Map<String, Object> map = new HashMap<String, Object>();
 
         if (!qsh.equals("110")) {
-            //写入结果
-            QueryPower.set(qsh, pr);
-
-            //从查询队列中删除
-            QueryPower.MapPowerWaiting.remove(qsh);
+            try {
+                //从查询队列中删除
+                QueryPower.MapPowerWaiting.remove(qsh);
+                //写入结果
+                QueryPower.set(qsh, pr);
+            } catch (NullPointerException e){
+            }
         }
 
         //如果队列中有需要查询的，返回给它
@@ -46,11 +48,13 @@ public class TransA1A2Controller {
         Map<String, Object> map = new HashMap<String, Object>();
 
         if (!xh.equals("110")) {
-            //写入结果
-            QueryPE.set(xh, pr);
-
-            //从查询队列中删除
-            QueryPE.MapPEWaiting.remove(xh);
+            try {
+                //从查询队列中删除
+                QueryPE.MapPEWaiting.remove(xh);
+                //写入结果
+                QueryPE.set(xh, pr);
+            } catch (NullPointerException e){
+            }
         }
 
         //如果队列中有需要查询的，返回给它
