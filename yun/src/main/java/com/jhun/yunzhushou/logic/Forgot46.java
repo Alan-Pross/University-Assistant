@@ -40,7 +40,6 @@ public class Forgot46 {
         //获取验证码图片
         HtmlImage img = (HtmlImage) page3.getByXPath("//img[@id='vcodeImg']").get(0);
 
-        System.out.println("img_path=" + img_path);
         //保存图片
         File file = new File(img_path + "a4" + openid + ".jpg");
         if (!file.exists()) {

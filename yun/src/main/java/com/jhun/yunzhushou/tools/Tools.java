@@ -19,13 +19,14 @@ public class Tools {
         try {
             File file = new File(path);
             if(file.exists()){
-                FileWriter fw = new FileWriter(file,true);
-                BufferedWriter bw = new BufferedWriter(fw);
-                bw.newLine();
-                bw.write(str);
-                bw.close();
-                fw.close();
+                file.createNewFile();
             }
+            FileWriter fw = new FileWriter(file,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.newLine();
+            bw.write(str);
+            bw.close();
+            fw.close();
         } catch (Exception e) {
             System.out.println("将内容{" + str +"}写入文件\"" + path + "\"的请求失败，原因是" + e.toString());
         }
