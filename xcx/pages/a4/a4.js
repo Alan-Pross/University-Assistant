@@ -65,7 +65,7 @@ Page({
         return;
       }
       wx.redirectTo({
-        url: '../a4result/a4result?url=' + res.url
+        url: '../a4result/a4result?SID=' + res.SID
       })
     }, function () {
       $Toast.hide()

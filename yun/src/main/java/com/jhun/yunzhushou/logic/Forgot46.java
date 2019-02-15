@@ -103,7 +103,7 @@ public class Forgot46 {
         HtmlTableCell t = table.getCellAt(1, 1);
 
         //截取字符串并填入SID
-        map.put("url", "http://cet.etest.net.cn/Home/DownTestTicket?SID=" + t.asXml().substring(48, 176));
+        map.put("SID", t.asXml().substring(48, 176));
 
         //查询完毕关闭浏览器
         SeverF46.get(openid).close();

@@ -1,11 +1,12 @@
 const { $Message } = require('../../dist/base/index');
 Page({
   data: {
-    url: ''
+    url: 'http://cet.etest.net.cn/Home/DownTestTicket?SID=',
+    SID: ''
   },
   handleClick: function() {
     wx.setClipboardData({
-      data: this.data.url,
+      data: this.data.url + this.data.SID,
       success: function (res) {
         $Message({
           content: '复制成功，快粘贴到浏览器下载吧!',
@@ -17,7 +18,7 @@ Page({
   },
   onLoad: function(option) {
     this.setData({
-      url: option.url
+      SID: option.SID
     })
   }
 })
