@@ -22,7 +22,7 @@ public class A4Controller {
 
         try {
             //返回验证码图片名称
-            map.put("img", Forgot46.getImg(openid));
+            map.put("img", new Forgot46().getImg(openid));
         } catch (IOException e) {
             return R.error(e.toString());
         }
@@ -38,7 +38,7 @@ public class A4Controller {
 
         try {
             //返回结果
-            map.putAll(Forgot46.result(openid, sfzh, xm, yzm));
+            map.putAll(new Forgot46().result(openid, sfzh, xm, yzm));
         } catch (IOException e) {
             return R.error(e.toString());
         }

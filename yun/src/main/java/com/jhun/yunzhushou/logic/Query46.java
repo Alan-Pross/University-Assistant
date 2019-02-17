@@ -13,9 +13,10 @@ import java.util.Map;
 //四六级成绩查询方法
 public class Query46 {
 
-    final private static String img_path = "C:/YZS/img/";
+    private String yzm_img;
 
-    public static String getImg(String openid) throws IOException {
+    public String getImg(String openid) throws IOException {
+        yzm_img = "./yzmimg/";
         //如果服务此用户的浏览器已存在，关闭这个浏览器
         if (SeverQ46.get(openid) != null) SeverQ46.get(openid).close();
 
@@ -38,12 +39,8 @@ public class Query46 {
         HtmlImage img = (HtmlImage) page.getByXPath("//img[@id='stu_reg_vcode']").get(0);
 
         //保存图片
-        File file = new File(img_path + "a3" + openid + ".jpg");
-        if (!file.exists()) {
-            if (!file.getParentFile().exists())
-                file.getParentFile().getParentFile().mkdir();
-            file.getParentFile().mkdir();
-        }
+        File file = new File(yzm_img + "a3" + openid + ".jpg");
+        if (!file.exists()) file.createNewFile();
         img.saveAs(file);
 
         //保存此网页信息
@@ -64,7 +61,7 @@ public class Query46 {
         return "a3" + openid + ".jpg";
     }
 
-    public static Map<String, Object> result(String openid, String zkzhs, String xms, String yzms) throws IOException {
+    public Map<String, Object> result(String openid, String zkzhs, String xms, String yzms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
 
         //返回

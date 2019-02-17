@@ -18,9 +18,7 @@ public class Tools {
     public static void logi(String path,String str){
         try {
             File file = new File(path);
-            if(file.exists()){
-                file.createNewFile();
-            }
+            if(file.exists()) file.createNewFile();
             FileWriter fw = new FileWriter(file,true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.newLine();

@@ -21,7 +21,7 @@ public class A3Controller {
 
         try {
             //返回验证码图片名称
-            map.put("img", Query46.getImg(openid));
+            map.put("img", new Query46().getImg(openid));
         } catch (IOException e) {
             return R.error(e.toString());
         }
@@ -37,7 +37,7 @@ public class A3Controller {
 
         try {
             //返回结果
-            map.putAll(Query46.result(openid, zkzh, xm, yzm));
+            map.putAll(new Query46().result(openid, zkzh, xm, yzm));
         } catch (IOException e) {
             return R.error(e.toString());
         }
