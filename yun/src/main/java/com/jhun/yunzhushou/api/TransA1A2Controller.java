@@ -16,7 +16,7 @@ public class TransA1A2Controller {
 
     //反式接口 用于获取电费
     @RequestMapping(value = "/transa1")
-    public R transa1(String qsh, String Rate, String kWH, String W) {
+    public R transa1(String error, String qsh, String Rate, String kWH, String W) {
         PowerRate pr = new PowerRate(Rate, kWH, W);
         Map<String, Object> map = new HashMap<String, Object>();
 

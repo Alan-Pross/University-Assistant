@@ -30,6 +30,8 @@ public class QueryPE {
         while (!find(xh)) {
             if(wait > 9) {
                 map.put("error","服务器可能没开");
+                //从查询队列中删除
+                QueryPE.MapPEWaiting.remove(xh);
                 return map;
             }
             Tools.Sleep(1);

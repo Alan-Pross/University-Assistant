@@ -13,7 +13,7 @@ public class OpenServer {
             MainActivity.print("当前网络非江大WIFI，服务器可能无法正常工作");
         }
         new A1Thread().start();
-        new A2Thread().start();
+        //new A2Thread().start();
         MainActivity.print("开启服务成功");
     }
 

@@ -9,7 +9,8 @@ Page({
     this.setData({
       Rate: option.Rate,
       kWH: option.kWH,
-      W: option.W
+      W: option.W,
+      qsh: option.qsh
     })
   }
 })

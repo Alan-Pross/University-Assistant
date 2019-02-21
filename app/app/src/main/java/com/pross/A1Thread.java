@@ -29,11 +29,12 @@ public class A1Thread extends Thread {
                     MainActivity.print("A1Thread:开始电费查询" + ListPower.get(0));
                 }
 
+                //开始上传请求
+                Request<String> stringPostRequest = NoHttp.createStringRequest(a1, RequestMethod.POST);
+
                 //获得结果
                 PowerRate pr = HtmlUnit.a1get(ListPower.get(0));
 
-                //开始上传请求
-                Request<String> stringPostRequest = NoHttp.createStringRequest(a1, RequestMethod.POST);
                 //构建上传参数
                 if (pr != null) {
                     stringPostRequest.add("Rate", pr.Rate);

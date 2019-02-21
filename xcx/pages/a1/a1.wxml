@@ -13,7 +13,7 @@
     </view>
   </i-cell>
   <i-cell title="寝室号">
-    <i-input value="{{ value2 }}" type="number" placeholder="请输入寝室号" maxlength="3" />
+    <i-input value="{{ value2 }}" bind:change="qshsInput" type="number" placeholder="请输入寝室号" maxlength="3" />
   </i-cell>
   <i-cell>
     <i-button bind:click="handleClick" type="primary" shape="circle">查询</i-button>

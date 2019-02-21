@@ -5,3 +5,5 @@ nohup /usr/java/jdk1.8.0_201-amd64/bin/java -jar YZS-2.1.2.RELEASE.jar --name="Y
 echo $! > tpid
 
 echo Start Success!
+
+tail -f log.log

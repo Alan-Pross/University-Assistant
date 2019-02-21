@@ -20,6 +20,11 @@ public class QueryPower {
     public static Map<String, Object> get(String qsh) {
         Map<String, Object> map = new HashMap<String, Object>();
 
+        //删除上次结果
+        try {
+            MapPower.remove(qsh);
+        } catch (NullPointerException e){}
+
         //把学号放入需要查询的列表中
         MapPowerWaiting.add(qsh);
 
@@ -30,6 +35,8 @@ public class QueryPower {
         while (!find(qsh)) {
             if(wait > 9) {
                 map.put("error","服务器可能没开");
+                //从查询队列中删除
+                QueryPower.MapPowerWaiting.remove(qsh);
                 return map;
             }
             Tools.Sleep(1);

@@ -7,6 +7,11 @@ Page({
     value2: '',
     qsh: ''
   },
+  qshsInput: function (event) {
+    this.setData({
+      value2: event.detail.detail.value
+    })
+  },
   onLoad: function () {
   },
   handleChange1({ detail }) {
@@ -42,7 +47,7 @@ Page({
       $Toast.hide()
       console.log(res)
       wx.navigateTo({
-        url: '../a1result/a1result?rate=' + res.Rate + '&kWH=' + res.kWH + '&W=' + res.W + '&qsh=' + res.qsh
+        url: '../a1result/a1result?Rate=' + res.Rate + '&kWH=' + res.kWH + '&W=' + res.W + '&qsh=' + res.qsh
       })
     }, function () {
       $Toast.hide()

@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         WifiManager wifiMgr = (WifiManager) mainActivity.getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = wifiMgr.getConnectionInfo();
         String wifiId = info != null ? info.getSSID() : null;
-        if (wifiId == "") return true;//填入江大wifi名称
+        if (wifiId == "JHUN-AUTO") return true;//填入江大wifi名称
         return false;
     }
 

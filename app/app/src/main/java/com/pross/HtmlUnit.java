@@ -1,5 +1,7 @@
 package com.pross;
 
+import android.util.Log;
+
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -25,10 +27,11 @@ public class HtmlUnit {
         }
 
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
-        //支持AJAX
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
+        webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setJavaScriptEnabled(false);
+        //webClient.setAjaxController(new NicelyResynchronizingAjaxController());
         //超时时间
-        webClient.getOptions().setTimeout(10000);
+        //webClient.getOptions().setTimeout(10000);
 
         HtmlPage page = null;
         if(qsh.charAt(0) == '北'){
@@ -44,7 +47,7 @@ public class HtmlUnit {
         qsh = qsh.substring(1);
 
         //加载js
-        //webClient.waitForBackgroundJavaScript(10000);
+        //webClient.waitForBackgroundJavaScript(2000);
 
         //找到输入框
         HtmlInput fjmc = (HtmlInput) page.getByXPath("//input[@name='fjmc']").get(0);
@@ -55,6 +58,8 @@ public class HtmlUnit {
         fjmc.setValueAttribute(qsh);
 
         page = a.click();
+
+        Log.e("page",page.asXml());
 
         HtmlTable table = (HtmlTable) page.getByXPath("//table[@class='listTable']").get(0);
 
