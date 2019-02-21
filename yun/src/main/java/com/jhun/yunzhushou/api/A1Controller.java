@@ -19,9 +19,10 @@ public class A1Controller {
 
         //返回电费查询结果
         map.putAll(QueryPower.get(qsh));
+        map.put("qsh",qsh);
 
         //记录查询信息
-        Tools.logi("./logi/queryPower.txt", qsh);
+        Tools.logi("./logi/queryPower.txt", map.toString());
         return R.ok(map);
     }
 }

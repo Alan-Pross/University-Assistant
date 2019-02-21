@@ -1,4 +1,4 @@
-<i-message id="message" />
+<i-toast id="toast" />
 <view class="nr"></view>
 <i-cell-group>
   <i-cell title="江大校区">
@@ -7,9 +7,9 @@
       <view slot="close">南区</view>
     </i-switch>
   </i-cell>
-  <i-cell title="楼栋" label="例如：校区为\"北区\"楼栋为\"1\"表示\"北一\"">
+  <i-cell title="楼栋" label="支持查询北区1-14，南区1-9，研究生，留学生楼栋的寝室电费">
     <view style="padding: 16px">
-      <i-input-number value="{{ value1 }}" min="1" max="20" bindchange="handleChange1" />
+      <i-input-number value="{{ value1 }}" min="1" max="15" bindchange="handleChange1" />
     </view>
   </i-cell>
   <i-cell title="寝室号">

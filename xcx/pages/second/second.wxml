@@ -1,21 +1,23 @@
 <i-notice-bar icon="systemprompt" loop>
-  江汉大学将于2月25日周一正式上课！
+  江汉大学将于2月25日周一正式上课！ 四六级于2019年2月26日下午1:00查询！
 </i-notice-bar>
 <i-toast id="toast" />
 <view class="nr"></view>
-<i-card extra="电费查询" thumb="../../img/a1.jpg" bindtap="a1">
+<i-card extra="寝室电费查询" thumb="../../img/a1.jpg" bindtap="a1">
   <view slot="content">输入寝室楼号</view>
   <view slot="footer">看什么看？空调电费外边不是写着呢吗！？</view>
 </i-card>
-<view class="nr"></view>
+<!-- <view class="nr"></view>
 <i-card extra="体测查询" thumb="../../img/a2.jpg" bindtap="a2">
   <view slot="content">输入学生学号</view>
   <view slot="footer">哇哦！居然可以查体测~</view>
-</i-card>
+</i-card> -->
 <view class="nr"></view>
 <i-card extra="四六级成绩" thumb="../../img/a3.jpg" bindtap="a3">
-  <view slot="content">输入姓名准考证号</view>
-  <view slot="footer">我到底为什么还没过？</view>
+  <view slot="content">暂未开通</view>
+  <view slot="footer">2018年下半年考试成绩于2019年2月26日下午1:00之后查询</view>
+  <!-- <view slot="content">输入姓名准考证号</view> -->
+  <!-- <view slot="footer">我到底为什么还没过？</view> -->
 </i-card>
 <view class="nr"></view>
 <i-card extra="四六级考号找回" thumb="../../img/a4.jpg" bindtap="a4">

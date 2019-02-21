@@ -15,7 +15,7 @@ import java.util.List;
 public class A1Thread extends Thread {
 
     public static boolean a1stop = false;
-    final public static String a1 = "https://www.jhuncloud.com/transa1";
+    final public static String a1 = "https://www.daohangcn.cn/transa1";
     public static List<String> ListPower = new ArrayList();
 
     @Override
@@ -36,9 +36,9 @@ public class A1Thread extends Thread {
                 Request<String> stringPostRequest = NoHttp.createStringRequest(a1, RequestMethod.POST);
                 //构建上传参数
                 if (pr != null) {
-                    stringPostRequest.add("CurrentRate", pr.CurrentRate);
-                    stringPostRequest.add("CurrentWH", pr.CurrentWH);
-                    stringPostRequest.add("CurrentW", pr.CurrentW);
+                    stringPostRequest.add("Rate", pr.Rate);
+                    stringPostRequest.add("kWH", pr.kWH);
+                    stringPostRequest.add("W", pr.W);
                 }
                 stringPostRequest.add("qsh", ListPower.get(0));
                 MainActivity.requestQueues.add(2, stringPostRequest, new SimpleResponseListener<String>() {

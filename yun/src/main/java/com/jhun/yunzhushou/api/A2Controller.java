@@ -19,9 +19,10 @@ public class A2Controller {
 
         //返回体测成绩查询结果
         map.putAll(QueryPE.get(xh));
+        map.put("xh",xh);
 
         //记录查询信息
-        Tools.logi("./logi/queryPE.txt", xh);
+        Tools.logi("./logi/queryPE.txt", map.toString());
         return R.ok(map);
     }
 }

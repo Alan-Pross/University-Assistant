@@ -1,9 +1,11 @@
-const { $Message } = require('../../dist/base/index');
+const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
+    a1: "/a1?qsh=",
     switch1: true,
     value1: 1,
-    value2: ''
+    value2: '',
+    qsh: ''
   },
   onLoad: function () {
   },
@@ -19,9 +21,35 @@ Page({
     })
   },
   handleClick: function () {
-    $Message({
-      content: '抱歉，此功能未开通',
-      type: 'warning'
+    var self = this
+    $Toast({
+      content: '查询中',
+      type: 'loading',
+      duration: 0
     });
+    if (self.data.switch1) {
+      this.setData({
+        'qsh': '北' + self.data.value1 + '-' + self.data.value2
+      })
+    }
+    else {
+      this.setData({
+        'qsh': '南' + self.data.value1 + '-' + self.data.value2
+      })
+    }
+    var network = require("../../tools/network.js")
+    network.getrequest(self.data.a1, self.data, function (res) {
+      $Toast.hide()
+      console.log(res)
+      wx.navigateTo({
+        url: '../a1result/a1result?rate=' + res.Rate + '&kWH=' + res.kWH + '&W=' + res.W + '&qsh=' + res.qsh
+      })
+    }, function () {
+      $Toast.hide()
+      $Toast({
+        content: '电费专有服务器可能未开启，请留言反馈给我们',
+        type: 'error'
+      });
+    })
   }
 })

@@ -15,7 +15,7 @@ import java.util.List;
 public class A2Thread extends Thread {
 
     public static boolean a2stop = false;
-    final public static String a2 = "https://www.jhuncloud.com/transa2";
+    final public static String a2 = "https://www.daohangcn.cn/transa2";
     public static List<String> ListPE = new ArrayList();
 
     @Override

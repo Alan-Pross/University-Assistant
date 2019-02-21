@@ -32,7 +32,7 @@ Page({
     }, function() {
       $Toast.hide()
       $Toast({
-        content: '连接服务器失败，请留言反馈给我们',
+        content: '请于2019年2月26日下午1:00之后查询',
         type: 'error'
       });
     })

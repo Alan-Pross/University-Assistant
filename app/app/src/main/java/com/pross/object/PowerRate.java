@@ -3,13 +3,13 @@ package com.pross.object;
 //电费类
 public class PowerRate {
 
-    public String CurrentRate;
-    public String CurrentWH;
-    public String CurrentW;
+    public String Rate;
+    public String kWH;
+    public String W;
 
-    public PowerRate(String CurrentRate, String CurrentWH, String CurrentW) {
-        this.CurrentRate = CurrentRate;
-        this.CurrentWH = CurrentWH;
-        this.CurrentW = CurrentW;
+    public PowerRate(String Rate, String kWH, String W) {
+        this.Rate = Rate;
+        this.kWH = kWH;
+        this.W = W;
     }
 }

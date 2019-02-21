@@ -6,19 +6,21 @@ import java.util.Map;
 //电费类
 public class PowerRate {
 
-    public String CurrentRate;
-    public String CurrentWH;
-    public String CurrentW;
+    public String Rate;
+    public String kWH;
+    public String W;
 
-    public PowerRate(String CurrentRate, String CurrentWH, String CurrentW) {
-        this.CurrentRate = CurrentRate;
-        this.CurrentWH = CurrentWH;
-        this.CurrentW = CurrentW;
+    public PowerRate(String Rate, String kWH, String W) {
+        this.Rate = Rate;
+        this.kWH = kWH;
+        this.W = W;
     }
 
     public Map<String, String> toMap() {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("CurrentRate", CurrentRate);
+        map.put("Rate", Rate);
+        map.put("kWH", kWH);
+        map.put("W", W);
         return map;
     }
 }
