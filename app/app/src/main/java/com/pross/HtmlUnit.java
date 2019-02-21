@@ -1,16 +1,12 @@
 package com.pross;
 
-import android.util.Log;
-
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSelect;
 import com.gargoylesoftware.htmlunit.html.HtmlTable;
-import com.gargoylesoftware.htmlunit.html.HtmlTextArea;
 import com.pross.object.PEReport;
 import com.pross.object.PowerRate;
 
@@ -28,51 +24,32 @@ public class HtmlUnit {
 
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
         webClient.getOptions().setCssEnabled(false);
-        webClient.getOptions().setJavaScriptEnabled(false);
-        //webClient.setAjaxController(new NicelyResynchronizingAjaxController());
+        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
         //超时时间
-        //webClient.getOptions().setTimeout(10000);
+        webClient.getOptions().setTimeout(10000);
 
         HtmlPage page = null;
         if(qsh.charAt(0) == '北'){
             //查北区 北1至北14
-            page = webClient.getPage("http://210.42.74.111:8080/admin/sys!chaxun.action");
+            page = webClient.getPage("http://210.42.74.111:8080/admin/sys!chaxun.action?fjmc=" + qsh.substring(1));
         } else if (qsh.charAt(0) == '南') {
             //查南区 南1至南9，研究生
-            page = webClient.getPage("http://210.42.74.113:8080/admin/sys!chaxun.action");
+            page = webClient.getPage("http://210.42.74.113:8080/admin/sys!chaxun.action?fjmc=" + qsh.substring(1));
         } else {
             return null;
         }
-        //把第一个字截掉
-        qsh = qsh.substring(1);
 
         //加载js
-        //webClient.waitForBackgroundJavaScript(2000);
-
-        //找到输入框
-        HtmlInput fjmc = (HtmlInput) page.getByXPath("//input[@name='fjmc']").get(0);
-
-        //找到查询按钮
-        HtmlAnchor a = (HtmlAnchor) page.getByXPath("//a[@id='chaxun']").get(0);
-
-        fjmc.setValueAttribute(qsh);
-
-        page = a.click();
-
-        Log.e("page",page.asXml());
+        webClient.waitForBackgroundJavaScript(2000);
 
         HtmlTable table = (HtmlTable) page.getByXPath("//table[@class='listTable']").get(0);
 
         //总余额
-        String r1 = table.getCellAt(1, 5).asText();
+        String r1 = table.getCellAt(2, 5).asText();
         //总用电量
-        String r2 = table.getCellAt(2, 1).asText();
+        String r2 = table.getCellAt(3, 1).asText();
 
-        //瞬时功率
-        HtmlTextArea textArea = (HtmlTextArea) page.getByXPath("//text[@id='Energy-1']").get(0);
-        String r3 = textArea.asText();
-
-        pr = new PowerRate(r1,r2,r3);
+        pr = new PowerRate(r1,r2);
 
         webClient.close();
         return pr;

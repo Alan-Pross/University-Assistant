@@ -20,6 +20,11 @@ public class QueryPE {
     public static Map<String, Object> get(String xh) {
         Map<String, Object> map = new HashMap<String, Object>();
 
+        //删除上次结果
+        try {
+            MapPE.remove(xh);
+        } catch (NullPointerException e){}
+
         //把学号放入需要查询的列表中
         MapPEWaiting.add(xh);
 

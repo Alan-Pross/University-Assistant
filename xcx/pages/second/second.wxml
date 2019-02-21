@@ -19,11 +19,11 @@
   <view slot="content">输入姓名身份证号</view>
   <view slot="footer">你看俺滴铺通话彪不标准？</view>
 </i-card>
-<!-- <view class="nr"></view>
+<view class="nr"></view>
 <i-card extra="寝室电费查询" thumb="../../img/a1.jpg" bindtap="a1">
   <view slot="content">输入寝室楼号</view>
   <view slot="footer">看什么看？空调电费外边不是写着呢吗！？</view>
-</i-card> -->
+</i-card>
 <!-- <view class="nr"></view>
 <i-card extra="体测查询" thumb="../../img/a2.jpg" bindtap="a2">
   <view slot="content">输入学生学号</view>

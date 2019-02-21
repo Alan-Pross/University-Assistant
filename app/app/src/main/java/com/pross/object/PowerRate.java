@@ -5,11 +5,9 @@ public class PowerRate {
 
     public String Rate;
     public String kWH;
-    public String W;
 
-    public PowerRate(String Rate, String kWH, String W) {
+    public PowerRate(String Rate, String kWH) {
         this.Rate = Rate;
         this.kWH = kWH;
-        this.W = W;
     }
 }

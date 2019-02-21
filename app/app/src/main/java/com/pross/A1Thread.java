@@ -39,7 +39,6 @@ public class A1Thread extends Thread {
                 if (pr != null) {
                     stringPostRequest.add("Rate", pr.Rate);
                     stringPostRequest.add("kWH", pr.kWH);
-                    stringPostRequest.add("W", pr.W);
                 }
                 stringPostRequest.add("qsh", ListPower.get(0));
                 MainActivity.requestQueues.add(2, stringPostRequest, new SimpleResponseListener<String>() {
