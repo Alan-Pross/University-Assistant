@@ -26,7 +26,7 @@ public class A1Thread extends Thread {
                 if (!(ListPower.size() > 0)) {
                     ListPower.add("110");
                 } else {
-                    MainActivity.print("A1Thread:开始电费查询" + ListPower.get(0));
+                    MainActivity.print("A1:" +  System.currentTimeMillis() + "开始电费查询" + ListPower.get(0));
                 }
 
                 //开始上传请求
@@ -55,7 +55,7 @@ public class A1Thread extends Thread {
                         String qsh = js.getString("qsh");
                         if (!qsh.equals("110")) {
                             ListPower.add(qsh);
-                            MainActivity.print("A1Thread:收到查询请求" + qsh);
+                            MainActivity.print("A1:" +  System.currentTimeMillis() + "收到查询请求" + qsh);
                         }
                     }
 
@@ -73,7 +73,7 @@ public class A1Thread extends Thread {
             //从查询队列中删除
             ListPower.remove(0);
             try {
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             } catch (InterruptedException e){
             }
         }

@@ -21,9 +21,7 @@ public class QueryPower {
         Map<String, Object> map = new HashMap<String, Object>();
 
         //删除上次结果
-        try {
-            MapPower.remove(qsh);
-        } catch (NullPointerException e){}
+        if(MapPower.containsKey(qsh)) MapPower.remove(qsh);
 
         //把学号放入需要查询的列表中
         MapPowerWaiting.add(qsh);
@@ -32,7 +30,7 @@ public class QueryPower {
         int wait = 3;
         //等待查询结果
         Tools.Sleep(3);
-        while (!find(qsh)) {
+        while (!MapPower.containsKey(qsh)) {
             if(wait > 9) {
                 map.put("error","服务器可能没开");
                 //从查询队列中删除
@@ -47,16 +45,6 @@ public class QueryPower {
         map.putAll(MapPower.get(qsh).toMap());
         MapPower.remove(qsh);
         return map;
-    }
-
-    //检测是否已查到结果
-    private static boolean find(String qsh) {
-        try {
-            MapPower.get(qsh);
-        } catch (NullPointerException e) {
-            return false;
-        }
-        return true;
     }
 
     public static void set(String qsh, PowerRate pr) {

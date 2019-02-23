@@ -44,14 +44,15 @@ public class HtmlUnit {
 
         HtmlTable table = (HtmlTable) page.getByXPath("//table[@class='listTable']").get(0);
 
-        //总余额
+        //余额
         String r1 = table.getCellAt(2, 5).asText();
-        //总用电量
+        //电量
         String r2 = table.getCellAt(3, 1).asText();
 
         pr = new PowerRate(r1,r2);
 
         webClient.close();
+        MainActivity.print("A1:" +  System.currentTimeMillis() + "查询完成" + qsh + "余额:" + r1 + "元/电量:" + r2 + "kWH");
         return pr;
     }
 

@@ -24,11 +24,11 @@
   <view slot="content">输入寝室楼号</view>
   <view slot="footer">看什么看？空调电费外边不是写着呢吗！？</view>
 </i-card>
-<!-- <view class="nr"></view>
-<i-card extra="体测查询" thumb="../../img/a2.jpg" bindtap="a2">
+<view class="nr"></view>
+<i-card extra="体测成绩查询" thumb="../../img/a2.jpg" bindtap="a2">
   <view slot="content">输入学生学号</view>
   <view slot="footer">哇哦！居然可以查体测~</view>
-</i-card> -->
+</i-card>
 <view class="nr"></view>
 <button open-type="contact">
   <i-card extra="意见建议" thumb="../../img/last.jpg">

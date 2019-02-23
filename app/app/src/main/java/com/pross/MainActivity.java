@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.pross.object.PowerRate;
 import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
@@ -21,7 +20,6 @@ import com.yanzhenjie.nohttp.rest.RequestQueue;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -130,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         WifiManager wifiMgr = (WifiManager) mainActivity.getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = wifiMgr.getConnectionInfo();
         String wifiId = info != null ? info.getSSID() : null;
-        if (wifiId == "JHUN-AUTO") return true;//填入江大wifi名称
+        if (wifiId.equals("\"JHUN-AUTO\"")) return true;//填入江大wifi名称
         return false;
     }
 

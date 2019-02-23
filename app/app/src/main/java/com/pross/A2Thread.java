@@ -72,7 +72,7 @@ public class A2Thread extends Thread {
             //从查询队列中删除
             ListPE.remove(0);
             try {
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
             }
         }

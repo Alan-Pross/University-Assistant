@@ -47,12 +47,12 @@ Page({
       $Toast.hide()
       console.log(res)
       wx.navigateTo({
-        url: '../a1result/a1result?Rate=' + res.Rate + '&kWH=' + res.kWH + '&W=' + res.W + '&qsh=' + res.qsh
+        url: '../a1result/a1result?Rate=' + res.Rate + '&kWH=' + res.kWH + '&qsh=' + res.qsh
       })
     }, function () {
       $Toast.hide()
       $Toast({
-        content: '电费专有服务器可能未开启，请留言反馈给我们',
+        content: '电费查询专有服务器可能未开启，请留言反馈给我们',
         type: 'error'
       });
     })

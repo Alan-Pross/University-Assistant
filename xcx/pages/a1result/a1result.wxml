@@ -4,7 +4,6 @@
   <i-cell-group>
     <i-cell title='寝　　号：' value='{{ qsh }}' style='font-weight: 600;'></i-cell>
     <i-cell title='剩余电费：' value='{{ Rate }}' style='font-weight: 600;'></i-cell>
-    <i-cell title='瞬时功率：' value='{{ W }}' style='font-weight: 600;'></i-cell>
     <i-cell title='总用电量：' value='{{ kWH }}' style='font-weight: 600;'></i-cell>
   </i-cell-group>
 </view>

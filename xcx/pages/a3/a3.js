@@ -100,7 +100,7 @@ Page({
   onLoad: function(option) {
     this.setData({
       openid: option.id,
-      yzmimg: 'https://www.jhuncloud.com/a3' + option.id + '.jpg'
+      yzmimg: 'https://www.daohangcn.cn/a3' + option.id + '.jpg'
     })
   }
 })
