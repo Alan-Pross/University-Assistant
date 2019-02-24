@@ -24,6 +24,11 @@ public class A3Controller {
             map.put("img", new Query46().getImg(openid));
         } catch (IOException e) {
             return R.error(e.toString());
+        } catch (Exception e){
+            if(System.currentTimeMillis()/1000 > 1551157200)
+                return R.error(123,"正在适配");
+             else
+                return R.error(321,"时间未到");
         }
 
         return R.ok(map);

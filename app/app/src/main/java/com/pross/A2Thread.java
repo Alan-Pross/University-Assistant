@@ -80,7 +80,6 @@ public class A2Thread extends Thread {
         MainActivity.print("A2Thread已关闭");
         if(A1Thread.a1stop){
             if(MainActivity.exit) MainActivity.stopApp();
-            else MainActivity.openButton();
         }
     }
 }

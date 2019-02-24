@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "电费查询",
+  "navigationBarTitleText": "学生寝室电费查询",
   "usingComponents": {
     "i-cell-group": "../../dist/cell-group/index",
     "i-cell": "../../dist/cell/index",

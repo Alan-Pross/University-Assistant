@@ -24,8 +24,6 @@ import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 public class MainActivity extends AppCompatActivity {
 
     static TextView print;
-    static Button open;
-    Button close;
     Button log;
 
     public static Boolean isClosed = true;
@@ -42,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         //绑定view
         print = findViewById(R.id.textView);
-        open = findViewById(R.id.open);
-        close = findViewById(R.id.close);
         log = findViewById(R.id.log);
 
         NoHttp.initialize(this);
@@ -53,14 +49,21 @@ public class MainActivity extends AppCompatActivity {
 
         FontStyle fontStyle = new FontStyle(this, "yh.ttf");
         fontStyle.setTypeface(print, false);
+
+        //开启服务器
+        isClosed = false;
+        OpenServer.start();
+
+        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
+        vibrator.vibrate(200);
     }
 
     @Override
     public void onBackPressed() {
+        //关闭服务器
         Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
         vibrator.vibrate(200);
         if(!isClosed){
-            close.setEnabled(false);
             isClosed = true;
             print("关闭服务中");
             exit = true;
@@ -69,55 +72,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void open(View v) {
-        open.setEnabled(false);
-        close.setEnabled(true);
-        isClosed = false;
-        OpenServer.start();
-
-        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
-        vibrator.vibrate(200);
-    }
-
-    public void close(View v) {
-        close.setEnabled(false);
-        isClosed = true;
-        print("关闭服务中");
-
-        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
-        vibrator.vibrate(200);
-    }
-
     public void log(View v) {
-        String url = "https://www.jhuncloud.com/applog";
-        String txt = System.currentTimeMillis() / 1000 + ".txt";
-        //限制上传log大小在1M以内
         String log = print.getText().toString();
-        if (log.length() > 1000000) log = log.substring(0, 900000);
-        //开始上传请求
-        Request<String> stringPostRequest = NoHttp.createStringRequest(url, RequestMethod.POST);
-        //构建上传参数
-        stringPostRequest.add("log", log);
-        stringPostRequest.add("txt", txt);
-        MainActivity.requestQueues.add(2, stringPostRequest, new SimpleResponseListener<String>() {
-            @Override
-            public void onStart(int what) {
-                MainActivity.print("开始发送log信息");
-            }
-
-            @Override
-            public void onSucceed(int what, Response<String> response) {
-                MainActivity.print("发送完毕:" + txt);
-            }
-
-            @Override
-            public void onFailed(int what, Response<String> response) {
-            }
-
-            @Override
-            public void onFinish(int what) {
-            }
-        });
+        MyApplication.log(log);
     }
 
     public static void print(String s) {
@@ -128,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         WifiManager wifiMgr = (WifiManager) mainActivity.getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = wifiMgr.getConnectionInfo();
         String wifiId = info != null ? info.getSSID() : null;
-        if (wifiId.equals("\"JHUN-AUTO\"")) return true;//填入江大wifi名称
+        if (wifiId.equals("\"JHUN-AUTO\"")) return true;
         return false;
     }
 
@@ -141,10 +98,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-
-    public static void openButton(){
-        mainActivity.runOnUiThread(() -> open.setEnabled(true));
     }
 
     public static void stopApp(){

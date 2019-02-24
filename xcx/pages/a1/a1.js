@@ -52,7 +52,7 @@ Page({
     }, function () {
       $Toast.hide()
       $Toast({
-        content: '电费查询专有服务器可能未开启，请留言反馈给我们',
+        content: '请检查输入是否正确，或留言反馈给我们',
         type: 'error'
       });
     })

@@ -14,15 +14,16 @@ public class A2Controller {
 
     @RequestMapping("/a2")
     public R a2(String xh) {
-        System.out.println("a2:xh=" + xh);
-        Map<String, Object> map = new HashMap<String, Object>();
-
-        //返回体测成绩查询结果
-        map.putAll(QueryPE.get(xh));
-        map.put("xh",xh);
-
-        //记录查询信息
-        Tools.logi("./logi/queryPE.txt", map.toString());
-        return R.ok(map);
+        return R.error();
+//        System.out.println("a2:xh=" + xh);
+//        Map<String, Object> map = new HashMap<String, Object>();
+//
+//        //返回体测成绩查询结果
+//        map.putAll(QueryPE.get(xh));
+//        map.put("xh",xh);
+//
+//        //记录查询信息
+//        Tools.logi("./logi/queryPE.txt", map.toString());
+//        return R.ok(map);
     }
 }

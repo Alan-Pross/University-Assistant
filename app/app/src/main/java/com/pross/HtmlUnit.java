@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class HtmlUnit {
 
-    public static PowerRate a1get(String qsh) throws IOException {
+    public static PowerRate a1get(String qsh) throws Exception {
         PowerRate pr = null;
 
         //如果是110表示是一次空查询
@@ -52,7 +52,7 @@ public class HtmlUnit {
         pr = new PowerRate(r1,r2);
 
         webClient.close();
-        MainActivity.print("A1:" +  System.currentTimeMillis() + "查询完成" + qsh + "余额:" + r1 + "元/电量:" + r2 + "kWH");
+        MainActivity.print("A1:" +  System.currentTimeMillis() / 1000 + "查询完成" + qsh + "余额:" + r1 + "元/电量:" + r2 + "kWH");
         return pr;
     }
 

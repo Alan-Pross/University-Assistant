@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "体侧查询",
+  "navigationBarTitleText": "学生体测成绩查询",
   "usingComponents": {
     "i-cell-group": "../../dist/cell-group/index",
     "i-cell": "../../dist/cell/index",

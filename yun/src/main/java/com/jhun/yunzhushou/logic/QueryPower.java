@@ -31,7 +31,7 @@ public class QueryPower {
         //等待查询结果
         Tools.Sleep(3);
         while (!MapPower.containsKey(qsh)) {
-            if(wait > 9) {
+            if(wait > 12) {
                 map.put("error","服务器可能没开");
                 //从查询队列中删除
                 QueryPower.MapPowerWaiting.remove(qsh);
