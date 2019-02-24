@@ -1,5 +1,5 @@
 <i-notice-bar icon="systemprompt" loop>
-  江汉大学将于2月25日周一正式上课！英语四六级将于2019年2月26日下午1:00查询！
+  江汉大学将于2月25日周一正式上课！四六级将于2019年2月26日下午1:00查询！
 </i-notice-bar>
 <i-toast id="toast" />
 
@@ -28,7 +28,7 @@
 </i-card>
 
 <view class="nr"></view>
-<i-card extra="普通话成绩查询" thumb="../../img/a5.jpg" bindtap="a5">
+<i-card extra="普通话水平查询" thumb="../../img/a5.jpg" bindtap="a5">
   <view slot="content">输入姓名身份证号</view>
   <view slot="footer">你看俺滴铺通话彪不标准？</view>
 </i-card>

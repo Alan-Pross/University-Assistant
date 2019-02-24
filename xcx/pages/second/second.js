@@ -45,7 +45,7 @@ Page({
     }, function() {
       $Toast.hide()
       $Toast({
-        content: '抱歉，功能暂未开通',
+        content: '请于2019年2月26日下午1:00之后查询',
         type: 'error'
       });
     })
