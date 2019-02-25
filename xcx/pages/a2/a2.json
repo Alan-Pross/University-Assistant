@@ -4,6 +4,7 @@
     "i-cell-group": "../../dist/cell-group/index",
     "i-cell": "../../dist/cell/index",
     "i-input": "../../dist/input/index",
+    "i-input-number": "../../dist/input-number/index",
     "i-button": "../../dist/button/index",
     "i-message": "../../dist/message/index"
   }

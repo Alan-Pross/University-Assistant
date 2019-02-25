@@ -1,3 +1,4 @@
+const { $Message } = require('../../dist/base/index');
 const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
@@ -26,7 +27,14 @@ Page({
     })
   },
   handleClick: function () {
-    var self = this
+    var self = this;
+    if (this.data.value2.length != 3) {
+      $Message({
+        content: '请检查寝室号是否正确',
+        type: 'warning'
+      });
+      return;
+    }
     $Toast({
       content: '查询中',
       type: 'loading',

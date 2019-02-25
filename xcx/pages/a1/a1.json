@@ -7,6 +7,7 @@
     "i-switch": "../../dist/switch/index",
     "i-input-number": "../../dist/input-number/index",
     "i-button": "../../dist/button/index",
+    "i-message": "../../dist/message/index",
     "i-toast": "../../dist/toast/index"
   }
 }
