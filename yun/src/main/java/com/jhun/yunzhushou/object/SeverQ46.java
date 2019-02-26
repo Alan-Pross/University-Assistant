@@ -11,16 +11,14 @@ import java.util.Map;
 public class SeverQ46 {
     public String openid;
     public HtmlPage page;
-    public HtmlImage img;
     public WebClient webClient;
 
     //所有正在服务的列表
     public static Map<String, SeverQ46> Map46 = new HashMap<String, SeverQ46>();
 
-   public SeverQ46(String openid, HtmlPage page, HtmlImage img, WebClient webClient){
+   public SeverQ46(String openid, HtmlPage page, WebClient webClient){
         this.openid = openid;
         this.page = page;
-        this.img = img;
         this.webClient = webClient;
     }
 
@@ -41,7 +39,6 @@ public class SeverQ46 {
         Map46.remove(this.openid);
         this.openid = null;
         this.page = null;
-        this.img = null;
         this.webClient = null;
     }
 }

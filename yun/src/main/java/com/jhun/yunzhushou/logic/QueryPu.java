@@ -20,7 +20,8 @@ public class QueryPu {
         // 取消css支持
         webClient.getOptions().setCssEnabled(false);
         //超时时间
-        webClient.getOptions().setTimeout(10000);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
 
         //进入网页
         HtmlPage page = webClient.getPage("http://www.cltt.org/studentscore");

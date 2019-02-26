@@ -24,11 +24,13 @@ public class Forgot46 {
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
         // 取消css支持
         webClient.getOptions().setCssEnabled(false);
-        //超时时间
-        webClient.getOptions().setTimeout(10000);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
 
         //进入网页
         HtmlPage page1 = webClient.getPage("http://cet.etest.net.cn/Home/QuickPrintTestTicket");
+
+        webClient.waitForBackgroundJavaScript(5000);
 
         //填写省份
         HtmlSelect select1 = (HtmlSelect) page1.getByXPath("//select[@id='selProvince']").get(0);

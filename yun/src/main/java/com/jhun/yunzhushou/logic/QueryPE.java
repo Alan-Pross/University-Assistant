@@ -20,6 +20,9 @@ public class QueryPE {
     public static Map<String, Object> get(String xh) {
         Map<String, Object> map = new HashMap<String, Object>();
 
+        //黑名单
+        if(xh.equals("162202301134")) return map;
+
         //删除上次结果
         try {
             MapPE.remove(xh);
