@@ -27,6 +27,8 @@ public class HtmlUnit {
         webClient.setAjaxController(new NicelyResynchronizingAjaxController());
         //超时时间
         webClient.getOptions().setTimeout(10000);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
 
         HtmlPage page = null;
         if(qsh.charAt(0) == '北'){

@@ -1,5 +1,7 @@
 package com.pross;
 
+import android.os.Vibrator;
+
 import com.alibaba.fastjson.JSONObject;
 import com.pross.object.PowerRate;
 import com.yanzhenjie.nohttp.NoHttp;
@@ -16,6 +18,8 @@ public class A1Thread extends Thread {
     public static boolean a1stop = false;
     final public static String a1 = "https://www.daohangcn.cn/transa1";
     public static List<String> ListPower = new ArrayList();
+
+    static int fail = 0;
 
     @Override
     public void run() {
@@ -62,10 +66,18 @@ public class A1Thread extends Thread {
                         ListPower.add(qsh);
                         MainActivity.print("A1:" + System.currentTimeMillis() / 1000 + "收到查询请求" + qsh);
                     }
+                    fail = 0;
                 }
 
                 @Override
                 public void onFailed(int what, Response<String> response) {
+                    fail++;
+                    if(fail > 10){
+                        Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
+                        vibrator.vibrate(200);
+                        if(fail == 11)
+                            MainActivity.print("服务器断开连接，请检查网络");
+                    }
                 }
 
                 @Override

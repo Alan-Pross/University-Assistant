@@ -1,21 +1,14 @@
 package com.jhun.yunzhushou.logic;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
 import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.WebRequest;
 import com.gargoylesoftware.htmlunit.html.*;
-import com.gargoylesoftware.htmlunit.util.Cookie;
 import com.jhun.yunzhushou.object.SeverQ46;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 //四六级成绩查询方法
 public class Query46 {
@@ -24,17 +17,46 @@ public class Query46 {
 
     public String getImg(String openid) throws IOException {
         yzm_img = "./yzmimg/";
+        //如果服务此用户的浏览器已存在，关闭这个浏览器
+        if (SeverQ46.get(openid) != null) SeverQ46.get(openid).close();
 
-        FileInputStream in = new FileInputStream(new File("./asd.jpg"));
-        FileOutputStream out = new FileOutputStream(new File(yzm_img + "a3" + openid + ".jpg"));
-        byte[] buff = new byte[10240]; //限制大小
-        int n = 0;
-        while ((n = in.read(buff)) != -1) {
-            out.write(buff, 0, n);
-        }
-        out.flush();
-        in.close();
-        out.close();
+        //打开浏览器
+        WebClient webClient = new WebClient(BrowserVersion.CHROME);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
+
+        //进入网页
+        HtmlPage page1 = webClient.getPage("https://www.chsi.com.cn/cet/");
+
+        //找到表单
+        HtmlForm form = page1.getFormByName("form1");
+
+        //找到验证码并点击
+        HtmlTextInput yzm = form.getInputByName("yzm");
+        HtmlPage page = yzm.click();
+
+        //获取验证码图片
+        HtmlImage img = (HtmlImage) page.getByXPath("//img[@id='stu_reg_vcode']").get(0);
+
+        //保存图片
+        File file = new File(yzm_img + "a3" + openid + ".jpg");
+        if (!file.exists()) file.createNewFile();
+        img.saveAs(file);
+
+        //保存此网页信息
+        SeverQ46.Map46.put(openid, new SeverQ46(openid, page, webClient));
+
+        //100秒后关闭浏览器
+        Runnable r = () -> {
+            try {
+                Thread.sleep(100000);
+                SeverQ46.get(openid).close();
+            } catch (Exception e) {
+                System.out.println(openid + "的浏览器已关闭");
+            }
+
+        };
+        new Thread(r).start();
 
         return "a3" + openid + ".jpg";
     }
@@ -42,28 +64,31 @@ public class Query46 {
     public Map<String, Object> result(String openid, String zkzhs, String xms, String yzms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
 
-        //打开浏览器
-        WebClient webClient = new WebClient(BrowserVersion.CHROME);
-        //设置
-        webClient.getOptions().setJavaScriptEnabled(true);
-        webClient.getOptions().setCssEnabled(false);
-        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        webClient.getOptions().setThrowExceptionOnScriptError(false);
+        //返回
+        if (SeverQ46.get(openid) == null) {
+            map.put("error", "已超时或不存在");
+            return map;
+        }
 
-        //进入网页
-        HtmlPage page = webClient.getPage("https://www.chsi.com.cn/cet");
+        //得到服务此用户的网页
+        HtmlPage page = SeverQ46.get(openid).page;
 
-        webClient.waitForBackgroundJavaScript(5000);
+        //得到表单
+        HtmlForm form = page.getFormByName("form1");
 
-        //得到要输入的输入框
-        HtmlInput zkzh = (HtmlInput) page.getByXPath("//input[@class='input_text input_t_l']").get(0);
-        HtmlInput xm = (HtmlInput) page.getByXPath("//input[@class='input_text input_t_l']").get(1);
+        //得到要输入的三个输入框
+        HtmlTextInput zkzh = form.getInputByName("zkzh");
+        HtmlTextInput xm = form.getInputByName("xm");
+        HtmlTextInput yzm = form.getInputByName("yzm");
 
         //得到查询按钮
-        HtmlInput cx = (HtmlInput) page.getByXPath("//input[@id='submitCET']").get(0);
+        HtmlSubmitInput cx = form.getInputByValue("查询");
+
         //填入信息
         zkzh.setValueAttribute(zkzhs);
         xm.setValueAttribute(xms);
+        yzm.setValueAttribute(yzms);
+
         //点击查询
         HtmlPage nextPage = cx.click();
 
@@ -103,6 +128,8 @@ public class Query46 {
         map.put("r9", r9);
         map.put("r12", r12);
 
+        //查询完毕关闭浏览器
+        SeverQ46.get(openid).close();
         return map;
     }
 }
