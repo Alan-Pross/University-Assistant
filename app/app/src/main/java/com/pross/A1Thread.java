@@ -10,7 +10,9 @@ import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class A1Thread extends Thread {
@@ -71,12 +73,26 @@ public class A1Thread extends Thread {
 
                 @Override
                 public void onFailed(int what, Response<String> response) {
-                    fail++;
-                    if(fail > 10){
-                        Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
-                        vibrator.vibrate(200);
-                        if(fail == 11)
-                            MainActivity.print("服务器断开连接，请检查网络");
+                    Date now = new Date( );
+                    SimpleDateFormat ft = new SimpleDateFormat("HH");
+                    switch (ft.format(now)){
+                        case "02":break;
+                        case "03":break;
+                        case "04":break;
+                        case "05":break;
+                        case "06":break;
+                        case "07":break;
+                        default:{
+                            fail++;
+                            if(fail > 8 && fail < 16)
+                                MainActivity.print("服务器断开连接，请检查网络");
+                            if(fail > 16){
+                                Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
+                                vibrator.vibrate(200);
+                            }
+                            if(fail > 32)
+                                MyApplication.rebot();
+                        }
                     }
                 }
 

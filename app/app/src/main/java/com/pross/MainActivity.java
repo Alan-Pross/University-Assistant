@@ -14,11 +14,7 @@ import android.widget.TextView;
 
 import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
-import com.yanzhenjie.nohttp.RequestMethod;
-import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.RequestQueue;
-import com.yanzhenjie.nohttp.rest.Response;
-import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -47,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Logger.setTag("NoHttp:");// 打印Log的tag。
         requestQueues = NoHttp.newRequestQueue();
 
-        FontStyle fontStyle = new FontStyle(this, "yh.ttf");
+        FontStyle fontStyle = new FontStyle(this, "MicrosoftYaHei.ttf");
         fontStyle.setTypeface(print, false);
 
         //开启服务器

@@ -5,7 +5,8 @@ Page({
   data: {
     a3getimg: "/a3getimg?openid=",
     a4getimg: "/a4getimg?openid=",
-    id: ""
+    id: "",
+    bar: ''
   },
   a1: function() {
     wx.navigateTo({
@@ -79,7 +80,8 @@ Page({
   },
   onLoad: function(option) {
     this.setData({
-      id: option.id
+      id: option.id,
+      bar: option.bar
     })
     wx.getUpdateManager().onUpdateReady(function() {
       wx.showModal({

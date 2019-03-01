@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    bar: '',
     percent: 0,
     status: 'normal',
     userInfo: {},
@@ -46,6 +47,17 @@ Page({
   },
   goProgress: function () {
     var self = this;
+    var network = require("../../tools/network.js")
+    network.getrequest('/noticebar', null, function (res) {
+      console.log(res)
+      self.setData({
+        bar: res.msg
+      });
+    }, function () {
+    })
+    self.setData({
+      percent: self.data.percent + 10
+    });
     setInterval(function () {
       if (self.data.percent === 100) return;
       self.setData({
@@ -56,8 +68,13 @@ Page({
           status: 'success'
         },
           setTimeout(function () {
+            if (typeof bar == "undefined" || bar == null || bar == '') {
+              self.setData({
+                bar: '欢迎进入江大云助手！'
+              });
+            }
             wx.redirectTo({
-              url: '../second/second?id=' + self.data.userInfo.nickName
+              url: '../second/second?id=' + self.data.userInfo.nickName + '&bar=' + self.data.bar
             })
           }, 100)
         );
