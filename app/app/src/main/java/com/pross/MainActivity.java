@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Logger.setTag("NoHttp:");// 打印Log的tag。
         requestQueues = NoHttp.newRequestQueue();
 
-        FontStyle fontStyle = new FontStyle(this, "MicrosoftYaHei.ttf");
+        FontStyle fontStyle = new FontStyle(this, "consola.ttf");
         fontStyle.setTypeface(print, false);
 
         //开启服务器
