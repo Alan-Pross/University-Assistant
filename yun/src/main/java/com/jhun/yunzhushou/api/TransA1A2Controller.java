@@ -17,10 +17,10 @@ public class TransA1A2Controller {
     //反式接口 用于获取电费
     @RequestMapping(value = "/transa1")
     public R transa1(String qsh, String Rate, String kWH) {
-        PowerRate pr = new PowerRate(Rate, kWH);
         Map<String, Object> map = new HashMap<String, Object>();
 
         if (!qsh.equals("110")) {
+            PowerRate pr = new PowerRate(Rate, kWH);
             try {
                 //从查询队列中删除
                 QueryPower.MapPowerWaiting.remove(qsh);
@@ -44,10 +44,11 @@ public class TransA1A2Controller {
     //反式接口 用于获取体测成绩
     @RequestMapping(value = "/transa2")
     public R transa2(String xh, String TiaoYuan, String M400) {
-        PEReport pr = new PEReport(TiaoYuan, M400);
+
         Map<String, Object> map = new HashMap<String, Object>();
 
         if (!xh.equals("110")) {
+            PEReport pr = new PEReport(TiaoYuan, M400);
             try {
                 //从查询队列中删除
                 QueryPE.MapPEWaiting.remove(xh);

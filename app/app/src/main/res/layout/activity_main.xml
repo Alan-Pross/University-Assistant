@@ -37,7 +37,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:onClick="log"
-        android:text="发送控制台信息"
+        android:text="发送所有输出消息到服务器保存"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.096"

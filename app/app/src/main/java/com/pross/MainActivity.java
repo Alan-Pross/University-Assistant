@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     static TextView print;
     Button log;
 
-    public static Boolean isClosed = true;
+    public static Boolean isClosed = false;
     static RequestQueue requestQueues;
     static MainActivity mainActivity;
 
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         fontStyle.setTypeface(print, false);
 
         //开启服务器
-        isClosed = false;
         OpenServer.start();
 
         Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
@@ -97,6 +96,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void stopApp(){
-        mainActivity.runOnUiThread(() -> mainActivity.finish());
+        mainActivity.finish();
     }
 }

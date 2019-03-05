@@ -54,7 +54,7 @@ public class HtmlUnit {
         pr = new PowerRate(r1,r2);
 
         webClient.close();
-        MainActivity.print("A1:" +  System.currentTimeMillis() / 1000 + "查询完成" + qsh + "余额:" + r1 + "元/电量:" + r2 + "kWH");
+        MainActivity.print("A1:" +  System.currentTimeMillis() / 1000 + "查询完成" + qsh + "余额:" + r1 + "/电量:" + r2);
         return pr;
     }
 
