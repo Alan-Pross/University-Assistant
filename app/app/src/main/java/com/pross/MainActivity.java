@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     static RequestQueue requestQueues;
     static MainActivity mainActivity;
 
-    public static boolean exit = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
