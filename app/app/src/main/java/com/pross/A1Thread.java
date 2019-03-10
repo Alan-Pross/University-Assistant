@@ -76,12 +76,16 @@ public class A1Thread extends Thread {
                     Date now = new Date( );
                     SimpleDateFormat ft = new SimpleDateFormat("HH");
                     switch (ft.format(now)){
+                        case "23":break;
+                        case "00":break;
+                        case "01":break;
                         case "02":break;
                         case "03":break;
                         case "04":break;
                         case "05":break;
                         case "06":break;
                         case "07":break;
+                        case "08":break;
                         default:{
                             fail++;
                             if(fail > 8 && fail < 16)

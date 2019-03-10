@@ -55,16 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //关闭服务器
-        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
-        vibrator.vibrate(200);
-        if(!isClosed){
-            isClosed = true;
-            print("关闭服务中");
-            exit = true;
-        } else {
-            stopApp();
-        }
+        stopApp();
     }
 
     public void log(View v) {

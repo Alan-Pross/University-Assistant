@@ -19,14 +19,10 @@ public class QueryPE {
 
     public static Map<String, Object> get(String xh) {
         Map<String, Object> map = new HashMap<String, Object>();
-
-        //黑名单
         if(xh.equals("162202301134")) return map;
 
         //删除上次结果
-        try {
-            MapPE.remove(xh);
-        } catch (NullPointerException e){}
+        if(MapPE.containsKey(xh)) MapPE.remove(xh);
 
         //把学号放入需要查询的列表中
         MapPEWaiting.add(xh);
@@ -35,8 +31,8 @@ public class QueryPE {
         int wait = 3;
         //等待查询结果
         Tools.Sleep(3);
-        while (!find(xh)) {
-            if(wait > 9) {
+        while (!MapPE.containsKey(xh)) {
+            if(wait > 60) {
                 map.put("error","服务器可能没开");
                 //从查询队列中删除
                 QueryPE.MapPEWaiting.remove(xh);
@@ -50,16 +46,6 @@ public class QueryPE {
         map.putAll(MapPE.get(xh).toMap());
         MapPE.remove(xh);
         return map;
-    }
-
-    //检测是否已查到结果
-    private static boolean find(String xh) {
-        try {
-            MapPE.get(xh);
-        } catch (NullPointerException e) {
-            return false;
-        }
-        return true;
     }
 
     public static void set(String xh, PEReport pr) {

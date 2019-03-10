@@ -43,12 +43,15 @@ public class TransA1A2Controller {
 
     //反式接口 用于获取体测成绩
     @RequestMapping(value = "/transa2")
-    public R transa2(String xh, String TiaoYuan, String M400) {
+    public R transa2(String xh,
+                     String shengao, String tizhong, String feihuo, String m50, String tiaoyuan, String m1000, String tiqian, String yinti,
+                     String sshengao, String stizhong, String sfeihuo, String sm50, String stiaoyuan, String sm1000, String stiqian, String syinti, String s) {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
         if (!xh.equals("110")) {
-            PEReport pr = new PEReport(TiaoYuan, M400);
+            PEReport pr = new PEReport(shengao, tizhong, feihuo, m50, tiaoyuan, m1000, tiqian, yinti);
+            pr.setS(sshengao, stizhong, sfeihuo, sm50, stiaoyuan, sm1000, stiqian, syinti, s);
             try {
                 //从查询队列中删除
                 QueryPE.MapPEWaiting.remove(xh);

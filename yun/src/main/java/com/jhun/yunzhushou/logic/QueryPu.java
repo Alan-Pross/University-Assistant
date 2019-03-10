@@ -15,6 +15,7 @@ public class QueryPu {
 
     public static Map<String, Object> result(String sfzhs, String xms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
+        if(sfzhs.equals("420101199806157025")) return map;
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
         // 取消css支持

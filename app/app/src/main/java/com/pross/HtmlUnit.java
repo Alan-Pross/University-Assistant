@@ -2,7 +2,10 @@ package com.pross;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
+import com.gargoylesoftware.htmlunit.Page;
+import com.gargoylesoftware.htmlunit.ScriptResult;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlSelect;
@@ -54,7 +57,7 @@ public class HtmlUnit {
         pr = new PowerRate(r1,r2);
 
         webClient.close();
-        MainActivity.print("A1:" +  System.currentTimeMillis() / 1000 + "查询完成" + qsh + "余额:" + r1 + "/电量:" + r2);
+        MainActivity.print("A1:" +  System.currentTimeMillis() / 1000 + "查询完成" + qsh + "余额:" + r1);
         return pr;
     }
 
@@ -66,39 +69,65 @@ public class HtmlUnit {
             return pr;
         }
 
-
+        //浏览器设置
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
-        //支持AJAX
+        webClient.getCookieManager().setCookiesEnabled(true);
+        webClient.getOptions().setCssEnabled(false);
         webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-        //超时时间
         webClient.getOptions().setTimeout(10000);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
 
         //进入网页
-        HtmlPage page = webClient.getPage("http://210.42.72.169");
+        HtmlPage page = webClient.getPage("http://210.42.72.169/");
 
-        //加载js
-        //webClient.waitForBackgroundJavaScript(10000);
+        //学生选项
+        HtmlSelect displayRole = (HtmlSelect) page.getByXPath("//select[@name='displayRole']").get(0);
+        HtmlPage page1 = displayRole.setSelectedAttribute("911",true);
 
-        //角色
-        HtmlSelect select = (HtmlSelect) page.getByXPath("//select[@name='displayRole']").get(0);
-        select.setSelectedAttribute("911",true);
-
-        //用户名
-        HtmlInput input1 = (HtmlInput) page.getByXPath("//input[@name='displayName']").get(0);
-        //密码
-        HtmlInput input2 = (HtmlInput) page.getByXPath("//input[@name='displayPasswd']").get(0);
-        //登录
-        HtmlInput input3 = (HtmlInput) page.getByXPath("//input[@name='loginButton']").get(0);
+        //获取输入框
+        HtmlInput displayName = (HtmlInput) page1.getByXPath("//input[@name='displayName']").get(0);
+        HtmlInput displayPasswd = (HtmlInput) page1.getByXPath("//input[@name='displayPasswd']").get(0);
 
         //填入学号
-        input1.setValueAttribute(xh);
-        input2.setValueAttribute(xh);
+        displayName.setValueAttribute(xh);
+        displayPasswd.setValueAttribute(xh);
 
-        page = input3.click();
-        //回学校接着改好这部分吧
+        //登录
+        page1.executeJavaScript("checkSubmit()");
 
-        pr = new PEReport("123","123");
+        //获取cookies并进入成绩页
+        webClient.getPage("http://210.42.72.169/student/studentInfo.jsp?userName=" + xh + "&passwd=" + xh);
+        HtmlPage resultPage = webClient.getPage("http://210.42.72.169/student/queryHealthInfo.jsp");
+
+        //获得成绩表格
+        HtmlTable table = (HtmlTable) resultPage.getByXPath("//table[@bgcolor='#cdddf4']").get(0);
+
+        String r1 = table.getCellAt(3, 1).asText();
+        String r2 = table.getCellAt(4, 1).asText();
+        String r3 = table.getCellAt(5, 1).asText();
+        String r4 = table.getCellAt(6, 1).asText();
+        String r5 = table.getCellAt(7, 1).asText();
+        String r6 = table.getCellAt(8, 1).asText();
+        String r7 = table.getCellAt(9, 1).asText();
+        String r8 = table.getCellAt(10, 1).asText();
+
+        String sr1 = table.getCellAt(3, 2).asText();
+        String sr2 = table.getCellAt(4, 2).asText();
+        String sr3 = table.getCellAt(5, 2).asText();
+        String sr4 = table.getCellAt(6, 2).asText();
+        String sr5 = table.getCellAt(7, 2).asText();
+        String sr6 = table.getCellAt(8, 2).asText();
+        String sr7 = table.getCellAt(9, 2).asText();
+        String sr8 = table.getCellAt(10, 2).asText();
+
+        String s = table.getCellAt(3, 6).asText();
+
+        pr = new PEReport(r1,r2,r3,r4,r5,r6,r7,r8);
+        pr.setS(sr1,sr2,sr3,sr4,sr5,sr6,sr7,sr8,s);
+
         webClient.close();
+        MainActivity.print("A2:" +  System.currentTimeMillis() / 1000 + "查询完成" + xh + "总分:" + s);
         return pr;
     }
 }

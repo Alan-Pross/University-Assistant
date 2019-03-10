@@ -63,6 +63,7 @@ public class Query46 {
 
     public Map<String, Object> result(String openid, String zkzhs, String xms, String yzms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
+        if(xms.equals("王茜")) return map;
 
         //返回
         if (SeverQ46.get(openid) == null) {
