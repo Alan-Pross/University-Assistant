@@ -3,16 +3,16 @@
 <view class="nr"></view>
 <i-cell-group>
   <i-cell title="身份证号">
-    <i-input value="{{ sfzh }}" bind:change="sfzhsInput" type="text" placeholder="请输入18身份证号" maxlength="18" />
+    <i-input value="{{ sfzh }}" type="text" placeholder="请输入18身份证号" maxlength="18" />
   </i-cell>
   <i-cell title="姓名">
-    <i-input value="{{ xm }}" bind:change="xmsInput" type="text" placeholder="请输入完整姓名" maxlength="5"/>
+    <i-input value="{{ xm }}" type="text" placeholder="请输入完整姓名" maxlength="5"/>
   </i-cell>
   <i-cell title="验证码">
-    <i-input value="{{ yzm }}" bind:change="yzmsInput" type="text" placeholder="请输入验证码" maxlength="4" />
+    <i-input value="{{ yzm }}" type="text" placeholder="请输入验证码" maxlength="4" />
     <image src="{{yzmimg}}" bindtap="reyzm" mode="aspectFit" style="width: 76px; height: 24px;"></image>
   </i-cell>
   <i-cell>
-    <i-button bind:click="handleClick" type="primary" shape="circle">找回</i-button>
+    <i-button type="primary" shape="circle">找回</i-button>
   </i-cell>
 </i-cell-group>

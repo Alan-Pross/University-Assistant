@@ -1,39 +1,27 @@
-<view class="nr"></view>
-<i-card extra="寝室电费查询" thumb="../../img/a1.jpg" bindtap="a1">
-  <view slot="content">输入寝室楼号</view>
-  <view slot="footer">看什么看？空调电费外边不是写着呢吗！？</view>
-</i-card>
+<view class="container">
+  <notice enableMarquee="true">欢迎使用江大云助手!</notice>
 
-<view class="nr"></view>
-<i-card extra="体测成绩查询" thumb="../../img/a2.jpg" bindtap="a2">
-  <view slot="content">输入学生学号</view>
-  <view slot="footer">哇哦！居然可以查体测~</view>
-</i-card>
+  <view style="margin-top: 10px;" />
+  <card thumb="../../img/a1.jpg" title="寝室电费查询" subTitle="输入寝室楼号" onClick="onCardClick" footer="看什么看？空调电费外边不是写着呢吗!?" />
 
-<view class="nr"></view>
-<i-card extra="普通话水平查询" thumb="../../img/a5.jpg" bindtap="a5">
-  <view slot="content">输入姓名身份证号</view>
-  <view slot="footer">你看俺滴铺通话彪不标准？</view>
-</i-card>
+  <view style="margin-top: 10px;" />
+  <card thumb="../../img/a2.jpg" title="体测成绩查询" subTitle="输入学生学号" onClick="onCardClick" footer="哇哦！居然可以查体测~" />
 
-<view class="nr"></view>
-<i-card extra="计算机等级查询" thumb="../../img/a6.jpg" bindtap="a6">
-  <view slot="content">输入姓名身份证号</view>
-  <view slot="footer">While(true){;}</view>
-</i-card>
+  <view style="margin-top: 10px;" />
+  <card thumb="../../img/a3.jpg" title="四六级成绩查询" subTitle="输入姓名考号" onClick="onCardClick" footer="我到底为什么还没过?" />
 
-<view class="nr"></view>
-<i-card extra="教师资格证查询" thumb="../../img/a7.jpg" bindtap="a7">0
-  <view slot="content">输入姓名身份证号</view>
-  <view slot="footer">孺子可教也</view>
-</i-card>
+  <view style="margin-top: 10px;" />
+  <card thumb="../../img/a4.jpg" title="四六级考号找回" subTitle="输入姓名身份证号" onClick="onCardClick" footer="忘了考号?没关系我们帮你找回!" />
 
-<view class="nr"></view>
-<button open-type="contact">
-  <i-card extra="意见建议" thumb="../../img/last.jpg">
-    <view slot="content">小程序不足之处</view>
-    <view slot="footer">麻烦留言告诉我，我们一定会回复</view>
-  </i-card>
-</button>
-<view class="nr"></view>
-<i-load-more loading="{{ false }}" />
+  <view style="margin-top: 10px;" />
+  <card thumb="../../img/a5.jpg" title="普通话水平查询" subTitle="输入姓名身份证号" onClick="onCardClick" footer="你看俺滴铺通话彪不标准?" />
+
+  <view style="margin-top: 10px;" />
+  <card thumb="../../img/a6.jpg" title="计算机等级查询" subTitle="输入姓名身份证号" onClick="onCardClick" footer="While(true){;}" />
+
+  <view style="margin-top: 10px;" />
+  <card thumb="../../img/a7.jpg" title="教师资格证查询" subTitle="输入姓名身份证号" onClick="onCardClick" footer="孺子可教也" />
+
+  <view style="margin-top: 10px;" />
+
+<view/>

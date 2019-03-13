@@ -1,5 +1,3 @@
-const { $Message } = require('../../dist/base/index');
-const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
     a4result: '/a4result',

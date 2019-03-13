@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "普通话水平测试查询结果",
+  "usingComponents": {
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-cell": "../../dist/cell/index",
+    "i-input": "../../dist/input/index",
+    "i-button": "../../dist/button/index",
+    "i-message": "../../dist/message/index"
+  }
+}

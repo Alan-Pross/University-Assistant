@@ -1,4 +1,3 @@
-const { $Message } = require('../../dist/base/index');
 Page({
   data: {
     url: 'http://cet.etest.net.cn/Home/DownTestTicket?SID=',

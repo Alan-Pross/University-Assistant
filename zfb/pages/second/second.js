@@ -6,12 +6,12 @@ Page({
     bar: ''
   },
   a1: function() {
-    wx.navigateTo({
+    my.navigateTo({
       url: '../a1/a1'
     })
   },
   a2: function() {
-    wx.navigateTo({
+    my.navigateTo({
       url: '../a2/a2'
     })
   },
@@ -27,7 +27,7 @@ Page({
       $Toast.hide()
       console.log(res)
       if (res.code == 123) {
-        wx.navigateTo({
+        my.navigateTo({
           url: '../a3turn/a3turn'
         })
       } else if (res.code == 321) {
@@ -36,7 +36,7 @@ Page({
           type: 'error'
         });
       } else {
-        wx.navigateTo({
+        my.navigateTo({
           url: '../a3/a3?id=' + self.data.id
         })
       }
@@ -59,7 +59,7 @@ Page({
     network.getrequest(this.data.a4getimg + this.data.id, null, function(res) {
       $Toast.hide()
       console.log(res)
-      wx.navigateTo({
+      my.navigateTo({
         url: '../a4/a4?id=' + self.data.id
       })
     }, function() {
@@ -71,7 +71,7 @@ Page({
     })
   },
   a5: function() {
-    wx.navigateTo({
+    my.navigateTo({
       url: '../a5/a5'
     })
   },
@@ -79,17 +79,6 @@ Page({
     this.setData({
       id: option.id,
       bar: option.bar
-    })
-    wx.getUpdateManager().onUpdateReady(function() {
-      wx.showModal({
-        title: '更新提示',
-        content: '新版本已经准备好，是否马上重启小程序？',
-        success: function(res) {
-          if (res.confirm) {
-            updateManager.applyUpdate()
-          }
-        }
-      })
     })
   },
 })
