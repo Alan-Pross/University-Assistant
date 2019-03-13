@@ -67,6 +67,8 @@ public class A1Thread extends Thread {
                         ListPower.add(qsh);
                         MainActivity.print("A1:" + System.currentTimeMillis() / 1000 + "收到查询请求" + qsh);
                     }
+                    if(fail > 8)
+                        MainActivity.print("A1连接成功！！！！！");
                     fail = 0;
                 }
 
@@ -88,7 +90,7 @@ public class A1Thread extends Thread {
                         default:{
                             fail++;
                             if(fail > 8 && fail < 16)
-                                MainActivity.print("服务器断开连接，请检查网络");
+                                MainActivity.print("A1断开连接··········");
                             if(fail > 16){
                                 Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
                                 vibrator.vibrate(200);
@@ -98,7 +100,6 @@ public class A1Thread extends Thread {
                         }
                     }
                 }
-
                 @Override
                 public void onFinish(int what) {
                 }

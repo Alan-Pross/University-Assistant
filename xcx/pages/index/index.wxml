@@ -20,7 +20,6 @@
     <i-progress percent="{{ percent }}" status="{{ status }}"></i-progress>
   </view>
   <view class="usermotto1">
-    <text class="text2" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全心全意服务江大学子\n</text>
     <text class="text2">Copyright © 2019 by Pro_SS\n</text>
   </view>
 </view>

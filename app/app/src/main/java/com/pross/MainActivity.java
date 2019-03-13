@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        stopApp();
+        //暴力退出
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     public void log(View v) {
@@ -82,9 +83,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-
-    public static void stopApp(){
-        mainActivity.finish();
     }
 }

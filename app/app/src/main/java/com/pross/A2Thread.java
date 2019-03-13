@@ -1,5 +1,7 @@
 package com.pross;
 
+import android.os.Vibrator;
+
 import com.alibaba.fastjson.JSONObject;
 import com.pross.object.PEReport;
 import com.yanzhenjie.nohttp.NoHttp;
@@ -8,13 +10,17 @@ import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class A2Thread extends Thread {
 
     final public static String a2 = "https://www.daohangcn.cn/transa2";
     public static List<String> ListPE = new ArrayList();
+
+    static int fail = 0;
 
     @Override
     public void run() {
@@ -75,10 +81,39 @@ public class A2Thread extends Thread {
                         ListPE.add(xh);
                         MainActivity.print("A2:" + System.currentTimeMillis() / 1000 + "收到查询请求" + xh);
                     }
+
+                    if(fail > 8)
+                        MainActivity.print("A2连接成功！！！！！");
+                    fail = 0;
                 }
 
                 @Override
                 public void onFailed(int what, Response<String> response) {
+                    Date now = new Date( );
+                    SimpleDateFormat ft = new SimpleDateFormat("HH");
+                    switch (ft.format(now)){
+                        case "23":break;
+                        case "00":break;
+                        case "01":break;
+                        case "02":break;
+                        case "03":break;
+                        case "04":break;
+                        case "05":break;
+                        case "06":break;
+                        case "07":break;
+                        case "08":break;
+                        default:{
+                            fail++;
+                            if(fail > 8 && fail < 16)
+                                MainActivity.print("A2断开连接··········");
+                            if(fail > 16){
+                                Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
+                                vibrator.vibrate(200);
+                            }
+                            if(fail > 32)
+                                MyApplication.rebot();
+                        }
+                    }
                 }
 
                 @Override
