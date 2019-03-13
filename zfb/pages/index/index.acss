@@ -1,23 +1,19 @@
-.userinfo {
+.container {
+  margin:0 auto;
+  width: 100px;
+  height: 100x;
+}
+.user {
   display: flex;
+  flex-shrink: 0;
+  padding: 30px;
   flex-direction: column;
   align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  margin-top: 5rpx;
-}
-
 .usermotto {
   position:absolute;
-  bottom: 150rpx;
+  bottom: 200rpx;
 }
 .usermotto1 {
   position:absolute;
@@ -26,12 +22,15 @@
 
 .text1 {
   font-size: 40rpx;
+  font-family:"微软雅黑";
 }
+
 .text2 {
   font-size: 25rpx;
   color: #aaa;
+  font-family:"微软雅黑";
 }
 
 .nr {
-  margin-top: 20rpx;
+  margin-top: 40rpx;
 }

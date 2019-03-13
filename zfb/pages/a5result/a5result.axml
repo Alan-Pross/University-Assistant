@@ -1,0 +1,16 @@
+<view class='nr'></view>
+<view class='c_tits'>普通话水平测试查询结果</view>
+<view class='score' id='cet46_t'>
+  <i-cell-group>
+    <i-cell title='姓　　名：' value='{{ r1 }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='性　　别：' value='{{ r3 }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='准考证号：' value='{{ r5 }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='证书编号：' value='{{ r6 }}' style='font-weight: 600;'></i-cell>
+  </i-cell-group>
+  <view class='nr'></view>
+  <view class='titleT'>成绩</view>
+  <i-cell-group>
+    <i-cell title='分　　数：' value='{{ r2 }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='等　　级：' value='{{ r4 }}' style='font-weight: 600;'></i-cell>
+  </i-cell-group>
+</view>

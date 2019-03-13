@@ -1,0 +1,39 @@
+<view class="nr"></view>
+<i-card extra="寝室电费查询" thumb="../../img/a1.jpg" bindtap="a1">
+  <view slot="content">输入寝室楼号</view>
+  <view slot="footer">看什么看？空调电费外边不是写着呢吗！？</view>
+</i-card>
+
+<view class="nr"></view>
+<i-card extra="体测成绩查询" thumb="../../img/a2.jpg" bindtap="a2">
+  <view slot="content">输入学生学号</view>
+  <view slot="footer">哇哦！居然可以查体测~</view>
+</i-card>
+
+<view class="nr"></view>
+<i-card extra="普通话水平查询" thumb="../../img/a5.jpg" bindtap="a5">
+  <view slot="content">输入姓名身份证号</view>
+  <view slot="footer">你看俺滴铺通话彪不标准？</view>
+</i-card>
+
+<view class="nr"></view>
+<i-card extra="计算机等级查询" thumb="../../img/a6.jpg" bindtap="a6">
+  <view slot="content">输入姓名身份证号</view>
+  <view slot="footer">While(true){;}</view>
+</i-card>
+
+<view class="nr"></view>
+<i-card extra="教师资格证查询" thumb="../../img/a7.jpg" bindtap="a7">0
+  <view slot="content">输入姓名身份证号</view>
+  <view slot="footer">孺子可教也</view>
+</i-card>
+
+<view class="nr"></view>
+<button open-type="contact">
+  <i-card extra="意见建议" thumb="../../img/last.jpg">
+    <view slot="content">小程序不足之处</view>
+    <view slot="footer">麻烦留言告诉我，我们一定会回复</view>
+  </i-card>
+</button>
+<view class="nr"></view>
+<i-load-more loading="{{ false }}" />

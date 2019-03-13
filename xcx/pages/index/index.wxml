@@ -1,4 +1,3 @@
-<!--index.wxml-->
 <view class="container" bindtap="bindViewTap">
   <view class="img">
     <image src="../../img/logo.png" mode="aspectFit" style="width: 140px; height: 140px;"></image>

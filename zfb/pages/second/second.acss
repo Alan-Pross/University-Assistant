@@ -1,0 +1,8 @@
+.nr {
+  margin-top: 15rpx;
+}
+
+button {
+  background:none;
+  border:none;
+}

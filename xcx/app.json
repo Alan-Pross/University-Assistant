@@ -6,7 +6,11 @@
     "pages/a1result/a1result",
     "pages/a2/a2",
     "pages/a5/a5",
-    "pages/a5result/a5result"
+    "pages/a5result/a5result",
+    "pages/a6/a6",
+    "pages/a6result/a6result",
+    "pages/a7/a7",
+    "pages/a7result/a7result"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -1,0 +1,22 @@
+<i-message id="message" />
+<i-toast id="toast" />
+<view class="nr"></view>
+<i-cell-group>
+  <i-cell title="江大校区">
+    <i-switch value="{{switch1}}" size="large" slot="footer">
+      <view slot="open">北区</view>
+      <view slot="close">南区</view>
+    </i-switch>
+  </i-cell>
+  <i-cell title="楼栋" label="支持查询北区1-14，南区1-9，研究生，留学生楼栋的寝室电费">
+    <view style="padding: 16px">
+      <i-input-number value="{{ value1 }}" min="1" max="15" bindchange="handleChange1" />
+    </view>
+  </i-cell>
+  <i-cell title="寝室号">
+    <i-input value="{{ value2 }}" type="number" placeholder="请输入寝室号" maxlength="3" />
+  </i-cell>
+  <i-cell>
+    <i-button type="primary" shape="circle">查询</i-button>
+  </i-cell>
+</i-cell-group>
