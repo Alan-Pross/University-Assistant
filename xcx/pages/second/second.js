@@ -78,6 +78,16 @@ Page({
       url: '../a5/a5'
     })
   },
+  a6: function () {
+    wx.navigateTo({
+      url: '../a6/a6'
+    })
+  },
+  a7: function () {
+    wx.navigateTo({
+      url: '../a7/a7'
+    })
+  },
   onLoad: function(option) {
     this.setData({
       id: option.id,

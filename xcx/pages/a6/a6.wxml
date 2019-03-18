@@ -1,14 +1,1 @@
-<i-message id="message" />
-<i-toast id="toast" />
-<view class="nr"></view>
-<i-cell-group>
-  <i-cell title="身份证号">
-    <i-input value="{{ sfzh }}" bind:change="sfzhsInput" type="text" placeholder="请输入身份证号" maxlength="18" />
-  </i-cell>
-  <i-cell title="姓名">
-    <i-input value="{{ xm }}" bind:change="xmsInput" type="text" placeholder="请输入完整姓名" maxlength="5"/>
-  </i-cell>
-  <i-cell>
-    <i-button bind:click="handleClick" type="primary" shape="circle">查询</i-button>
-  </i-cell>
-</i-cell-group>
+<web-view src="http://cjcx.neea.edu.cn/html1/folder/1508/206-1.htm?sid=300" />

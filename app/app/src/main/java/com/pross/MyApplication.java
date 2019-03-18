@@ -9,6 +9,9 @@ import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MyApplication extends Application implements Thread.UncaughtExceptionHandler {
     static MyApplication myApplication;
 
@@ -27,8 +30,10 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
     }
 
     public static void log(String log) {
+        Date now = new Date( );
+        SimpleDateFormat ft = new SimpleDateFormat("yyMMddHHmmss");
         String url = "https://www.daohangcn.cn/applog";
-        String txt = "Error" + System.currentTimeMillis() / 1000 + ".txt";
+        String txt = "Error" + ft.format(now) + ".txt";
 
         if (log.length() > 1000000) log = log.substring(log.length() - 900000);
         //开始上传请求
@@ -64,4 +69,9 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
+    public static String getTime(){
+        Date now = new Date( );
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+        return ft.format(now);
+    }
 }

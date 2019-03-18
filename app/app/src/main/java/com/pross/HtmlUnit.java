@@ -54,7 +54,7 @@ public class HtmlUnit {
         pr = new PowerRate(r1,r2);
 
         webClient.close();
-        MainActivity.print("A1:" +  System.currentTimeMillis() / 1000 + "查询完成" + qsh + "余额:" + r1);
+        MainActivity.print("A1:" +  MyApplication.getTime() + "查询完成" + qsh + "余额:" + r1);
         return pr;
     }
 
@@ -124,7 +124,7 @@ public class HtmlUnit {
         pr.setS(sr1,sr2,sr3,sr4,sr5,sr6,sr7,sr8,s);
 
         webClient.close();
-        MainActivity.print("A2:" +  System.currentTimeMillis() / 1000 + "查询完成" + xh + "总分:" + s);
+        MainActivity.print("A2:" +  MyApplication.getTime() + "查询完成" + xh + "总分:" + s);
         return pr;
     }
 }

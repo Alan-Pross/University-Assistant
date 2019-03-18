@@ -29,7 +29,7 @@ public class A1Thread extends Thread {
             if (!(ListPower.size() > 0)) {
                 ListPower.add("110");
             } else {
-                MainActivity.print("A1:" + System.currentTimeMillis() / 1000 + "开始电费查询" + ListPower.get(0));
+                MainActivity.print("A1:" + MyApplication.getTime() + "开始电费查询" + ListPower.get(0));
             }
 
             //开始上传请求
@@ -65,7 +65,7 @@ public class A1Thread extends Thread {
                     String qsh = js.getString("qsh");
                     if (!qsh.equals("110")) {
                         ListPower.add(qsh);
-                        MainActivity.print("A1:" + System.currentTimeMillis() / 1000 + "收到查询请求" + qsh);
+                        MainActivity.print("A1:" + MyApplication.getTime() + "收到查询请求" + qsh);
                     }
                     if(fail > 8)
                         MainActivity.print("A1连接成功！！！！！");
