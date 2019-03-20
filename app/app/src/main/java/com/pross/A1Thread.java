@@ -16,12 +16,8 @@ import java.util.Date;
 import java.util.List;
 
 public class A1Thread extends Thread {
-
-    final public static String a1 = "https://www.daohangcn.cn/transa1";
     public static List<String> ListPower = new ArrayList();
-
     static int fail = 0;
-
     @Override
     public void run() {
         while (!MainActivity.isClosed) {
@@ -33,7 +29,7 @@ public class A1Thread extends Thread {
             }
 
             //开始上传请求
-            Request<String> stringPostRequest = NoHttp.createStringRequest(a1, RequestMethod.POST);
+            Request<String> stringPostRequest = NoHttp.createStringRequest(NetConfig.getUrl("A1"), RequestMethod.POST);
 
             PowerRate pr = null;
             try {
@@ -51,13 +47,14 @@ public class A1Thread extends Thread {
                 stringPostRequest.add("kWH", pr.kWH);
             }
             stringPostRequest.add("qsh", ListPower.get(0));
-            MainActivity.requestQueues.add(2, stringPostRequest, new SimpleResponseListener<String>() {
+            NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
                 @Override
                 public void onStart(int what) {
                 }
 
                 @Override
                 public void onSucceed(int what, Response<String> response) {
+                    MainActivity.con(true);
                     //获得json对象
                     JSONObject js = JSONObject.parseObject(response.get());
 
@@ -67,13 +64,14 @@ public class A1Thread extends Thread {
                         ListPower.add(qsh);
                         MainActivity.print("A1:" + MyApplication.getTime() + "收到查询请求" + qsh);
                     }
-                    if(fail > 8)
-                        MainActivity.print("A1连接成功！！！！！");
+                    if(fail > 0)
+                        MainActivity.print("A1已连回");
                     fail = 0;
                 }
 
                 @Override
                 public void onFailed(int what, Response<String> response) {
+                    MainActivity.con(false);
                     Date now = new Date( );
                     SimpleDateFormat ft = new SimpleDateFormat("HH");
                     switch (ft.format(now)){
@@ -88,14 +86,13 @@ public class A1Thread extends Thread {
                         case "07":break;
                         case "08":break;
                         default:{
+                            MainActivity.print("A1连接失败");
                             fail++;
-                            if(fail > 8 && fail < 16)
-                                MainActivity.print("A1断开连接··········");
-                            if(fail > 16){
+                            if(fail > 20){
                                 Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
                                 vibrator.vibrate(200);
                             }
-                            if(fail > 32)
+                            if(fail > 40)
                                 MyApplication.rebot();
                         }
                     }

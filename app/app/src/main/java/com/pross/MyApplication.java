@@ -32,16 +32,15 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
     public static void log(String log) {
         Date now = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat("yyMMddHHmmss");
-        String url = "https://www.daohangcn.cn/applog";
         String txt = "Error" + ft.format(now) + ".txt";
 
         if (log.length() > 1000000) log = log.substring(log.length() - 900000);
         //开始上传请求
-        Request<String> stringPostRequest = NoHttp.createStringRequest(url, RequestMethod.POST);
+        Request<String> stringPostRequest = NoHttp.createStringRequest(NetConfig.getUrl("Log"), RequestMethod.POST);
         //构建上传参数
         stringPostRequest.add("log", log);
         stringPostRequest.add("txt", txt);
-        MainActivity.requestQueues.add(2, stringPostRequest, new SimpleResponseListener<String>() {
+        NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
             @Override
             public void onStart(int what) {
                 MainActivity.print("开始发送log信息");

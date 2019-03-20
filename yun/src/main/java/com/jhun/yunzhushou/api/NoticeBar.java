@@ -10,10 +10,9 @@ import java.nio.file.Paths;
 @RestController
 public class NoticeBar {
 
+    //2.0以上小程序版本，动态公告接口
     @RequestMapping("/noticebar")
     public R noticebar() {
-
-        //2.0以上小程序版本，动态公告接口
         try {
         String bar = new String(Files.readAllBytes(Paths.get("./bar.txt")));
             return R.ok(bar);

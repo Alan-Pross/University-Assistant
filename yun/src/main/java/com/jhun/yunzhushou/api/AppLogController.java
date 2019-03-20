@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AppLogController {
+
     //用于接收安卓服务器log信息的接口
     @RequestMapping(value = "/applog")
     public R AppLog(String log, String txt) {
