@@ -1,0 +1,26 @@
+<view class="container" bindtap="bindViewTap">
+  <view class="img">
+    <image src="../../img/logo.png" mode="aspectFit" style="width: 140px; height: 140px;"></image>
+  </view>
+  <view class="nr"></view>
+  <view class="icon">
+    <i-icon type="like_fill" size="50" color="#ff585d" />
+  </view>
+  <view class="nr"></view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="text1">小程序已更名为 "校园云助理"</text>
+    <navigator target="miniProgram" open-type="navigate" app-id="wxce125623779978d6" version="release" bindsuccess="toMiniProgramSuccess">
+    <i-button bind:click="handleClick" type="success" shape="circle">点击跳转!</i-button>
+    </navigator>
+  </view>
+  <view class="usermotto1">
+    <text class="text2">Copyright © 2019 by Pro_SS\n</text>
+  </view>
+</view>

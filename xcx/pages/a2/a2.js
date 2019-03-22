@@ -3,12 +3,23 @@ Page({
   data: {
     value1: ''
   },
+  xhsInput: function (event) {
+    this.setData({
+      value1: event.detail.detail.value
+    })
+  },
   onLoad: function () {
   },
   handleClick: function () {
-    $Message({
-      content: '此功能将于不久后开通，敬请期待',
-      type: 'warning'
-    });
+    if (this.data.value1.length != 12) {
+      $Message({
+        content: '学号为12位数字',
+        type: 'warning'
+      });
+      return;
+    }
+    wx.navigateTo({
+      url: '../a2result/a2result?xh=' + this.data.value1
+    })
   }
 })

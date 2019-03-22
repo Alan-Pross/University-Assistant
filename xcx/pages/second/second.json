@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "江大云助手",
+  "navigationBarTitleText": "校园云管家",
   "usingComponents": {
     "i-card": "../../dist/card/index",
     "i-notice-bar": "../../dist/notice-bar/index",

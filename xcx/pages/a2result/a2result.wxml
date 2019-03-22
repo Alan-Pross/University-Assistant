@@ -1,9 +1,28 @@
+<i-toast id="toast" />
 <view class='nr'></view>
-<view class='c_tits'>江汉大学学生寝室电费查询结果</view>
+<view class='c_tits'>江汉大学学生体育测试成绩查询结果</view>
 <view class='score' id='cet46_t'>
   <i-cell-group>
-    <i-cell title='寝　　号：' value='{{ qsh }}' style='font-weight: 600;'></i-cell>
-    <i-cell title='剩余电费：' value='{{ Rate }}' style='font-weight: 600;'></i-cell>
-    <i-cell title='总用电量：' value='{{ kWH }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='学　　号：' value='{{ xh }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='身　　高：' value='{{ shengao }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='体　　重：' value='{{ tizhong }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='总　　分：' value='{{ s }}' style='font-weight: 600;'></i-cell>
+  </i-cell-group>
+  <view class='nr'></view>
+  <view class='titleT'>室内项目</view>
+  <i-cell-group>
+    <i-cell title='肺活　量：' value='{{ feihuo }}' label='{{ feihuo }}'style='font-weight: 600;'></i-cell>
+    <i-cell title='立定跳远：' value='{{ tiaoyuan }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='体前　屈：' value='{{ tiaoyuan }}' style='font-weight: 600;'></i-cell>
+  </i-cell-group>
+  <view class='nr'></view>
+  <view class='titleT'>跑步项目</view>
+  <i-cell-group>
+    <i-cell title='800/1000m：' value='{{ m1000 }}' style='font-weight: 600;'></i-cell>
+    <i-cell title='50m：' value='{{ m50 }}' style='font-weight: 600;'></i-cell>
+  </i-cell-group>
+  <view class='titleT'>其他项目</view>
+  <i-cell-group>
+    <i-cell title='引体向上/仰卧起坐：' value='{{ yinti }}' style='font-weight: 600;'></i-cell>
   </i-cell-group>
 </view>

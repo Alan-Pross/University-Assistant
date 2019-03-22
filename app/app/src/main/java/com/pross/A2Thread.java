@@ -61,7 +61,7 @@ public class A2Thread extends Thread {
                 stringPostRequest.add("s", pr.s);
             }
             stringPostRequest.add("xh", ListPE.get(0));
-            NoHttp.newRequestQueue().add(2, stringPostRequest, new SimpleResponseListener<String>() {
+            NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
                 @Override
                 public void onStart(int what) {
                 }

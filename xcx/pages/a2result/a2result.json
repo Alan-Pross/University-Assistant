@@ -1,10 +1,10 @@
 {
-  "navigationBarTitleText": "学生寝室电费查询结果",
+  "navigationBarTitleText": "学生体育测试成绩查询结果",
   "usingComponents": {
     "i-cell-group": "../../dist/cell-group/index",
     "i-cell": "../../dist/cell/index",
     "i-input": "../../dist/input/index",
     "i-button": "../../dist/button/index",
-    "i-message": "../../dist/message/index"
+    "i-toast": "../../dist/toast/index"
   }
 }

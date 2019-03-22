@@ -19,6 +19,6 @@ public class NoticeBar {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return R.ok("欢迎使用江大云助手！");
+        return R.ok("欢迎使用校园云管家！");
     }
 }
