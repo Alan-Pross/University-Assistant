@@ -200,7 +200,7 @@ body {
     letter-spacing: 1px;
 }
 
-.right-w3l input[type="submit"] {
+.right-w3l input[type="button"] {
     width: 100%;
     color: #FFF;
     background: #FF5722;
@@ -220,7 +220,7 @@ body {
     transition: 0.5s all;
 }
 
-.right-w3l input[type="submit"]:hover {
+.right-w3l input[type="button"]:hover {
     background: #2E94B9;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -482,7 +482,7 @@ span.fa {
         width: 69%;
     }
 
-    .right-w3l input[type="submit"] {
+    .right-w3l input[type="button"] {
         font-size: .85em;
     }
 
@@ -520,7 +520,7 @@ span.fa {
         margin-bottom: 20px;
     }
 
-    .right-w3l input[type="submit"] {
+    .right-w3l input[type="button"] {
         padding: 11px 44px;
     }
 }
@@ -587,7 +587,7 @@ span.fa {
         display: inline-block;
     }
 
-    .right-w3l input[type="submit"] {
+    .right-w3l input[type="button"] {
         padding: 11px 44px;
         font-size: .8em;
     }
@@ -635,7 +635,7 @@ span.fa {
         font-size: 13px;
     }
 
-    .right-w3l input[type="submit"] {
+    .right-w3l input[type="button"] {
         padding: 10px 34px;
         font-size: .8em;
         margin-top: 22px;

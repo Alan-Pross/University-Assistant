@@ -15,7 +15,7 @@ public class Admin {
     public static boolean enter(String root, String pass) {
         //账号密码列表
         if(key.equals("pross")) {
-            MapAdmin.put("root","wangfummin");
+            MapAdmin.put("root","wangfumin");
         }
 
         //如果有这个账号

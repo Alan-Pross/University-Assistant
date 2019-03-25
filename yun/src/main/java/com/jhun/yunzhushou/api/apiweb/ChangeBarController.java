@@ -18,11 +18,12 @@ public class ChangeBarController {
         System.out.println("changebar:bar=" + bar + "&key=" + key);
         Map<String, Object> map = new HashMap<>();
 
-        map.put("bar",bar);
+        map.put("bar", bar);
 
-        if(key.equals(Admin.key)) {
-            map.put("修改前",Bar.bar);
-            map.put("修改后",bar);
+        if (key.equals(Admin.key)) {
+            if (bar.isEmpty()) return R.error("不能为空");
+            map.put("修改前", Bar.bar);
+            map.put("修改后", bar);
             Bar.bar = bar;
         } else {
             return R.error();

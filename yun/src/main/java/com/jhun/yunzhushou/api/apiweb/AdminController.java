@@ -17,22 +17,22 @@ public class AdminController {
         System.out.println("admin:root=" + root + "&pass=" + pass + "&key=" + key);
         Map<String, Object> map = new HashMap<>();
 
-        map.put("账号",root);
-        map.put("密码",pass);
-        map.put("验证码",key);
+        map.put("账号", root);
+        map.put("密码", pass);
+        map.put("验证码", key);
 
-        if(!key.equals("wh4t")) {
+        if (!key.equals("wh4t")) {
             //记录
             Tools.logi("./logi/admin.txt", map.toString());
             return R.error();
         }
 
-        if(Admin.enter(root,pass)) {
-            map.put("key",Admin.getKey());
-            map.put("状态","成功");
-            map.put("is","ok");
+        if (Admin.enter(root, pass)) {
+            map.put("key", Admin.getKey());
+            map.put("状态", "成功");
+            map.put("is", "ok");
         } else {
-            map.put("状态","失败");
+            map.put("状态", "失败");
         }
 
         //记录

@@ -24,7 +24,7 @@ public class AppUpdateController {
         try {
             String serverver = new String(Files.readAllBytes(Paths.get("./appver.txt")));
             map.put("serverver",serverver);
-            map.put("apkurl",url + serverver + ".apk");
+            map.put("apkurl",url + "/" + serverver + ".apk");
         } catch (Exception e) {
             e.printStackTrace();
             map.put("serverver","1000");

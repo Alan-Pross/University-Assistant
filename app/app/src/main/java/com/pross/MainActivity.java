@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public static Boolean isClosed = false;
     static MainActivity mainActivity;
 
-    final static int appVer = 1000;
+    final static String appVer = "1000";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         vibrator.vibrate(200);
 
         //检查更新
-        Request<String> stringPostRequest = NoHttp.createStringRequest(NetConfig.getUrl("Update"), RequestMethod.POST);
+        Request<String> stringPostRequest = NoHttp.createStringRequest(NetConfig.getUrl("Update"), RequestMethod.GET);
         NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
             @Override
             public void onStart(int what) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 String serverVer = js.getString("serverver");
                 String apkUrl = js.getString("apkurl");
                 MainActivity.print(MyApplication.getTime() + "当前/最新版本:" + appVer + "/" + serverVer);
-                if(Integer.getInteger(serverVer) > appVer) {
+                if(!serverVer.equals(appVer)) {
                     MainActivity.print("需要更新");
                     Uri uri = Uri.parse(apkUrl);
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);

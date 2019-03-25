@@ -40,7 +40,8 @@ function bar() {
         dataType: "json",
         success: function (r) {
             var data = eval(r);
-            window.alert(data);
+            var str = JSON.parse(data);
+            window.alert(str);
         }
     });
 }

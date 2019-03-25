@@ -26,7 +26,7 @@ public class TransA1A2Controller {
                 QueryPower.MapPowerWaiting.remove(qsh);
                 //写入结果
                 QueryPower.set(qsh, pr);
-            } catch (NullPointerException e){
+            } catch (NullPointerException e) {
             }
         }
 
@@ -57,7 +57,7 @@ public class TransA1A2Controller {
                 QueryPE.MapPEWaiting.remove(xh);
                 //写入结果
                 QueryPE.set(xh, pr);
-            } catch (NullPointerException e){
+            } catch (NullPointerException e) {
             }
         }
 

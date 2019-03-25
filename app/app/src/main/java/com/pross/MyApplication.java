@@ -25,8 +25,8 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-        log(ex.toString());
-        rebot();
+//        log(ex.toString());
+//        rebot();
     }
 
     public static void log(String log) {

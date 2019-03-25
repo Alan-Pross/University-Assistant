@@ -15,11 +15,11 @@
   <view slot="footer">哇哦！居然可以查体测~</view>
 </i-card>
 
-<view class="nr"></view>
+<!-- <view class="nr"></view>
 <i-card extra="四六级成绩查询" thumb="../../img/a3.jpg" bindtap="a3">
   <view slot="content">输入姓名准考证号</view>
   <view slot="footer">我到底为什么还没过？</view>
-</i-card>
+</i-card> -->
 
 <!-- <view class="nr"></view>
 <i-card extra="四六级考号找回" thumb="../../img/a4.jpg" bindtap="a4">

@@ -18,11 +18,11 @@ public class LogBarController {
     public R logbar(String key) {
         Map<String, Object> map = new HashMap<>();
 
-        if(key.equals(Admin.key)) {
+        if (key.equals(Admin.key)) {
             try {
                 String log = new String(Files.readAllBytes(Paths.get("./logi/bar.txt")));
-                map.put("log",log);
-            } catch (IOException e){
+                map.put("log", log);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
