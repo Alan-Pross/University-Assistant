@@ -15,7 +15,7 @@ public class A1Controller {
     @RequestMapping("/a1")
     public R a1(String qsh) {
         System.out.println("a1:qsh=" + qsh);
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
 
         //返回电费查询结果
         map.putAll(QueryPower.get(qsh));

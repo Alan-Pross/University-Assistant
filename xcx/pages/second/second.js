@@ -88,6 +88,11 @@ Page({
       url: '../a7/a7'
     })
   },
+  cx: function () {
+    wx.navigateTo({
+      url: '../a7/a7'
+    })
+  },
   onLoad: function(option) {
     this.setData({
       id: option.id,

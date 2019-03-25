@@ -15,7 +15,7 @@ public class A2Controller {
     @RequestMapping("/a2")
     public R a2(String xh) {
         System.out.println("a2:xh=" + xh);
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
 
         //返回体测成绩查询结果
         map.putAll(QueryPE.get(xh));

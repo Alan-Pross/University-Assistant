@@ -18,7 +18,7 @@ public class A4Controller {
     public R a4getimg(String openid) {
         if (openid.isEmpty()) return R.error("a4getimg:openid=null");
         System.out.println("a4getimg:openid=" + openid);
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
 
         try {
             //返回验证码图片名称

@@ -12,7 +12,7 @@ import java.util.Map;
 public class QueryPower {
 
     //所有已查到的体测成绩列表
-    public static Map<String, PowerRate> MapPower = new HashMap<String, PowerRate>();
+    public static Map<String, PowerRate> MapPower = new HashMap<>();
 
     //所有需要查询的体测成绩列表
     public static List<String> MapPowerWaiting = new ArrayList();

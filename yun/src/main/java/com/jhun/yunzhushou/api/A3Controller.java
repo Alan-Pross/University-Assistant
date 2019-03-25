@@ -17,7 +17,7 @@ public class A3Controller {
     @RequestMapping("/a3getimg")
     public R a3getimg(String openid) {
         System.out.println("a3getimg:openid=" + openid);
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
 
         try {
             //返回验证码图片名称

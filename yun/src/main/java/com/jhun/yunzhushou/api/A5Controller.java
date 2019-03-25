@@ -17,7 +17,7 @@ public class A5Controller {
     @RequestMapping("/a5result")
     public R a5result(String sfzh, String xm) {
         System.out.println("a4result:sfzh=" + sfzh + "&xm=" + xm);
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
 
         try {
             //返回结果
