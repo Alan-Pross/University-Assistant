@@ -50,7 +50,6 @@ public class A2Thread extends Thread {
                 stringPostRequest.add("m1000", pr.m1000);
                 stringPostRequest.add("tiqian", pr.tiqian);
                 stringPostRequest.add("yinti", pr.yinti);
-                stringPostRequest.add("sshengao", pr.sshengao);
                 stringPostRequest.add("stizhong", pr.stizhong);
                 stringPostRequest.add("sfeihuo", pr.sfeihuo);
                 stringPostRequest.add("sm50", pr.sm50);
@@ -79,7 +78,7 @@ public class A2Thread extends Thread {
                         MainActivity.print("A2:" + MyApplication.getTime() + "收到查询请求" + xh);
                     }
                     if(fail > 0)
-                        MainActivity.print("A1已连回");
+                        MainActivity.print("A2已连回");
                     fail = 0;
                 }
 

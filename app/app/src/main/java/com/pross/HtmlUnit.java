@@ -109,7 +109,6 @@ public class HtmlUnit {
         String r7 = table.getCellAt(9, 1).asText();
         String r8 = table.getCellAt(10, 1).asText();
 
-        String sr1 = table.getCellAt(3, 2).asText();
         String sr2 = table.getCellAt(4, 2).asText();
         String sr3 = table.getCellAt(5, 2).asText();
         String sr4 = table.getCellAt(6, 2).asText();
@@ -121,7 +120,7 @@ public class HtmlUnit {
         String s = table.getCellAt(3, 6).asText();
 
         pr = new PEReport(r1,r2,r3,r4,r5,r6,r7,r8);
-        pr.setS(sr1,sr2,sr3,sr4,sr5,sr6,sr7,sr8,s);
+        pr.setS(sr2,sr3,sr4,sr5,sr6,sr7,sr8,s);
 
         webClient.close();
         MainActivity.print("A2:" +  MyApplication.getTime() + "查询完成" + xh + "总分:" + s);

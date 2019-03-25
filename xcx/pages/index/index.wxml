@@ -15,7 +15,7 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="text1">校园云管家 爱 您!\n</text>
+    <text class="text1">校园云助理 爱 您!\n</text>
     <i-progress percent="{{ percent }}" status="{{ status }}"></i-progress>
   </view>
   <view class="usermotto1">

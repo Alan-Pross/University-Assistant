@@ -10,7 +10,6 @@ Page({
     m1000: '',
     tiqian: '',
     yinti: '',
-    sshengao: '',
     stizhong: '',
     sfeihuo: '',
     sm50: '',
@@ -35,7 +34,7 @@ Page({
     network.getrequest(self.data.a2 + self.data.xh, null, function (res) {
       $Toast.hide()
       console.log(res)
-      this.setData({
+      self.setData({
         shengao: res.shengao,
         tizhong: res.tizhong,
         feihuo: res.feihuo,
@@ -44,7 +43,6 @@ Page({
         m1000: res.m1000,
         tiqian: res.tiqian,
         yinti: res.yinti,
-        sshengao: res.sshengao,
         stizhong: res.stizhong,
         sfeihuo: res.sfeihuo,
         sm50: res.sm50,
@@ -54,7 +52,8 @@ Page({
         syinti: res.syinti,
         s: res.s
       })
-    }, function () {
+    }, function (res) {
+      console.log(res)
       $Toast.hide()
       $Toast({
         content: '查询失败',

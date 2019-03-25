@@ -68,7 +68,7 @@ Page({
           setTimeout(function () {
             if (typeof bar == "undefined" || bar == null || bar == '') {
               self.setData({
-                bar: '欢迎进入江大云助手！'
+                bar: '欢迎进入校园云助理！'
               });
             }
             wx.redirectTo({

@@ -12,7 +12,6 @@ public class PEReport {
     public String tiqian;
     public String yinti;
 
-    public String sshengao;
     public String stizhong;
     public String sfeihuo;
     public String sm50;
@@ -35,8 +34,7 @@ public class PEReport {
         this.yinti = yinti;
     }
 
-    public void setS(String sshengao, String stizhong, String sfeihuo, String sm50, String stiaoyuan, String sm1000, String stiqian, String syinti, String s) {
-        this.sshengao = sshengao;
+    public void setS(String stizhong, String sfeihuo, String sm50, String stiaoyuan, String sm1000, String stiqian, String syinti, String s) {
         this.stizhong = stizhong;
         this.sfeihuo = sfeihuo;
         this.sm50 = sm50;
