@@ -144,7 +144,9 @@
             dataType: "json",
             success: function (r) {
                 var data = eval(r);
-                document.getElementById("context").innerHTML = data.log
+                var str = data.log;
+                var log = str.replace(/}/g,"}<br>");
+                document.getElementById("context").innerHTML = log;
             }
         });
     }

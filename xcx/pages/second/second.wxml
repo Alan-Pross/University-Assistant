@@ -15,35 +15,23 @@
   <view slot="footer">哇哦！居然可以查体测~</view>
 </i-card>
 
-<!-- <view class="nr"></view>
-<i-card extra="四六级成绩查询" thumb="../../img/a3.jpg" bindtap="a3">
-  <view slot="content">输入姓名准考证号</view>
-  <view slot="footer">我到底为什么还没过？</view>
-</i-card> -->
-
-<!-- <view class="nr"></view>
-<i-card extra="四六级考号找回" thumb="../../img/a4.jpg" bindtap="a4">
-  <view slot="content">输入姓名身份证号</view>
-  <view slot="footer">忘了考号？没关系我们帮你找回！</view>
-</i-card> -->
-
 <view class="nr"></view>
 <i-card extra="普通话水平查询" thumb="../../img/a5.jpg" bindtap="a5">
   <view slot="content">输入姓名身份证号</view>
   <view slot="footer">你看俺滴铺通话彪不标准？</view>
 </i-card>
 
-<!-- <view class="nr"></view>
+<view class="nr"></view>
 <i-card extra="计算机等级查询" thumb="../../img/a6.jpg" bindtap="a6">
   <view slot="content">输入姓名身份证号</view>
   <view slot="footer">While(true){;}</view>
 </i-card>
 
 <view class="nr"></view>
-<i-card extra="教师资格证查询" thumb="../../img/a7.jpg" bindtap="a7">0
+<i-card extra="教师资格证查询" thumb="../../img/a7.jpg" bindtap="a7">
   <view slot="content">输入姓名身份证号</view>
   <view slot="footer">孺子可教也</view>
-</i-card> -->
+</i-card>
 
 <view class="nr"></view>
 <button open-type="contact">

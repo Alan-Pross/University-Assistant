@@ -66,11 +66,6 @@ Page({
           status: 'success'
         },
           setTimeout(function () {
-            if (typeof bar == "undefined" || bar == null || bar == '') {
-              self.setData({
-                bar: '欢迎进入校园云助理！'
-              });
-            }
             wx.redirectTo({
               url: '../second/second?id=' + self.data.userInfo.nickName + '&bar=' + self.data.bar
             })

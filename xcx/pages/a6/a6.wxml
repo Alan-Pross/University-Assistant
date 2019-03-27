@@ -1,1 +1,11 @@
-<web-view src="http://cjcx.neea.edu.cn/html1/folder/1508/206-1.htm?sid=300" />
+<i-message id='message' />
+<view class='nr'></view>
+<i-cell-group>
+  <i-cell title='计算机等级成绩查询'>
+  </i-cell>
+  <i-cell label='点击下面的按钮复制查询网址！'>
+    <i-button bind:click='handleClick' type='primary' shape='circle'>一键复制到剪贴板</i-button>
+  </i-cell>
+  <i-cell title='复制后请粘贴到手机浏览器进行查询'>
+  </i-cell>
+</i-cell-group>

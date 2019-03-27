@@ -88,6 +88,11 @@ Page({
       url: '../a7/a7'
     })
   },
+  a8: function () {
+    wx.navigateTo({
+      url: '../a8/a8'
+    })
+  },
   cx: function () {
     wx.navigateTo({
       url: '../a7/a7'

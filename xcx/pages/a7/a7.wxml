@@ -1,14 +1,11 @@
-<i-message id="message" />
-<i-toast id="toast" />
-<view class="nr"></view>
+<i-message id='message' />
+<view class='nr'></view>
 <i-cell-group>
-  <i-cell title="身份证号">
-    <i-input value="{{ sfzh }}" bind:change="sfzhsInput" type="text" placeholder="请输入身份证号" maxlength="18" />
+  <i-cell title='教师资格成绩查询'>
   </i-cell>
-  <i-cell title="姓名">
-    <i-input value="{{ xm }}" bind:change="xmsInput" type="text" placeholder="请输入完整姓名" maxlength="5"/>
+  <i-cell label='点击下面的按钮复制查询网址！'>
+    <i-button bind:click='handleClick' type='primary' shape='circle'>一键复制到剪贴板</i-button>
   </i-cell>
-  <i-cell>
-    <i-button bind:click="handleClick" type="primary" shape="circle">查询</i-button>
+  <i-cell title='复制后请粘贴到手机浏览器进行查询'>
   </i-cell>
 </i-cell-group>
