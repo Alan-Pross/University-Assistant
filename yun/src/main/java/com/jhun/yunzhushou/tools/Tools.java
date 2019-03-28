@@ -1,8 +1,6 @@
 package com.jhun.yunzhushou.tools;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
 
 public class Tools {
     //用于阻塞当前线程
@@ -27,6 +25,36 @@ public class Tools {
             fw.close();
         } catch (Exception e) {
             System.out.println("将内容{" + str +"}写入文件\"" + path + "\"的请求失败，原因是" + e.toString());
+        }
+    }
+
+    //把图片流保存成文件
+    public static void saveImg(InputStream inputStream, String path) {
+        byte[] data = new byte[1024];
+        int len;
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream(path);
+            while ((len = inputStream.read(data)) != -1) {
+                fileOutputStream.write(data, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 const { $Message } = require('../../dist/base/index');
 Page({
   data: {
-    url: 'http://cjcx.neea.edu.cn/html1/folder/1508/206-1.htm?sid=300',
+    url: 'https://ntcecf2.neea.edu.cn/',
   },
   handleClick: function () {
     wx.setClipboardData({

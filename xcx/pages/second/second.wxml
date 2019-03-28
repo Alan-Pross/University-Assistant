@@ -22,15 +22,15 @@
 </i-card>
 
 <view class="nr"></view>
-<i-card extra="计算机等级查询" thumb="../../img/a6.jpg" bindtap="a6">
+<i-card extra="教师资格证查询" thumb="../../img/a7.jpg" bindtap="a6">
   <view slot="content">输入姓名身份证号</view>
-  <view slot="footer">While(true){;}</view>
+  <view slot="footer">孺子可教也</view>
 </i-card>
 
 <view class="nr"></view>
-<i-card extra="教师资格证查询" thumb="../../img/a7.jpg" bindtap="a7">
+<i-card extra="计算机等级查询" thumb="../../img/a6.jpg" bindtap="a7">
   <view slot="content">输入姓名身份证号</view>
-  <view slot="footer">孺子可教也</view>
+  <view slot="footer">While(true){;}</view>
 </i-card>
 
 <view class="nr"></view>

@@ -11,18 +11,18 @@
   <view class='nr'></view>
   <view class='titleT'>室内项目</view>
   <i-cell-group>
-    <i-cell title='肺活　量：' value='{{ feihuo }}ml' label='{{ sfeihuo }}分' style='font-weight: 600;'></i-cell>
-    <i-cell title='立定跳远：' value='{{ tiaoyuan }}cm' label='{{ stiaoyuan }}分' style='font-weight: 600;'></i-cell>
-    <i-cell title='体前　屈：' value='{{ tiqian }}cm' label='{{ stiqian }}分' style='font-weight: 600;'></i-cell>
+    <i-cell title='肺活　量：' label='{{ feihuo }}ml' value='{{ sfeihuo }}分' style='font-weight: 600;'></i-cell>
+    <i-cell title='立定跳远：' label='{{ tiaoyuan }}cm' value='{{ stiaoyuan }}分' style='font-weight: 600;'></i-cell>
+    <i-cell title='体前　屈：' label='{{ tiqian }}cm' value='{{ stiqian }}分' style='font-weight: 600;'></i-cell>
   </i-cell-group>
   <view class='nr'></view>
   <view class='titleT'>跑步项目</view>
   <i-cell-group>
-    <i-cell title='800/1000m：' value='{{ m1000 }}min' label='{{ sm1000 }}分' style='font-weight: 600;'></i-cell>
-    <i-cell title='50m：' value='{{ m50 }}s' label='{{ sm50 }}分' style='font-weight: 600;'></i-cell>
+    <i-cell title='800/1000m：' label='{{ m1000 }}min' value='{{ sm1000 }}分' style='font-weight: 600;'></i-cell>
+    <i-cell title='50m：' label='{{ m50 }}s' value='{{ sm50 }}分' style='font-weight: 600;'></i-cell>
   </i-cell-group>
   <view class='titleT'>其他项目</view>
   <i-cell-group>
-    <i-cell title='引体向上/仰卧起坐：' value='{{ yinti }}个' label='{{ syinti }}分' style='font-weight: 600;'></i-cell>
+    <i-cell title='引体向上/仰卧起坐：' label='{{ yinti }}个' value='{{ syinti }}分' style='font-weight: 600;'></i-cell>
   </i-cell-group>
 </view>

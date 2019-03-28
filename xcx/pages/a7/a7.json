@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "教师资格成绩查询",
+  "navigationBarTitleText": "计算机等级成绩查询",
   "usingComponents": {
     "i-cell-group": "../../dist/cell-group/index",
     "i-cell": "../../dist/cell/index",

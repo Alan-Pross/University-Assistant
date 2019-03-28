@@ -1,7 +1,7 @@
 <i-message id='message' />
 <view class='nr'></view>
 <i-cell-group>
-  <i-cell title='教师资格成绩查询'>
+  <i-cell title='计算机等级成绩查询'>
   </i-cell>
   <i-cell label='点击下面的按钮复制查询网址！'>
     <i-button bind:click='handleClick' type='primary' shape='circle'>一键复制到剪贴板</i-button>
