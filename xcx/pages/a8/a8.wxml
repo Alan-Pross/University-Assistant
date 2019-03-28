@@ -1,2 +1,1 @@
-<!--pages/a8/a8.wxml-->
-<text>pages/a8/a8.wxml</text>
+<web-view src="https://www.daohangcn.cn/"></web-view>

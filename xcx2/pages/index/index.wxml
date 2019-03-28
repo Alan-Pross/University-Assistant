@@ -15,9 +15,10 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="text1">小程序已更名为 "校园云助理"</text>
+    <text class="text1">原小程序已更名为《校园云助理》</text>
+    <view class="nr"></view>
     <navigator target="miniProgram" open-type="navigate" app-id="wxce125623779978d6" version="release" bindsuccess="toMiniProgramSuccess">
-    <i-button bind:click="handleClick" type="success" shape="circle">点击跳转!</i-button>
+    <i-button bind:click="handleClick" type="success" shape="circle">点我跳转!</i-button>
     </navigator>
   </view>
   <view class="usermotto1">

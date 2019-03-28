@@ -25,7 +25,7 @@
 }
 
 .text1 {
-  font-size: 25rpx;
+  font-size: 35rpx;
 }
 .text2 {
   font-size: 25rpx;

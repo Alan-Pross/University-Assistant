@@ -34,6 +34,12 @@
 </i-card>
 
 <view class="nr"></view>
+<i-card extra="更多功能" thumb="../../img/a8.jpg" bindtap="a8">
+  <view slot="content">带来更多精彩</view>
+  <view slot="footer">从前有座山……</view>
+</i-card>
+
+<view class="nr"></view>
 <button open-type="contact">
   <i-card extra="意见建议" thumb="../../img/last.jpg">
     <view slot="content">小程序不足之处</view>

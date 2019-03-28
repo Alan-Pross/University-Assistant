@@ -1,1 +1,3 @@
-/* pages/a8/a8.wxss */
+.nr {
+  margin-top: 50rpx;
+}
