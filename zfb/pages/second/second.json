@@ -1,7 +1,0 @@
-{
-  "defaultTitle": "江大云助手",
-  "usingComponents":{
-    "card": "mini-antui/es/card/index",
-    "notice": "mini-antui/es/notice/index"
-  }
-}

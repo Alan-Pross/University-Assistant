@@ -25,7 +25,7 @@ public class A1Thread extends Thread {
             if (!(ListPower.size() > 0)) {
                 ListPower.add("110");
             } else {
-                MainActivity.print("A1:" + MyApplication.getTime() + "开始电费查询" + ListPower.get(0));
+                MainActivity.print("A1:" + MyApplication.getTime() + "电费查询" + ListPower.get(0));
             }
 
             //开始上传请求
@@ -36,16 +36,15 @@ public class A1Thread extends Thread {
                 //获得结果
                 pr = HtmlUnit.a1get(ListPower.get(0));
             } catch (Exception e) {
-                e.printStackTrace();
-                pr.Rate = "没有查询到结果";
-                pr.kWH = "请检查输入是否正确";
             }
 
             //构建上传参数
-            if (pr != null) {
-                stringPostRequest.add("Rate", pr.Rate);
-                stringPostRequest.add("kWH", pr.kWH);
+            if (pr == null) {
+                pr = new PowerRate("没有查询到结果","请检查输入是否正确");
             }
+            stringPostRequest.add("Rate", pr.Rate);
+            stringPostRequest.add("kWH", pr.kWH);
+
             stringPostRequest.add("qsh", ListPower.get(0));
             NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
                 @Override
@@ -62,7 +61,7 @@ public class A1Thread extends Thread {
                     String qsh = js.getString("qsh");
                     if (!qsh.equals("110")) {
                         ListPower.add(qsh);
-                        MainActivity.print("A1:" + MyApplication.getTime() + "收到查询请求" + qsh);
+                        MainActivity.print("A1:" + MyApplication.getTime() + "收到请求" + qsh);
                     }
                     if(fail > 0)
                         MainActivity.print("A1已连回");

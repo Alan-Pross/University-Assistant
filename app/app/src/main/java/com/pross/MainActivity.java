@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public static Boolean isClosed = false;
     static MainActivity mainActivity;
 
-    final static String appVer = "1000";
+    final static String appVer = "1001";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         FontStyle fontStyle = new FontStyle(this, "consola.ttf");
         fontStyle.setTypeface(print, false);
 
-        Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);
+        Vibrator vibrator = (Vibrator) this.getSystemService(this.VIBRATOR_SERVICE);
         vibrator.vibrate(200);
 
         //检查更新
@@ -65,17 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject js = JSONObject.parseObject(response.get());
                 String serverVer = js.getString("serverver");
                 String apkUrl = js.getString("apkurl");
-                MainActivity.print(MyApplication.getTime() + "当前/最新版本:" + appVer + "/" + serverVer);
-                if(!serverVer.equals(appVer)) {
-                    MainActivity.print("需要更新");
-                    Uri uri = Uri.parse(apkUrl);
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);
+                if (!serverVer.equals(appVer)) {
+                    MainActivity.print("======================");
+                    MainActivity.print("下载地址：" + apkUrl);
+                    MainActivity.print("!!!此程序可能需要更新!!!");
+                    MainActivity.print("======================");
                 }
-                else{
-                    //开启服务器
-                    OpenServer.start();
-                }
+                //开启服务器
+                OpenServer.start();
             }
 
             @Override
@@ -100,13 +97,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void con(boolean isCon) {
-        if(isCon){
+        if (isCon) {
             mainActivity.runOnUiThread(() -> {
                 log.setText("已连接");
                 log.setBackgroundColor(0xff8bc24c);
             });
-        }
-        else {
+        } else {
             mainActivity.runOnUiThread(() -> {
                 log.setText("未连接");
                 log.setBackgroundColor(0xffde4307);

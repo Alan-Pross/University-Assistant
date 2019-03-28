@@ -25,8 +25,8 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-//        log(ex.toString());
-//        rebot();
+        log(ex.toString());
+        rebot();
     }
 
     public static void log(String log) {
@@ -70,7 +70,7 @@ public class MyApplication extends Application implements Thread.UncaughtExcepti
 
     public static String getTime(){
         Date now = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+        SimpleDateFormat ft = new SimpleDateFormat("MM-dd HH:mm:ss");
         return ft.format(now);
     }
 }

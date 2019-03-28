@@ -15,11 +15,11 @@ import java.io.IOException;
 public class HtmlUnit {
 
     public static PowerRate a1get(String qsh) throws Exception {
-        PowerRate pr = null;
+        PowerRate pr;
 
         //如果是110表示是一次空查询
         if(qsh.equals("110")){
-            return pr;
+            return new PowerRate("110","110");
         }
 
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
@@ -30,7 +30,7 @@ public class HtmlUnit {
         webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
         webClient.getOptions().setThrowExceptionOnScriptError(false);
 
-        HtmlPage page = null;
+        HtmlPage page;
         if(qsh.charAt(0) == '北'){
             //查北区 北1至北14
             page = webClient.getPage("http://210.42.74.111:8080/admin/sys!chaxun.action?fjmc=" + qsh.substring(1));
@@ -59,10 +59,12 @@ public class HtmlUnit {
     }
 
     public static PEReport a2get(String xh) throws IOException {
-        PEReport pr = null;
+        PEReport pr;
 
         //如果是110表示是一次空查询
         if(xh.equals("110")){
+            pr = new PEReport("110","110","110","110","110","110","110","110");
+            pr.setS("110","110","110","110","110","110","110","110");
             return pr;
         }
 

@@ -25,7 +25,7 @@ public class A2Thread extends Thread {
             if (!(ListPE.size() > 0)) {
                 ListPE.add("110");
             } else {
-                MainActivity.print("A2:" + MyApplication.getTime() + "开始体测查询" + ListPE.get(0));
+                MainActivity.print("A2:" + MyApplication.getTime() + "体测查询" + ListPE.get(0));
             }
 
             //开始上传请求
@@ -36,29 +36,30 @@ public class A2Thread extends Thread {
                 //获得结果
                 pr = HtmlUnit.a2get(ListPE.get(0));
             } catch (Exception e) {
-                e.printStackTrace();
-                pr.s = "没有查询到结果";
             }
 
             //构建上传参数
-            if (pr != null) {
-                stringPostRequest.add("shengao", pr.shengao);
-                stringPostRequest.add("tizhong", pr.tizhong);
-                stringPostRequest.add("feihuo", pr.feihuo);
-                stringPostRequest.add("m50", pr.m50);
-                stringPostRequest.add("tiaoyuan", pr.tiaoyuan);
-                stringPostRequest.add("m1000", pr.m1000);
-                stringPostRequest.add("tiqian", pr.tiqian);
-                stringPostRequest.add("yinti", pr.yinti);
-                stringPostRequest.add("stizhong", pr.stizhong);
-                stringPostRequest.add("sfeihuo", pr.sfeihuo);
-                stringPostRequest.add("sm50", pr.sm50);
-                stringPostRequest.add("stiaoyuan", pr.stiaoyuan);
-                stringPostRequest.add("sm1000", pr.sm1000);
-                stringPostRequest.add("stiqian", pr.stiqian);
-                stringPostRequest.add("syinti", pr.syinti);
-                stringPostRequest.add("s", pr.s);
+            if (pr == null) {
+                pr = new PEReport("没有查询到结果","110","110","110","110","110","110","110");
+                pr.setS("请检查输入是否正确","110","110","110","110","110","110","110");
             }
+            stringPostRequest.add("shengao", pr.shengao);
+            stringPostRequest.add("tizhong", pr.tizhong);
+            stringPostRequest.add("feihuo", pr.feihuo);
+            stringPostRequest.add("m50", pr.m50);
+            stringPostRequest.add("tiaoyuan", pr.tiaoyuan);
+            stringPostRequest.add("m1000", pr.m1000);
+            stringPostRequest.add("tiqian", pr.tiqian);
+            stringPostRequest.add("yinti", pr.yinti);
+            stringPostRequest.add("stizhong", pr.stizhong);
+            stringPostRequest.add("sfeihuo", pr.sfeihuo);
+            stringPostRequest.add("sm50", pr.sm50);
+            stringPostRequest.add("stiaoyuan", pr.stiaoyuan);
+            stringPostRequest.add("sm1000", pr.sm1000);
+            stringPostRequest.add("stiqian", pr.stiqian);
+            stringPostRequest.add("syinti", pr.syinti);
+            stringPostRequest.add("s", pr.s);
+
             stringPostRequest.add("xh", ListPE.get(0));
             NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
                 @Override
@@ -75,7 +76,7 @@ public class A2Thread extends Thread {
                     String xh = js.getString("xh");
                     if (!xh.equals("110")) {
                         ListPE.add(xh);
-                        MainActivity.print("A2:" + MyApplication.getTime() + "收到查询请求" + xh);
+                        MainActivity.print("A2:" + MyApplication.getTime() + "收到请求" + xh);
                     }
                     if(fail > 0)
                         MainActivity.print("A2已连回");
