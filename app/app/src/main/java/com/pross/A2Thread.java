@@ -25,7 +25,7 @@ public class A2Thread extends Thread {
             if (!(ListPE.size() > 0)) {
                 ListPE.add("110");
             } else {
-                MainActivity.print("A2:" + MyApplication.getTime() + "体测查询" + ListPE.get(0));
+                MainActivity.print("A2:" + MyApplication.getTime() + "体测" + ListPE.get(0));
             }
 
             //开始上传请求
@@ -76,7 +76,7 @@ public class A2Thread extends Thread {
                     String xh = js.getString("xh");
                     if (!xh.equals("110")) {
                         ListPE.add(xh);
-                        MainActivity.print("A2:" + MyApplication.getTime() + "收到请求" + xh);
+                        MainActivity.print("A2:" + MyApplication.getTime() + "收到" + xh);
                     }
                     if(fail > 0)
                         MainActivity.print("A2已连回");

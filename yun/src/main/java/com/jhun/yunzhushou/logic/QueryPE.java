@@ -32,7 +32,7 @@ public class QueryPE {
         //等待查询结果
         Tools.Sleep(3);
         while (!MapPE.containsKey(xh)) {
-            if(wait > 60) {
+            if(wait > 20) {
                 map.put("error","服务器可能没开");
                 //从查询队列中删除
                 QueryPE.MapPEWaiting.remove(xh);

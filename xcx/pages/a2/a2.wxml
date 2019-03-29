@@ -1,7 +1,7 @@
 <i-message id="message" />
 <view class="nr"></view>
 <i-cell-group>
-  <i-cell title="学生学号" label="查询过程可能需要30s">
+  <i-cell title="学生学号" label="查询过程可能需要10s">
     <i-input value="{{ value1 }}" bind:change="xhsInput" type="number" placeholder="请输入学号" maxlength="12" />
   </i-cell>
   <i-cell>
