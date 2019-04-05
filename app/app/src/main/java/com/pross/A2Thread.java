@@ -1,12 +1,11 @@
 package com.pross;
 
-import android.os.Vibrator;
-
 import com.alibaba.fastjson.JSONObject;
 import com.pross.object.PEReport;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
+import com.yanzhenjie.nohttp.rest.RequestQueue;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
@@ -15,21 +14,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.yanzhenjie.nohttp.rest.CacheMode.ONLY_REQUEST_NETWORK;
+
 public class A2Thread extends Thread {
     public static List<String> ListPE = new ArrayList();
+    private static RequestQueue A2Queue;
+    private static Request<String> A2Request;
     static int fail = 0;
     @Override
     public void run() {
+        A2Queue = NoHttp.newRequestQueue();
         while (!MainActivity.isClosed) {
             //如果查询队列为空，加入一个110的空查询
             if (!(ListPE.size() > 0)) {
                 ListPE.add("110");
-            } else {
-                MainActivity.print("A2:" + MyApplication.getTime() + "体测" + ListPE.get(0));
             }
+//            else {
+                //开始查询
+//                MainActivity.print("A2:" + MyApplication.getTime() + "体测" + ListPE.get(0));
+//            }
 
             //开始上传请求
-            Request<String> stringPostRequest = NoHttp.createStringRequest(NetConfig.getUrl("A2"), RequestMethod.POST);
+            A2Request = NoHttp.createStringRequest(NetConfig.getUrl("A2"), RequestMethod.POST);
+            A2Request.setCacheMode(ONLY_REQUEST_NETWORK);
 
             PEReport pr = null;
             try {
@@ -43,25 +50,25 @@ public class A2Thread extends Thread {
                 pr = new PEReport("没有查询到结果","110","110","110","110","110","110","110");
                 pr.setS("请检查输入是否正确","110","110","110","110","110","110","110");
             }
-            stringPostRequest.add("shengao", pr.shengao);
-            stringPostRequest.add("tizhong", pr.tizhong);
-            stringPostRequest.add("feihuo", pr.feihuo);
-            stringPostRequest.add("m50", pr.m50);
-            stringPostRequest.add("tiaoyuan", pr.tiaoyuan);
-            stringPostRequest.add("m1000", pr.m1000);
-            stringPostRequest.add("tiqian", pr.tiqian);
-            stringPostRequest.add("yinti", pr.yinti);
-            stringPostRequest.add("stizhong", pr.stizhong);
-            stringPostRequest.add("sfeihuo", pr.sfeihuo);
-            stringPostRequest.add("sm50", pr.sm50);
-            stringPostRequest.add("stiaoyuan", pr.stiaoyuan);
-            stringPostRequest.add("sm1000", pr.sm1000);
-            stringPostRequest.add("stiqian", pr.stiqian);
-            stringPostRequest.add("syinti", pr.syinti);
-            stringPostRequest.add("s", pr.s);
+            A2Request.add("shengao", pr.shengao);
+            A2Request.add("tizhong", pr.tizhong);
+            A2Request.add("feihuo", pr.feihuo);
+            A2Request.add("m50", pr.m50);
+            A2Request.add("tiaoyuan", pr.tiaoyuan);
+            A2Request.add("m1000", pr.m1000);
+            A2Request.add("tiqian", pr.tiqian);
+            A2Request.add("yinti", pr.yinti);
+            A2Request.add("stizhong", pr.stizhong);
+            A2Request.add("sfeihuo", pr.sfeihuo);
+            A2Request.add("sm50", pr.sm50);
+            A2Request.add("stiaoyuan", pr.stiaoyuan);
+            A2Request.add("sm1000", pr.sm1000);
+            A2Request.add("stiqian", pr.stiqian);
+            A2Request.add("syinti", pr.syinti);
+            A2Request.add("s", pr.s);
 
-            stringPostRequest.add("xh", ListPE.get(0));
-            NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
+            A2Request.add("xh", ListPE.get(0));
+            A2Queue.add(0, A2Request, new SimpleResponseListener<String>() {
                 @Override
                 public void onStart(int what) {
                 }
@@ -103,8 +110,7 @@ public class A2Thread extends Thread {
                             MainActivity.print("A2连接失败");
                             fail++;
                             if(fail > 20){
-                                Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
-                                vibrator.vibrate(200);
+                                MainActivity.zhendong();
                             }
                             if(fail > 40)
                                 MyApplication.rebot();
@@ -125,5 +131,6 @@ public class A2Thread extends Thread {
                 }
             }
         }
+        MainActivity.print(MyApplication.getTime() + "A2停止线程");
     }
 }

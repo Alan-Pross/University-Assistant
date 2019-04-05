@@ -21,7 +21,7 @@
             android:singleLine="false"
             android:text=""
             android:textIsSelectable="false"
-            android:textSize="16dp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toTopOf="@+id/close"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

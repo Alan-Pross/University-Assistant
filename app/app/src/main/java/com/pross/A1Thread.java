@@ -1,12 +1,11 @@
 package com.pross;
 
-import android.os.Vibrator;
-
 import com.alibaba.fastjson.JSONObject;
 import com.pross.object.PowerRate;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
+import com.yanzhenjie.nohttp.rest.RequestQueue;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
@@ -15,21 +14,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.yanzhenjie.nohttp.rest.CacheMode.ONLY_REQUEST_NETWORK;
+
 public class A1Thread extends Thread {
     public static List<String> ListPower = new ArrayList();
+    private static RequestQueue A1Queue;
+    private static Request<String> A1Request;
     static int fail = 0;
     @Override
     public void run() {
+        A1Queue = NoHttp.newRequestQueue();
+
         while (!MainActivity.isClosed) {
             //如果查询队列为空，加入一个110的空查询
             if (!(ListPower.size() > 0)) {
                 ListPower.add("110");
-            } else {
-                MainActivity.print("A1:" + MyApplication.getTime() + "电费" + ListPower.get(0));
             }
+//            else {
+                //开始查询
+//                MainActivity.print("A1:" + MyApplication.getTime() + "电费" + ListPower.get(0));
+//            }
 
             //开始上传请求
-            Request<String> stringPostRequest = NoHttp.createStringRequest(NetConfig.getUrl("A1"), RequestMethod.POST);
+            A1Request = NoHttp.createStringRequest(NetConfig.getUrl("A1"), RequestMethod.POST);
+            A1Request.setCacheMode(ONLY_REQUEST_NETWORK);
 
             PowerRate pr = null;
             try {
@@ -42,11 +50,11 @@ public class A1Thread extends Thread {
             if (pr == null) {
                 pr = new PowerRate("没有查询到结果","请检查输入是否正确");
             }
-            stringPostRequest.add("Rate", pr.Rate);
-            stringPostRequest.add("kWH", pr.kWH);
+            A1Request.add("Rate", pr.Rate);
+            A1Request.add("kWH", pr.kWH);
 
-            stringPostRequest.add("qsh", ListPower.get(0));
-            NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
+            A1Request.add("qsh", ListPower.get(0));
+            A1Queue.add(0, A1Request, new SimpleResponseListener<String>() {
                 @Override
                 public void onStart(int what) {
                 }
@@ -88,8 +96,7 @@ public class A1Thread extends Thread {
                             MainActivity.print("A1连接失败");
                             fail++;
                             if(fail > 20){
-                                Vibrator vibrator = (Vibrator)MainActivity.mainActivity.getSystemService(MainActivity.mainActivity.VIBRATOR_SERVICE);
-                                vibrator.vibrate(200);
+                                MainActivity.zhendong();
                             }
                             if(fail > 40)
                                 MyApplication.rebot();
@@ -109,5 +116,6 @@ public class A1Thread extends Thread {
                 }
             }
         }
+        MainActivity.print(MyApplication.getTime() + "A1停止线程");
     }
 }

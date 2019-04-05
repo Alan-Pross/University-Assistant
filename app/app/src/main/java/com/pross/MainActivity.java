@@ -19,12 +19,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yanzhenjie.nohttp.Headers;
-import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.download.DownloadListener;
@@ -40,17 +40,18 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-    static TextView print;
+    public static TextView print;
     static Button log;
 
     public static Boolean isClosed = false;
     static MainActivity mainActivity;
 
-    final static String appVer = "1001";
+    final static String appVer = "1002";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
         mainActivity = this;
 
@@ -58,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
         print = findViewById(R.id.textView);
         log = findViewById(R.id.log);
 
-        NoHttp.initialize(this);
-        Logger.setDebug(true);// 开启NoHttp的调试模式, 配置后可看到请求过程、日志和错误信息。
-        Logger.setTag("NoHttp:");// 打印Log的tag。
-
         FontStyle fontStyle = new FontStyle(this, "consola.ttf");
         fontStyle.setTypeface(print, false);
 
-        Vibrator vibrator = (Vibrator) this.getSystemService(this.VIBRATOR_SERVICE);
-        vibrator.vibrate(200);
+        zhendong();
+
+        Intent intent = getIntent();
+        String print = intent.getStringExtra("print");
+        if(print != null)
+            print(print);
 
         initPermission();
     }
@@ -77,11 +78,12 @@ public class MainActivity extends AppCompatActivity {
         NoHttp.newRequestQueue().add(0, stringPostRequest, new SimpleResponseListener<String>() {
             @Override
             public void onStart(int what) {
-                MainActivity.print("正在检查更新");
+                MainActivity.print("正在检查更新...");
             }
 
             @Override
             public void onSucceed(int what, Response<String> response) {
+                mainActivity.runOnUiThread(() -> print.setText(""));
                 JSONObject js = JSONObject.parseObject(response.get());
                 String serverVer = js.getString("serverver");
                 String apkUrl = js.getString("apkurl");
@@ -96,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
                     doUpdate("https://" + apkUrl, serverVer + ".apk");
                 } else {
                     MainActivity.print("======================");
+                    MainActivity.print("3.简化显示内容");
+                    MainActivity.print("2.报错重启时会显示报错内容");
+                    MainActivity.print("1.内存优化，减少内存使用");
+                    MainActivity.print("本次更新内容如下：");
                     MainActivity.print("!!!此程序是最新版本!!!");
                     MainActivity.print("======================");
 
@@ -245,5 +251,10 @@ public class MainActivity extends AppCompatActivity {
             uri = Uri.fromFile(new File(filePath));
         }
         return uri;
+    }
+
+    public static void zhendong(){
+        Vibrator vibrator = (Vibrator) mainActivity.getSystemService(mainActivity.VIBRATOR_SERVICE);
+        vibrator.vibrate(200);
     }
 }
