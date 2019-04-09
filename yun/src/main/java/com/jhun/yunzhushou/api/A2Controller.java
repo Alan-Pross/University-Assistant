@@ -21,6 +21,7 @@ public class A2Controller {
         map.putAll(QueryPE.get(xh));
         map.put("xh",xh);
 
+
         //记录查询信息
         Tools.logi("./logi/queryPE.txt", map.toString());
         return R.ok(map);

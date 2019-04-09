@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    font: 14px "微软雅黑", san-serif;
+    text-align: left;
+    background: #fff
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, input, p {
+    padding: 0;
+    margin: 0
+}
+ul, li {
+    list-style: None
+}
+img {
+    border: 0;
+    margin: 0
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal
+}
+
+#container select {
+    height: 30px;
+    min-width: 240px;
+    border-radius: 3px;
+    border: solid 1px #a9a9a9
+}
+
+#query_result{
+    margin-bottom:60px;
+}
+
+.c_tits {
+    height: 30px;
+    line-height: 30px;
+    color: #3083c7;/* color: #000; */
+    font-size: 22px;
+    text-align: center;
+    margin: 40px 0
+}
+.c_tits i{font-style: normal;font-weight: 500;font-size: 18px;display: inline-block;margin:0 20px;}
+
+#container ol li {
+    clear: both;
+    float: left;
+    width: 100%;
+    position: relative
+}
+#container ol li.tip_n{margin:3px 0 5px;color:#a7a7a7;}
+#container ol li span {
+    float: left;
+    width: 125px;
+    text-align: right;
+    line-height: 30px
+}
+#container ol li div {
+    float: left;
+    margin-left: 10px;
+    height: 30px;
+    overflow: hidden
+}
+ol li div a {
+    float: right;
+    margin-left: 5px
+}
+
+#container ol li div.s3 input {
+    margin-right: 5px;
+    cursor: pointer
+}
+#container .result .he_xi {
+    border-right: 1px #ddd solid
+}
+#container ol li div.s3 .disabled {
+    background-color: #ccc;
+    cursor: default
+}
+#container ol {
+    margin: 0 auto;
+    width: 520px;
+
+}
+
+
+table, td, th {
+    border-collapse: collapse
+}
+
+.score {
+    margin: 0 auto
+}
+.clist li {
+    overflow: hidden;
+    clear: both;
+    margin-bottom: 15px;
+    color:rgb(7, 78, 151);
+}
+.clist li strong {
+    float: left;
+    width: 90px;
+    text-align: right;
+    font-weight: 600
+}
+.ws li strong {
+    width: 120px
+}
+.clist li span {
+    float: left;
+    margin-left: 3px
+}
+.scoreT li strong {
+    text-align: left;
+    width: auto;
+    color: #707070;
+    font-weight: normal
+}
+.scoreT li span {
+    font-weight: bold
+}
+.scoreT {
+    padding-left: 95px
+}
+
+.titleT{
+    height:35px;
+    line-height:35px;
+    background-color:#b8cce4;
+    text-align:center;
+    margin-bottom:15px;
+    font-weight:600;
+    letter-spacing:3px;
+    /* font-size:16px; */
+}

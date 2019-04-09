@@ -3,11 +3,11 @@
     "pages/index/index",
     "pages/second/second",
     "pages/a1/a1",
+    "pages/a1log/a1log",
+    "pages/a1logresult/a1logresult",
     "pages/a1result/a1result",
     "pages/a2/a2",
     "pages/a2result/a2result",
-    "pages/a5/a5",
-    "pages/a5result/a5result",
     "pages/a6/a6",
     "pages/a7/a7",
     "pages/a8/a8"

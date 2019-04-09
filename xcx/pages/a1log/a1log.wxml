@@ -1,5 +1,4 @@
 <i-message id="message" />
-<i-toast id="toast" />
 <view class="nr"></view>
 <i-cell-group>
   <i-cell title="校区">
@@ -8,7 +7,7 @@
       <view slot="close">南区</view>
     </i-switch>
   </i-cell>
-  <i-cell title="楼栋" label="支持查询北区1-14，南区1-9，研究生，留学生楼栋的寝室电费">
+  <i-cell title="楼栋">
     <view style="padding: 16px">
       <i-input-number value="{{ value1 }}" min="1" max="15" bindchange="handleChange1" />
     </view>
@@ -16,10 +15,8 @@
   <i-cell title="寝室号">
     <i-input value="{{ value2 }}" bind:change="qshsInput" type="number" placeholder="请输入寝室号" maxlength="3" />
   </i-cell>
-  <i-cell label="查询过程大约需要3~12s">
+  <!-- <i-cell label="查询过程大约需要3~12s"> -->
+  <i-cell>
     <i-button bind:click="handleClick" type="primary" shape="circle">查询</i-button>
-  </i-cell>
-  <i-cell title="当前服务器状态:">
-    <i-button type="{{ type }}" long="true">{{ online }}</i-button>
   </i-cell>
 </i-cell-group>

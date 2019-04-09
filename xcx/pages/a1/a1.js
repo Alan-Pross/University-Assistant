@@ -3,21 +3,46 @@ const { $Toast } = require('../../dist/base/index');
 Page({
   data: {
     a1: "/a1?qsh=",
+    a1online: "/online?which=A1",
     switch1: true,
     value1: 1,
     value2: '',
-    qsh: ''
+    qsh: '',
+    type: 'warning',
+    online: '正在连接'
+  },
+  onLoad: function () {
+    var self = this;
+    var network = require("../../tools/network.js")
+    network.getrequest(self.data.a1online, null, function (res) {
+      console.log(res);
+      if(res.online == "1"){
+        self.setData({
+          'type': 'success',
+          'online': '查询服务器在线'
+        });
+      }else{
+        self.setData({
+          'type': 'error',
+          'online': '查询服务器离线'
+        });
+      }
+    }, function (res) {
+      console.log(res);
+      self.setData({
+        'type': 'error',
+        'online': '无法连接主服务器'
+      });
+    })
   },
   qshsInput: function (event) {
     this.setData({
-      value2: event.detail.detail.value
+      'value2': event.detail.detail.value
     })
-  },
-  onLoad: function () {
   },
   handleChange1({ detail }) {
     this.setData({
-      value1: detail.value
+      'value1': detail.value
     })
   },
   onChange(event) {

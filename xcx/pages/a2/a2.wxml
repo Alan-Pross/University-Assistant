@@ -1,10 +1,13 @@
 <i-message id="message" />
 <view class="nr"></view>
 <i-cell-group>
-  <i-cell title="学生学号" label="查询过程可能需要10s">
+  <i-cell title="学生学号" label="查询过程大约需要3~12s">
     <i-input value="{{ value1 }}" bind:change="xhsInput" type="number" placeholder="请输入学号" maxlength="12" />
   </i-cell>
   <i-cell>
     <i-button bind:click="handleClick" type="primary" shape="circle">查询</i-button>
+  </i-cell>
+  <i-cell title="当前服务器状态:">
+    <i-button type="{{ type }}" long="true">{{ online }}</i-button>
   </i-cell>
 </i-cell-group>

@@ -1,6 +1,8 @@
 package com.jhun.yunzhushou.tools;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Tools {
     //用于阻塞当前线程
@@ -10,6 +12,27 @@ public class Tools {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    //用于读取文件
+    public static String readTXT(String path){
+        StringBuffer buffer = new StringBuffer();
+        try {
+            String line;
+            InputStream is = new FileInputStream(path);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            line = reader.readLine();
+            while (line != null) {
+                buffer.append(line);
+                line = reader.readLine();
+            }
+            reader.close();
+            is.close();
+
+        } catch (Exception e) {
+            System.out.println("读取文件\"" + path + "\"的请求失败，原因是" + e.toString());
+        }
+            return buffer.toString();
     }
 
     //用于记录信息
@@ -56,5 +79,16 @@ public class Tools {
                 }
             }
         }
+    }
+
+    //得到时间
+    public static String getTime(String format){
+        Date now = new Date( );
+        SimpleDateFormat ft;
+        if(format.isEmpty())
+            ft = new SimpleDateFormat("MMdd HH:mm:ss|");
+        else
+            ft = new SimpleDateFormat(format);
+        return ft.format(now);
     }
 }

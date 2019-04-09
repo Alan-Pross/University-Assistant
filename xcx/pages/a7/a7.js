@@ -8,7 +8,7 @@ Page({
       data: this.data.url,
       success: function (res) {
         $Message({
-          content: '复制成功，快粘贴到浏览器下载吧!',
+          content: '复制成功，快粘贴到浏览器吧!',
           duration: 0,
           type: 'success'
         });

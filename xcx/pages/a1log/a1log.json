@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "寝室电费查询历史",
+  "usingComponents": {
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-cell": "../../dist/cell/index",
+    "i-input": "../../dist/input/index",
+    "i-switch": "../../dist/switch/index",
+    "i-input-number": "../../dist/input-number/index",
+    "i-button": "../../dist/button/index",
+    "i-message": "../../dist/message/index"
+  }
+}
