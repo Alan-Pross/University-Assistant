@@ -8,7 +8,7 @@
       <view slot="close">南区</view>
     </i-switch>
   </i-cell>
-  <i-cell title="楼栋" label="支持查询北区1-14，南区1-9，研究生，留学生楼栋的寝室电费">
+  <i-cell title="楼栋" label="支持查询北区1-14，南区1-8楼栋的寝室电费">
     <view style="padding: 16px">
       <i-input-number value="{{ value1 }}" min="1" max="15" bindchange="handleChange1" />
     </view>

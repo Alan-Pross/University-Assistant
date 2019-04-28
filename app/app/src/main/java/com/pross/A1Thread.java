@@ -30,10 +30,6 @@ public class A1Thread extends Thread {
             if (!(ListPower.size() > 0)) {
                 ListPower.add("110");
             }
-//            else {
-                //开始查询
-//                MainActivity.print("A1:" + MyApplication.getTime() + "电费" + ListPower.get(0));
-//            }
 
             //开始上传请求
             A1Request = NoHttp.createStringRequest(NetConfig.getUrl("A1"), RequestMethod.POST);
@@ -71,8 +67,10 @@ public class A1Thread extends Thread {
                         ListPower.add(qsh);
                         MainActivity.print("A1:" + MyApplication.getTime() + "收到" + qsh);
                     }
-                    if(fail > 0)
-                        MainActivity.print("A1已连回");
+                    if(fail > 0) {
+                        MainActivity.print("主服务器已连回");
+                        MyApplication.rebot();
+                    }
                     fail = 0;
                 }
 
@@ -92,14 +90,16 @@ public class A1Thread extends Thread {
                         case "06":break;
                         case "07":break;
                         case "08":break;
+                        case "09":break;
                         default:{
-                            MainActivity.print("A1连接失败");
-                            fail++;
-                            if(fail > 20){
+                            if(fail == 0)
+                                MainActivity.print("主服务器连接失败");
+                            if(fail > 30){
                                 MainActivity.zhendong();
                             }
-                            if(fail > 40)
+                            if(fail > 35)
                                 MyApplication.rebot();
+                            fail++;
                         }
                     }
                 }

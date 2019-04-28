@@ -9,9 +9,7 @@ import com.yanzhenjie.nohttp.rest.RequestQueue;
 import com.yanzhenjie.nohttp.rest.Response;
 import com.yanzhenjie.nohttp.rest.SimpleResponseListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static com.yanzhenjie.nohttp.rest.CacheMode.ONLY_REQUEST_NETWORK;
@@ -20,7 +18,6 @@ public class A2Thread extends Thread {
     public static List<String> ListPE = new ArrayList();
     private static RequestQueue A2Queue;
     private static Request<String> A2Request;
-    static int fail = 0;
     @Override
     public void run() {
         A2Queue = NoHttp.newRequestQueue();
@@ -29,10 +26,6 @@ public class A2Thread extends Thread {
             if (!(ListPE.size() > 0)) {
                 ListPE.add("110");
             }
-//            else {
-                //开始查询
-//                MainActivity.print("A2:" + MyApplication.getTime() + "体测" + ListPE.get(0));
-//            }
 
             //开始上传请求
             A2Request = NoHttp.createStringRequest(NetConfig.getUrl("A2"), RequestMethod.POST);
@@ -85,37 +78,11 @@ public class A2Thread extends Thread {
                         ListPE.add(xh);
                         MainActivity.print("A2:" + MyApplication.getTime() + "收到" + xh);
                     }
-                    if(fail > 0)
-                        MainActivity.print("A2已连回");
-                    fail = 0;
                 }
 
                 @Override
                 public void onFailed(int what, Response<String> response) {
                     MainActivity.con(false);
-                    Date now = new Date( );
-                    SimpleDateFormat ft = new SimpleDateFormat("HH");
-                    switch (ft.format(now)){
-                        case "23":break;
-                        case "00":break;
-                        case "01":break;
-                        case "02":break;
-                        case "03":break;
-                        case "04":break;
-                        case "05":break;
-                        case "06":break;
-                        case "07":break;
-                        case "08":break;
-                        default:{
-                            MainActivity.print("A2连接失败");
-                            fail++;
-                            if(fail > 20){
-                                MainActivity.zhendong();
-                            }
-                            if(fail > 40)
-                                MyApplication.rebot();
-                        }
-                    }
                 }
 
                 @Override

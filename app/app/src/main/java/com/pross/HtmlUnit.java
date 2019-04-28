@@ -35,7 +35,7 @@ public class HtmlUnit {
             //查北区 北1至北14
             page = webClient.getPage("http://210.42.74.111:8080/admin/sys!chaxun.action?fjmc=" + qsh.substring(1));
         } else if (qsh.charAt(0) == '南') {
-            //查南区 南1至南9，研究生
+            //查南区 南1至南8
             page = webClient.getPage("http://210.42.74.113:8080/admin/sys!chaxun.action?fjmc=" + qsh.substring(1));
         } else {
             return null;

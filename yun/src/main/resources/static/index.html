@@ -1,11 +1,45 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <title>敬请期待！</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>个人信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    {CSS href="__ADDONSTATIC__/css/amazeui.min.css" /}
+    {CSS href="__ADDONSTATIC__/css/app.css" /}
 </head>
 <body>
-敬请期待！
+<div class="am-g myapp-login">
+    <div class="myapp-login-logo-block">
+        <div class="myapp-login-logo" style="margin-top: 30px">
+            <img src="{$head}" style="width: 128px"/>
+        </div>
+        <div class="myapp-login-logo-text" style="margin-top: 40px">
+            <div class="myapp-login-logo-text">
+                个人<span>信息</span>
+                <div class="info">{$nickname}</div>
+            </div>
+        </div>
+        <div class="am-u-sm-10 login-am-center" style="margin-top: 40px">
+            <ul class="am-list am-list-static am-list-striped">
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <img src="__ADDONSTATIC__/img/card.png" style="width: 1.25em;margin-right: 1em">
+                    {$account}</li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <img src="__ADDONSTATIC__/img/charge.png" style="width: 1.25em;margin-right: 1em">
+                    {$money}</li>
+            </ul>
+            <a class="am-btn am-btn-default" href="{$url1}" style="color: #FFF">我要充值</a>
+            <a class="am-btn am-btn-default" href="{$url2}" style="margin-top: 15px;color: #FFF">充值记录</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
