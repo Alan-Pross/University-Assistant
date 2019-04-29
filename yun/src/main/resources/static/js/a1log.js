@@ -18,7 +18,6 @@ window.onload = function () {
             catch(err){
                 print(httpRequest.responseText);
             }
-
         }
         else{
             var qsh = GetQueryString('qsh');

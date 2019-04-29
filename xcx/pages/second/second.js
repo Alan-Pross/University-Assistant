@@ -3,8 +3,6 @@ const {
 } = require('../../dist/base/index');
 Page({
   data: {
-    a3getimg: "/a3getimg?openid=",
-    a4getimg: "/a4getimg?openid=",
     id: "",
     bar: ''
   },
@@ -21,26 +19,6 @@ Page({
   a2: function() {
     wx.navigateTo({
       url: '../a2/a2'
-    })
-  },
-  a6: function () {
-    wx.navigateTo({
-      url: '../a6/a6'
-    })
-  },
-  a7: function () {
-    wx.navigateTo({
-      url: '../a7/a7'
-    })
-  },
-  a8: function () {
-    wx.navigateTo({
-      url: '../a8/a8'
-    })
-  },
-  cx: function () {
-    wx.navigateTo({
-      url: '../a7/a7'
     })
   },
   onLoad: function(option) {
