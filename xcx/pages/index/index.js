@@ -68,6 +68,7 @@ Page({
           setTimeout(function () {
             wx.redirectTo({
               url: '../second/second?id=' + self.data.userInfo.nickName + '&bar=' + self.data.bar
+              //url: '../a0/a0?url=https%3a%2f%2fwww.cnblogs.com%2fhechunhua%2fp%2f3627952.html'
             })
           }, 100)
         );

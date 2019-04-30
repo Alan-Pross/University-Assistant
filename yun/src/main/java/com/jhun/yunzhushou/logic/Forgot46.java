@@ -68,7 +68,10 @@ public class Forgot46 {
 
     public Map<String, Object> result(String openid, String sfzhs, String xms, String yzms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
-        if(sfzhs.equals("420101199806157025")) return map;
+        if(sfzhs.equals("420101199806157025"))  {
+            map.put("SID", "黑名单用户,禁止使用本小程序");
+            return map;
+        }
 
         //返回
         if (SeverF46.get(openid) == null) {

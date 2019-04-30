@@ -9,7 +9,7 @@
     "pages/a1result/a1result",
     "pages/a2/a2",
     "pages/a2result/a2result",
-    "pages/a8/a8"
+    "pages/more/more"
   ],
   "window":{
     "backgroundTextStyle":"light",

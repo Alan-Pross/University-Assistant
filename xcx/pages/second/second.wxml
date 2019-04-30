@@ -20,7 +20,7 @@
 </i-card>
 
 <view class="nr"></view>
-<i-card extra="更多功能" thumb="../../img/a8.jpg" bindtap="a8">
+<i-card extra="更多功能" thumb="../../img/a8.jpg" bindtap="more">
   <view slot="content">带来更多精彩</view>
   <view slot="footer">从前有座山……</view>
 </i-card>

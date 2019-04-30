@@ -3,7 +3,7 @@ package com.jhun.yunzhushou.api.apiapp;
 import com.jhun.yunzhushou.R;
 import com.jhun.yunzhushou.logic.QueryPE;
 import com.jhun.yunzhushou.logic.QueryPower;
-import com.jhun.yunzhushou.object.A1A2online;
+import com.jhun.yunzhushou.object.AppOnline;
 import com.jhun.yunzhushou.object.PEReport;
 import com.jhun.yunzhushou.object.PowerRate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class TransA1A2Controller {
     //反式接口 用于获取电费
     @RequestMapping(value = "/transa1")
     public R transa1(String qsh, String Rate, String kWH) {
-        A1A2online.A1online = System.currentTimeMillis();
+        AppOnline.A1online = System.currentTimeMillis();
         Map<String, Object> map = new HashMap<String, Object>();
 
         if (!qsh.equals("110")) {
@@ -48,7 +48,6 @@ public class TransA1A2Controller {
     public R transa2(String xh,
                      String shengao, String tizhong, String feihuo, String m50, String tiaoyuan, String m1000, String tiqian, String yinti,
                      String stizhong, String sfeihuo, String sm50, String stiaoyuan, String sm1000, String stiqian, String syinti, String s) {
-        A1A2online.A2online = System.currentTimeMillis();
         Map<String, Object> map = new HashMap<String, Object>();
 
         if (!xh.equals("110")) {

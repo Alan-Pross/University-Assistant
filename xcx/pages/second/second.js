@@ -21,6 +21,11 @@ Page({
       url: '../a2/a2'
     })
   },
+  more: function () {
+    wx.navigateTo({
+      url: '../more/more'
+    })
+  },
   onLoad: function(option) {
     this.setData({
       id: option.id,

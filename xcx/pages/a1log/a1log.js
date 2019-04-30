@@ -33,6 +33,13 @@ Page({
       });
       return;
     }
+    if ((self.data.switch1 == false) && (self.data.value1 > 8)) {
+      $Message({
+        content: '请检查寝室号是否正确',
+        type: 'warning'
+      });
+      return;
+    }
     if (self.data.switch1) {
       this.setData({
         'qsh': 'BEI' + self.data.value1 + '-' + self.data.value2

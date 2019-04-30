@@ -1,4 +1,4 @@
-package com.jhun.yunzhushou.api;
+package com.jhun.yunzhushou.api.apiapp;
 
 import com.jhun.yunzhushou.R;
 import com.jhun.yunzhushou.logic.ServerOnline;
@@ -9,15 +9,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class A1A2onlineController {
+public class AppOnlineController {
 
     //查询安卓服务器在线状态
     @RequestMapping("/online")
-    public R online(String which) {
-        System.out.println("online:which=" + which);
+    public R online() {
         Map<String, Object> map = new HashMap<>();
 
-        map.put("online", ServerOnline.get(which)?"1":"0");
+        map.put("online", ServerOnline.get()?"1":"0");
 
         return R.ok(map);
     }

@@ -19,7 +19,11 @@ public class QueryPE {
 
     public static Map<String, Object> get(String xh) {
         Map<String, Object> map = new HashMap<String, Object>();
-        if(xh.equals("162202301134")) return map;
+        if(xh.equals("162202301134")) {
+            map.put("shengao", "黑名单用户");
+            map.put("stizhong", "禁止使用本小程序");
+            return map;
+        }
 
         //删除上次结果
         if(MapPE.containsKey(xh)) MapPE.remove(xh);

@@ -10,7 +10,7 @@ public class A1logController {
     @RequestMapping("/a1log")
     public String a1log(String qsh) {
         System.out.println("a1log:qsh=" + qsh);
-
+        if(qsh.isEmpty()) return null;
         if(qsh.charAt(0) == 'B'){
             qsh = "北" + qsh.substring(3);
         }

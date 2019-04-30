@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <title>寝室电费查询历史</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <link type="text/css" rel="stylesheet" href="./css/query.css"/>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>电费询史</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link href="./css/amazeui.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css/app.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="query_result" style="display: block;">
-    <div class="c_tits">寝室电费查询历史</div>
-    <div id="container" style="padding-bottom:10px">
-
-        <div class="score" id="cet46_t" style="display: block;">
-            <ul class="clist">
-                <li><strong>寝室　号：</strong><span style="float:right" id="qsh"></span></li>
-            </ul>
-            <div class="titleT">查询历史</div>
-            <ul class="clist" id="add">
-                <li><strong>正在查询：</strong><span style="float:right">请　稍后：</span></li>
-            </ul>
+<div class="am-g myapp-login">
+    <div class="myapp-login-logo-block">
+        <div class="myapp-login-logo" style="margin-top: 30px">
+            <img src="./img/dian.png" style="width: 128px" />
+        </div>
+        <div class="myapp-login-logo-text" style="margin-top: 40px">
+            <div class="myapp-login-logo-text">
+                寝电<span>询史</span>
+                <div class="info"><strong>寝室号：</strong><span id="qsh"></span></div>
+            </div>
+        </div>
+        <div class="am-u-sm-10 login-am-center" style="margin-top: 40px">
+            <form class="am-form" id="add">
+            </form>
         </div>
     </div>
+</div>
+<div id="print">
 </div>
 </body>
 <script src="./js/a1log.js"></script>

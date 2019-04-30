@@ -40,8 +40,8 @@ public class A2Thread extends Thread {
 
             //构建上传参数
             if (pr == null) {
-                pr = new PEReport("没有查询到结果","110","110","110","110","110","110","110");
-                pr.setS("请检查输入是否正确","110","110","110","110","110","110","110");
+                pr = new PEReport("没有查询到结果","","","","","","","");
+                pr.setS("请检查输入是否正确","","","","","","","");
             }
             A2Request.add("shengao", pr.shengao);
             A2Request.add("tizhong", pr.tizhong);

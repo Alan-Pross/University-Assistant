@@ -2,7 +2,7 @@ const { $Message } = require('../../dist/base/index');
 Page({
   data: {
     value1: '',
-    a2online: "/online?which=A2",
+    a2online: "/online",
     type: 'warning',
     online: '正在连接'
   },

@@ -5,14 +5,14 @@ window.onload = function () {
     httpRequest.send();
     httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-            add.innerHTML = "<li><strong>查询时间：</strong><span style=\"float:right\">剩余电费：</span></li><hr>";
+            add.innerHTML = "";
             try {
                 var log = JSON.parse(httpRequest.responseText);
                 document.getElementById('qsh').innerHTML = log[0].qsh + "　";
                 for (var i = 0; i < log.length; i++) {
                     var time = log[i].time;
                     var rate = log[i].rate;
-                    add.innerHTML += "<li><strong>"+ time +"</strong><span style=\"float:right\">"+ rate +"　</span></li>";
+                    add.innerHTML += '<div class="am-panel am-panel-primary" style="text-align: center"><div class="am-panel-hd">'+ time +'</div><div class="am-panel-bd">'+ rate +'</div></div>';
                 }
             }
             catch(err){
@@ -28,7 +28,7 @@ window.onload = function () {
                 qsh = "南" + qsh.substring(3);
             }
             document.getElementById('qsh').innerHTML = qsh + "　";
-            add.innerHTML = "<li><strong>查询失败</strong><span style=\"float:right\">没有记录</span></li>";
+            add.innerHTML = '<div class="am-panel am-panel-primary" style="text-align: center"><div class="am-panel-hd">查询失败</div><div class="am-panel-bd">没有记录</div></div>';
         }
     };
 }

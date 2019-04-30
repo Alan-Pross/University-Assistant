@@ -23,7 +23,11 @@ public class A1Controller {
         map.put("time", Tools.getTime("yyyy-MM-dd HH:mm:ss"));
 
         //记录查询信息
-        Tools.logi("./logi/queryPower/" + qsh + ".txt", map.toString());
+        if(map.containsKey("kWH")) {
+            if(!map.get("kWH").equals("请检查输入是否正确")){
+                Tools.logi("./logi/queryPower/" + qsh + ".txt", map.toString());
+            }
+        }
         return R.ok(map);
     }
 }

@@ -1,7 +1,7 @@
 const { $Message } = require('../../dist/base/index');
 Page({
   data: {
-    url: 'https://ntcecf2.neea.edu.cn/',
+    url: '',
   },
   handleClick: function () {
     wx.setClipboardData({
@@ -16,5 +16,9 @@ Page({
     })
   },
   onLoad: function (option) {
+    var self = this;
+    this.setData({
+      url: decodeURIComponent(option.url)
+    })
   }
 })

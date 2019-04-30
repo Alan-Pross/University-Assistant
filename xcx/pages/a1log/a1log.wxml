@@ -2,14 +2,14 @@
 <view class="nr"></view>
 <i-cell-group>
   <i-cell title="校区">
-    <i-switch value="{{switch1}}" size="large" bind:change="onChange" slot="footer">
+    <i-switch value="{{ switch1 }}" size="large" bind:change="onChange" slot="footer">
       <view slot="open">北区</view>
       <view slot="close">南区</view>
     </i-switch>
   </i-cell>
   <i-cell title="楼栋">
     <view style="padding: 16px">
-      <i-input-number value="{{ value1 }}" min="1" max="15" bindchange="handleChange1" />
+      <i-input-number value="{{ value1 }}" min="1" max="14" bindchange="handleChange1" />
     </view>
   </i-cell>
   <i-cell title="寝室号">
