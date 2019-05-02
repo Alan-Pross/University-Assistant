@@ -15,11 +15,11 @@
 <div class="am-g myapp-login">
     <div class="myapp-login-logo-block">
         <div class="myapp-login-logo">
-            <img src="./img/a3.jpg" style="width: 128px"/>
+            <img src="./img/a5.jpg" style="width: 128px"/>
         </div>
         <div class="myapp-login-logo-text" style="margin-top: 40px">
             <div class="myapp-login-logo-text">
-                CET<span>成绩</span>
+                普通话<span>成绩</span>
                 <div class="info">尽在校园云助理!</div>
             </div>
         </div>
@@ -30,11 +30,7 @@
                         <input id="xm" type="text" class="" id="doc-ipt-text-1" placeholder="请输入姓名">
                     </div>
                     <div class="am-form-group">
-                        <input id="zkzh" type="number" class="" id="doc-ipt-number-1" placeholder="请输入准考证号">
-                    </div>
-                    <img src="./img/yzm.jpg" style="width: 160px; height: 80px;" id="yzmimg"/>
-                    <div class="am-form-group" style="margin-top: 15px">
-                        <input id="yzm" type="text" class="" id="doc-ipt-text-2" placeholder="请输入验证码">
+                        <input id="sfzh" type="number" class="" id="doc-ipt-number-1" placeholder="请输入身份证号">
                     </div>
                     <p>
                         <button type="button" class="am-btn am-btn-default" id="cx">查询</button>
@@ -46,8 +42,6 @@
 </div>
 </body>
 <script type="text/javascript">
-    var imgSuccess = false;
-    var rdid = rdStr(5);
     window.alert = function(name){
         var iframe = document.createElement("IFRAME");
         iframe.style.display="none";
@@ -56,47 +50,19 @@
         window.frames[0].window.alert(name);
         iframe.parentNode.removeChild(iframe);
     };
-    window.onload = function() {
-        var url = "./a3getimg";
-        var data = "rdid=" + rdid;
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: data,
-            dataType: "json",
-            success: function (r) {
-                $('#yzmimg').attr("src", "./a3" + rdid + ".jpg");
-                imgSuccess = true;
-            },
-            error:function (r) {
-                alert("无法获取验证码");
-            }
-        })
-    };
-    $("#yzmimg").click(function(){
-        location.reload(true);
-    });
     $("#cx").click(function(){
-        if(imgSuccess){
-            return;
-        }
         var xm = $("#xm").val();
-        var zkzh = $("#zkzh").val();
-        var yzm = $("#yzm").val();
+        var sfzh = $("#sfzh").val();
         if(xm.length < 2){
             alert("请填写姓名完整");
             return;
         }
-        if(zkzh.length != 15){
-            alert("准考证号为15位");
+        if(sfzh.length != 18){
+            alert("身份证号为18位");
             return;
         }
-        if(yzm.length < 1){
-            alert("请输入验证码");
-            return;
-        }
-        var url = "./a3result";
-        var data = "rdid=" + rdid + "&xm=" + xm + "&zkzh=" + zkzh + "&yzm=" + yzm;
+        var url = "./a5result";
+        var data = "xm=" + xm + "&sfzh=" + sfzh;
         $.ajax({
             type: "POST",
             url: url,
@@ -104,25 +70,12 @@
             dataType: "json",
             success: function (r) {
                 var res = eval(r);
-                if (res.error == '已超时或不存在'){
-                    alert("已超时,请点击验证码刷新");
-                    return;
-                }
-                window.location.href = './a3result.html?zkzh=' + zkzh + '&r1=' + res.r1 + '&r2=' + res.r2 + '&r3=' + res.r3 + '&r6=' + res.r6 + '&r7=' + res.r7 + '&r8=' + res.r8 + '&r9=' + res.r9 + '&r12=' + res.r12;
+                window.location.href = './a5result.html?r1=' + res.r1 + '&r2=' + res.r2 + '&r3=' + res.r3 + '&r4=' + res.r4 + '&r5=' + res.r5 + '&r6=' + res.r6 + '&time=' + res.time;
             },
             error:function (r) {
                 alert("查询失败，请检查填入信息");
             }
         })
     });
-    function rdStr(len) {
-        var charSet = 'abcdefghijklmnopqrstuvwxyz0123456789';
-        var randomString = '';
-        for (var i = 0; i < len; i++) {
-            var randomPoz = Math.floor(Math.random() * charSet.length);
-            randomString += charSet.substring(randomPoz,randomPoz+1);
-        }
-        return randomString;
-    }
 </script>
 </html>

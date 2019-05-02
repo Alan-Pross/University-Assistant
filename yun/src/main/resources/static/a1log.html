@@ -9,11 +9,12 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link href="./css/amazeui.min.css" rel="stylesheet" type="text/css" />
     <link href="./css/app.css" rel="stylesheet" type="text/css" />
+    <script src="./js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <div class="am-g myapp-login">
     <div class="myapp-login-logo-block">
-        <div class="myapp-login-logo" style="margin-top: 30px">
+        <div class="myapp-login-logo">
             <img src="./img/dian.png" style="width: 128px" />
         </div>
         <div class="myapp-login-logo-text" style="margin-top: 40px">
@@ -22,14 +23,50 @@
                 <div class="info"><strong>寝室号：</strong><span id="qsh"></span></div>
             </div>
         </div>
-        <div class="am-u-sm-10 login-am-center" style="margin-top: 40px">
+        <div class="am-u-sm-10 login-am-center" style="margin-top: 10px">
             <form class="am-form" id="add">
             </form>
         </div>
     </div>
 </div>
-<div id="print">
-</div>
 </body>
-<script src="./js/a1log.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        var add = $("#add")[0];
+        var qsh = getQueryString('qsh');
+        if(qsh.charAt(0) == 'B'){
+            qsh = "北" + qsh.substring(3);
+        }
+        else if(qsh.charAt(0) == 'N'){
+            qsh = "南" + qsh.substring(3);
+        }
+        $("#qsh")[0].innerHTML = qsh;
+        var url = "./a1log";
+        var data = "qsh=" + getQueryString('qsh');
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            dataType: "json",
+            success: function (r) {
+                var log = eval(r);
+                for (var i = 0; i < log.length; i++) {
+                    var time = log[i].time;
+                    var rate = log[i].rate;
+                    add.innerHTML += '<div class="am-panel am-panel-primary" style="text-align: center"><div class="am-panel-hd">'+ time +'</div><div class="am-panel-bd">'+ rate +'</div></div>';
+                }
+            },
+            error:function (r) {
+                add.innerHTML = '<div class="am-panel am-panel-primary" style="text-align: center"><div class="am-panel-hd">查询失败</div><div class="am-panel-bd">没有记录</div></div>';
+            }
+        })
+    };
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return "";
+    }
+</script>
 </html>

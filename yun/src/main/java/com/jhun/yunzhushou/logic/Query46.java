@@ -15,10 +15,10 @@ public class Query46 {
 
     private String yzm_img;
 
-    public String getImg(String openid) throws IOException {
+    public String getImg(String rdid) throws IOException {
         yzm_img = "./yzmimg/";
         //如果服务此用户的浏览器已存在，关闭这个浏览器
-        if (SeverQ46.get(openid) != null) SeverQ46.get(openid).close();
+        if (SeverQ46.get(rdid) != null) SeverQ46.get(rdid).close();
 
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
@@ -39,44 +39,44 @@ public class Query46 {
         HtmlImage img = (HtmlImage) page.getByXPath("//img[@id='stu_reg_vcode']").get(0);
 
         //保存图片
-        File file = new File(yzm_img + "a3" + openid + ".jpg");
+        File file = new File(yzm_img + "a3" + rdid + ".jpg");
         if (!file.exists()) file.createNewFile();
         img.saveAs(file);
 
         //保存此网页信息
-        SeverQ46.Map46.put(openid, new SeverQ46(openid, page, webClient));
+        SeverQ46.Map46.put(rdid, new SeverQ46(rdid, page, webClient));
 
         //100秒后关闭浏览器
         Runnable r = () -> {
             try {
-                Thread.sleep(100000);
-                SeverQ46.get(openid).close();
+                Thread.sleep(60 * 1000);
+                SeverQ46.get(rdid).close();
             } catch (Exception e) {
-                System.out.println(openid + "的浏览器已关闭");
+                System.out.println(rdid + "的浏览器已关闭");
             }
 
         };
         new Thread(r).start();
 
-        return "a3" + openid + ".jpg";
+        return "a3" + rdid + ".jpg";
     }
 
-    public Map<String, Object> result(String openid, String zkzhs, String xms, String yzms) throws IOException {
+    public Map<String, Object> result(String rdid, String zkzhs, String xms, String yzms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
-        if(xms.equals("王茜"))  {
+        if (xms.equals("王茜")) {
             map.put("r1", "黑名单用户");
             map.put("r2", "禁止使用本小程序");
             return map;
         }
 
         //返回
-        if (SeverQ46.get(openid) == null) {
+        if (SeverQ46.get(rdid) == null) {
             map.put("error", "已超时或不存在");
             return map;
         }
 
         //得到服务此用户的网页
-        HtmlPage page = SeverQ46.get(openid).page;
+        HtmlPage page = SeverQ46.get(rdid).page;
 
         //得到表单
         HtmlForm form = page.getFormByName("form1");
@@ -134,7 +134,7 @@ public class Query46 {
         map.put("r12", r12);
 
         //查询完毕关闭浏览器
-        SeverQ46.get(openid).close();
+        SeverQ46.get(rdid).close();
         return map;
     }
 }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>英语成绩查询</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link href="./css/amazeui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="./css/app.css" rel="stylesheet" type="text/css"/>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class="am-g myapp-login">
+    <div class="myapp-login-logo-block">
+        <div class="myapp-login-logo-text" style="margin-top: 40px">
+            <div class="myapp-login-logo-text"  style="font-size: 35px">
+                CET<span>成绩</span>
+            </div>
+        </div>
+        <div class="am-u-sm-10 login-am-center">
+            <ul class="am-list am-list-static am-list-striped">
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="font-weight: 600;">姓　　名：</span>
+                    <span id="r1"></span>
+                </li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="font-weight: 600;">学　　校：</span>
+                    <span id="r2"></span>
+                </li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="font-weight: 600;">考试级别：</span>
+                    <span id="r3"></span>
+                </li>
+            </ul>
+            <button type="button" class="am-btn am-btn-default" style="font-weight: 600;color: #fff;font-size: 20px">笔试成绩</button>
+            <ul class="am-list am-list-static am-list-striped" style="margin-top: 0">
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="font-weight: 600;">准考证号：</span>
+                    <span id="zkzh1"></span>
+                </li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="font-weight: 600;">总　　分：</span>
+                    <span id="r6"></span>
+                </li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="color:#80848f">　　　　　听　　　力：</span>
+                    <span id="r7"></span>
+                </li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="color:#80848f">　　　　　阅　　　读：</span>
+                    <span id="r8"></span>
+                </li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="color:#80848f">　　　　　写作和翻译：</span>
+                    <span id="r9"></span>
+                </li>
+            </ul>
+            <button type="button" class="am-btn am-btn-default" style="font-weight: 600;color: #fff;font-size: 20px">笔试成绩</button>
+            <ul class="am-list am-list-static am-list-striped" style="margin-top: 0">
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="font-weight: 600;">准考证号：</span>
+                    <span id="zkzh2"></span>
+                </li>
+                <li>
+                    <i class="am-icon-fw"></i>
+                    <span style="font-weight: 600;">等　　级：</span>
+                    <span id="r12"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $("#r1")[0].innerHTML = getQueryString("r1");
+    $("#r2")[0].innerHTML = getQueryString("r2");
+    $("#r3")[0].innerHTML = getQueryString("r3");
+    $("#r6")[0].innerHTML = getQueryString("r6");
+    $("#r7")[0].innerHTML = getQueryString("r7");
+    $("#r8")[0].innerHTML = getQueryString("r8");
+    $("#r9")[0].innerHTML = getQueryString("r9");
+    $("#r12")[0].innerHTML = getQueryString("r12");
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return "";
+    }
+</script>
+</html>

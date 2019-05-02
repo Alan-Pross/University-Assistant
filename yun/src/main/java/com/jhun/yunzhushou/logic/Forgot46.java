@@ -15,10 +15,10 @@ public class Forgot46 {
 
     private String yzm_img;
 
-    public String getImg(String openid) throws IOException {
+    public String getImg(String rdid) throws IOException {
         yzm_img = "./yzmimg/";
         //如果服务此用户的浏览器已存在，关闭这个浏览器
-        if (SeverF46.get(openid) != null) SeverF46.get(openid).close();
+        if (SeverF46.get(rdid) != null) SeverF46.get(rdid).close();
 
         //打开浏览器
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
@@ -44,29 +44,29 @@ public class Forgot46 {
         HtmlImage img = (HtmlImage) page3.getByXPath("//img[@id='vcodeImg']").get(0);
 
         //保存图片
-        File file = new File(yzm_img + "a4" + openid + ".jpg");
+        File file = new File(yzm_img + "a4" + rdid + ".jpg");
         if (!file.exists()) file.createNewFile();
         img.saveAs(file);
 
         //保存此网页信息
-        SeverF46.Map46.put(openid, new SeverF46(openid, page3, img, webClient));
+        SeverF46.Map46.put(rdid, new SeverF46(rdid, page3, img, webClient));
 
         //100秒后关闭浏览器
         Runnable r = () -> {
             try {
-                Thread.sleep(100000);
-                SeverF46.get(openid).close();
+                Thread.sleep(60 * 1000);
+                SeverF46.get(rdid).close();
             } catch (Exception e) {
-                System.out.println(openid + "的浏览器已关闭");
+                System.out.println(rdid + "的浏览器已关闭");
             }
 
         };
         new Thread(r).start();
 
-        return "a4" + openid + ".jpg";
+        return "a4" + rdid + ".jpg";
     }
 
-    public Map<String, Object> result(String openid, String sfzhs, String xms, String yzms) throws IOException {
+    public Map<String, Object> result(String rdid, String sfzhs, String xms, String yzms) throws IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         if(sfzhs.equals("420101199806157025"))  {
             map.put("SID", "黑名单用户,禁止使用本小程序");
@@ -74,13 +74,13 @@ public class Forgot46 {
         }
 
         //返回
-        if (SeverF46.get(openid) == null) {
+        if (SeverF46.get(rdid) == null) {
             map.put("error", "已超时或不存在");
             return map;
         }
 
         //得到服务此用户的网页
-        HtmlPage page = SeverF46.get(openid).page;
+        HtmlPage page = SeverF46.get(rdid).page;
 
         //得到要输入的三个输入框
         HtmlTextInput sfzh = (HtmlTextInput) page.getByXPath("//input[@id='txtIDNumber']").get(0);
@@ -108,7 +108,7 @@ public class Forgot46 {
         map.put("SID", t.asXml().substring(48, 176));
 
         //查询完毕关闭浏览器
-        SeverF46.get(openid).close();
+        SeverF46.get(rdid).close();
         return map;
     }
 }
