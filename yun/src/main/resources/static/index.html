@@ -1,9 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <title>敬请期待！</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>更多功能</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link href="./css/amazeui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="./css/app.css" rel="stylesheet" type="text/css"/>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
 </head>
 <body>
-敬请期待！
+<div class="am-g myapp-login">
+    <div class="myapp-login-logo-block">
+        <div class="myapp-login-logo">
+            <img src="./img/more.png" style="width: 128px"/>
+        </div>
+        <div class="myapp-login-logo-text" style="margin-top: 40px">
+            <div class="myapp-login-logo-text">
+                更多<span>功能</span>
+                <div class="info">尽在校园云助理!</div>
+            </div>
+        </div>
+        <div class="am-u-sm-10 login-am-center" style="margin-top: 10px">
+            <form class="am-form">
+                <div class="am-panel am-panel-primary" style="text-align: center" id="a3">
+                    <div class="am-panel-hd">四六级成绩查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a3.jpg" style="width: 64px"/>
+                        我到底为什么还没过！
+                    </div>
+                </div>
+                <!--<div class="am-panel am-panel-secondary" style="text-align: center" id="a4">-->
+                    <!--<div class="am-panel-hd">四六级考号找回</div>-->
+                    <!--<div class="am-panel-bd">-->
+                        <!--<img src="./img/a4.jpg" style="width: 64px"/>-->
+                        <!--校园云助理帮你找回！-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="am-panel am-panel-success" style="text-align: center" id="a5">
+                    <div class="am-panel-hd">普通话成绩查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a5.jpg" style="width: 64px"/>
+                        俺滴铺通话彪不标准？
+                    </div>
+                </div>
+                <div class="am-panel am-panel-warning" style="text-align: center" id="a6">
+                    <div class="am-panel-hd">教师资格证查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a6.jpg" style="width: 64px"/>
+                        三人行必有我师焉啊！
+                    </div>
+                </div>
+                <div class="am-panel am-panel-danger" style="text-align: center" id="a7">
+                    <div class="am-panel-hd">计算机等级查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a7.jpg" style="width: 64px"/>
+                        现在电脑大神就是我！
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $("#a3").on("click", function () {
+        window.location.href = "./a3.html";
+    })
+    $("#a4").on("click", function () {
+        window.location.href = "./a4.html";
+    })
+    $("#a5").on("click", function () {
+        window.location.href = "./a5.html";
+    })
+    $("#a6").on("click", function () {
+        wx.miniProgram.navigateTo({url: '../a0/a0?url=' + encodeURI("http://cjcx.neea.edu.cn/html1/folder/1508/206-1.htm?sid=2nasVMoohJ6cFnsQEIjGYmh")});
+    })
+    $("#a7").on("click", function () {
+        wx.miniProgram.navigateTo({url: '../a0/a0?url=' + encodeURI("http://cjcx.neea.edu.cn/ncre/query.html")});
+    })
+</script>
+</html>

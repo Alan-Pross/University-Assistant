@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>英语成绩查询</title>
+    <title>英语成绩结果</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link href="./css/amazeui.min.css" rel="stylesheet" type="text/css"/>
@@ -83,14 +83,16 @@
 </div>
 </body>
 <script type="text/javascript">
-    $("#r1")[0].innerHTML = getQueryString("r1");
-    $("#r2")[0].innerHTML = getQueryString("r2");
-    $("#r3")[0].innerHTML = getQueryString("r3");
-    $("#r6")[0].innerHTML = getQueryString("r6");
-    $("#r7")[0].innerHTML = getQueryString("r7");
-    $("#r8")[0].innerHTML = getQueryString("r8");
-    $("#r9")[0].innerHTML = getQueryString("r9");
-    $("#r12")[0].innerHTML = getQueryString("r12");
+    $("#r1")[0].innerHTML = decodeURI(getQueryString("r1"));
+    $("#r2")[0].innerHTML = decodeURI(getQueryString("r2"));
+    $("#r3")[0].innerHTML = decodeURI(getQueryString("r3"));
+    $("#r6")[0].innerHTML = decodeURI(getQueryString("r6"));
+    $("#r7")[0].innerHTML = decodeURI(getQueryString("r7"));
+    $("#r8")[0].innerHTML = decodeURI(getQueryString("r8"));
+    $("#r9")[0].innerHTML = decodeURI(getQueryString("r9"));
+    $("#r12")[0].innerHTML = decodeURI(getQueryString("r12"));
+    $("#zkzh1")[0].innerHTML = decodeURI(getQueryString("r12"));
+    $("#zkzh2")[0].innerHTML = decodeURI(getQueryString("r12"));
     function getQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);

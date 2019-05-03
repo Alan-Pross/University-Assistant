@@ -1,5 +1,4 @@
 const app = getApp()
-
 Page({
   data: {
     bar: '',
@@ -9,11 +8,10 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
   bindViewTap: function() {
     if (this.data.status == 'success') {
       wx.redirectTo({
-        url: '../second/second?id=' + this.data.userInfo.nickName
+        url: '../second/second?bar=' + self.data.bar
       })
     }
   },
@@ -67,8 +65,7 @@ Page({
         },
           setTimeout(function () {
             wx.redirectTo({
-              url: '../second/second?id=' + self.data.userInfo.nickName + '&bar=' + self.data.bar
-              //url: '../a0/a0?url=https%3a%2f%2fwww.cnblogs.com%2fhechunhua%2fp%2f3627952.html'
+              url: '../second/second?bar=' + self.data.bar
             })
           }, 100)
         );

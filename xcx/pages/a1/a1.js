@@ -19,7 +19,6 @@ Page({
     var self = this;
     var network = require("../../tools/network.js")
     network.getrequest(self.data.a1online, null, function(res) {
-      console.log(res);
       if (res.online == "1") {
         self.setData({
           'type': 'success',
@@ -32,7 +31,6 @@ Page({
         });
       }
     }, function(res) {
-      console.log(res);
       self.setData({
         'type': 'error',
         'online': '无法连接主服务器'
@@ -91,7 +89,6 @@ Page({
       var network = require("../../tools/network.js")
       network.getrequest(self.data.a1 + self.data.qsh, null, function (res) {
         $Toast.hide()
-        console.log(res)
         wx.navigateTo({
           url: '../a1result/a1result?Rate=' + res.Rate + '&kWH=' + res.kWH + '&qsh=' + res.qsh
         })
@@ -105,7 +102,7 @@ Page({
     }
     else {
       $Message({
-        content: '查询服务器离线',
+        content: '服务器离线',
         type: 'warning'
       });
     }

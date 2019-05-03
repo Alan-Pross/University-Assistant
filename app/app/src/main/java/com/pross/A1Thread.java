@@ -68,7 +68,7 @@ public class A1Thread extends Thread {
                         MainActivity.print("A1:" + MyApplication.getTime() + "收到" + qsh);
                     }
                     if(fail > 0) {
-                        MainActivity.print("主服务器已连回");
+                        MainActivity.print("主服务器已连接");
                         MyApplication.rebot();
                     }
                     fail = 0;
@@ -77,31 +77,11 @@ public class A1Thread extends Thread {
                 @Override
                 public void onFailed(int what, Response<String> response) {
                     MainActivity.con(false);
-                    Date now = new Date( );
-                    SimpleDateFormat ft = new SimpleDateFormat("HH");
-                    switch (ft.format(now)){
-                        case "23":break;
-                        case "00":break;
-                        case "01":break;
-                        case "02":break;
-                        case "03":break;
-                        case "04":break;
-                        case "05":break;
-                        case "06":break;
-                        case "07":break;
-                        case "08":break;
-                        case "09":break;
-                        default:{
-                            if(fail == 0)
-                                MainActivity.print("主服务器连接失败");
-                            if(fail > 30){
-                                MainActivity.zhendong();
-                            }
-                            if(fail > 35)
-                                MyApplication.rebot();
-                            fail++;
-                        }
-                    }
+                    fail++;
+                    if(fail == 1)
+                        MainActivity.print("主服务器无响应");
+                    if(fail > 30)
+                        MyApplication.rebot();
                 }
                 @Override
                 public void onFinish(int what) {

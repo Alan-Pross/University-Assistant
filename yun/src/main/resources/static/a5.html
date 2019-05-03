@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>英语成绩查询</title>
+    <title>普通话成绩查询</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link href="./css/amazeui.min.css" rel="stylesheet" type="text/css"/>
@@ -61,6 +61,8 @@
             alert("身份证号为18位");
             return;
         }
+        $("#cx")[0].innerHTML = "查询中";
+        $("#cx").attr({"disabled":"disabled"});
         var url = "./a5result";
         var data = "xm=" + xm + "&sfzh=" + sfzh;
         $.ajax({
@@ -70,12 +72,16 @@
             dataType: "json",
             success: function (r) {
                 var res = eval(r);
-                window.location.href = './a5result.html?r1=' + res.r1 + '&r2=' + res.r2 + '&r3=' + res.r3 + '&r4=' + res.r4 + '&r5=' + res.r5 + '&r6=' + res.r6 + '&time=' + res.time;
+                window.location.href = './a5result.html?r1=' + enURI(res.r1) + '&r2=' + enURI(res.r2) + '&r3=' + enURI(res.r3) + '&r4=' + enURI(res.r4) + '&r5=' + enURI(res.r5) + '&r6=' + enURI(res.r6) + '&time=' + enURI(res.time);
             },
             error:function (r) {
                 alert("查询失败，请检查填入信息");
+                location.reload(true);
             }
         })
     });
+    function enURI(str){
+        return encodeURI(encodeURI(str));
+    }
 </script>
 </html>

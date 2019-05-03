@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public static Boolean isClosed = false;
     static MainActivity mainActivity;
 
-    final static String appVer = "1002";
+    final static String appVer = "1003";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         FontStyle fontStyle = new FontStyle(this, "consola.ttf");
         fontStyle.setTypeface(print, false);
-
-        zhendong();
 
         Intent intent = getIntent();
         String print = intent.getStringExtra("print");
@@ -98,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
                     doUpdate("https://" + apkUrl, serverVer + ".apk");
                 } else {
                     MainActivity.print("======================");
-                    MainActivity.print("3.简化显示内容");
-                    MainActivity.print("2.报错重启时会显示报错内容");
-                    MainActivity.print("1.内存优化，减少内存使用");
+                    MainActivity.print("3.去除震动效果");
+                    MainActivity.print("2.与服务器断开连接后自动重连");
+                    MainActivity.print("1.显示优化");
                     MainActivity.print("本次更新内容如下：");
                     MainActivity.print("!!!此程序是最新版本!!!");
                     MainActivity.print("======================");
@@ -113,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailed(int what, Response<String> response) {
                 MainActivity.print(MyApplication.getTime() + "连接服务器失败");
+                //等待60秒后重新连接服务器
+                new Thread(()-> {
+                    try {
+                        Thread.sleep(60 * 1000);
+                    } catch (InterruptedException e) {
+                    }
+                    getUpdate();
+                }).start();
             }
 
             @Override
@@ -251,10 +257,5 @@ public class MainActivity extends AppCompatActivity {
             uri = Uri.fromFile(new File(filePath));
         }
         return uri;
-    }
-
-    public static void zhendong(){
-        Vibrator vibrator = (Vibrator) mainActivity.getSystemService(mainActivity.VIBRATOR_SERVICE);
-        vibrator.vibrate(200);
     }
 }
