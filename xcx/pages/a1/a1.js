@@ -42,9 +42,7 @@ Page({
       'value2': event.detail.detail.value
     })
   },
-  handleChange1({
-    detail
-  }) {
+  handleChange1 ({ detail }) {
     this.setData({
       'value1': detail.value
     })

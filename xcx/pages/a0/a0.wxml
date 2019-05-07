@@ -1,7 +1,7 @@
 <i-message id='message' />
 <view class='nr'></view>
 <i-cell-group>
-<i-cell title='{{ url }}'>
+<i-cell title='{{ url }}' label='{{ title }}'>
   </i-cell>
   <i-cell label='点击下面的按钮复制网址！'>
     <i-button bind:click='handleClick' type='primary' shape='circle'>一键复制到剪贴板</i-button>

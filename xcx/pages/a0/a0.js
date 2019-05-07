@@ -2,6 +2,7 @@ const { $Message } = require('../../dist/base/index');
 Page({
   data: {
     url: '',
+    title: ''
   },
   handleClick: function () {
     wx.setClipboardData({
@@ -17,8 +18,10 @@ Page({
   },
   onLoad: function (option) {
     var self = this;
+    console.log(option);
     this.setData({
-      url: decodeURIComponent(option.url)
+      url: decodeURIComponent(option.url),
+      title: decodeURIComponent(option.title)
     })
   }
 })
