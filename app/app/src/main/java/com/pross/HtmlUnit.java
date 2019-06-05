@@ -33,10 +33,10 @@ public class HtmlUnit {
         HtmlPage page;
         if(qsh.charAt(0) == '北'){
             //查北区 北1至北14
-            page = webClient.getPage("http://210.42.74.111:8080/admin/sys!chaxun.action?fjmc=" + qsh.substring(1));
+            page = webClient.getPage("http://210.42.74.111:8080/admin/sys!chaxun.action?fjmc=3-" + qsh.substring(1));
         } else if (qsh.charAt(0) == '南') {
             //查南区 南1至南8
-            page = webClient.getPage("http://210.42.74.113:8080/admin/sys!chaxun.action?fjmc=" + qsh.substring(1));
+            page = webClient.getPage("http://210.42.74.113:8080/admin/sys!chaxun.action?fjmc=2-" + qsh.substring(1));
         } else {
             return null;
         }

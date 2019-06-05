@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public static Boolean isClosed = false;
     static MainActivity mainActivity;
 
-    final static String appVer = "1003";
+    final static String appVer = "1004";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,9 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     doUpdate("https://" + apkUrl, serverVer + ".apk");
                 } else {
                     MainActivity.print("======================");
-                    MainActivity.print("3.去除震动效果");
-                    MainActivity.print("2.与服务器断开连接后自动重连");
-                    MainActivity.print("1.显示优化");
+                    MainActivity.print("修复寝室电费查询功能");
                     MainActivity.print("本次更新内容如下：");
                     MainActivity.print("!!!此程序是最新版本!!!");
                     MainActivity.print("======================");
