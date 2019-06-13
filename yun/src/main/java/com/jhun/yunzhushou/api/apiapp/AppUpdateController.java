@@ -27,8 +27,7 @@ public class AppUpdateController {
             map.put("apkurl",url + "/" + serverver + ".apk");
         } catch (Exception e) {
             e.printStackTrace();
-            map.put("serverver","1002");
-            map.put("apkurl","www.daohangcn.cn/1002.apk");
+            return R.error(e.toString());
         }
         return R.ok(map);
     }
