@@ -25,13 +25,62 @@
             </div>
         </div>
         <div class="am-u-sm-10 login-am-center" style="margin-top: 10px">
-            <div class="am-panel am-panel-danger" style="text-align: center">
-                <div class="am-panel-bd">
-                    敬请期待
+            <form class="am-form">
+                <div class="am-panel am-panel-primary" style="text-align: center" id="a3">
+                    <div class="am-panel-hd">四六级成绩查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a3.jpg" style="width: 64px"/>
+                        我到底为什么还没过！
+                    </div>
                 </div>
-            </div>
+                <!--<div class="am-panel am-panel-secondary" style="text-align: center" id="a4">-->
+                    <!--<div class="am-panel-hd">四六级考号找回</div>-->
+                    <!--<div class="am-panel-bd">-->
+                        <!--<img src="./img/a4.jpg" style="width: 64px"/>-->
+                        <!--校园云助理帮你找回！-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="am-panel am-panel-success" style="text-align: center" id="a5">
+                    <div class="am-panel-hd">普通话成绩查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a5.jpg" style="width: 64px"/>
+                        俺滴铺通话彪不标准？
+                    </div>
+                </div>
+                <div class="am-panel am-panel-warning" style="text-align: center" id="a6">
+                    <div class="am-panel-hd">教师资格证查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a6.jpg" style="width: 64px"/>
+                        三人行必有我师焉啊！
+                    </div>
+                </div>
+                <div class="am-panel am-panel-danger" style="text-align: center" id="a7">
+                    <div class="am-panel-hd">计算机等级查询</div>
+                    <div class="am-panel-bd">
+                        <img src="./img/a7.jpg" style="width: 64px"/>
+                        现在电脑大神就是我！
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    $("#a3").on("click", function () {
+        window.location.href = "./a3.html";
+    })
+    $("#a4").on("click", function () {
+        window.location.href = "./a4.html";
+    })
+    $("#a5").on("click", function () {
+        window.location.href = "./a5.html";
+    })
+    $("#a6").on("click", function () {
+        wx.miniProgram.navigateTo({url: '../a0/a0?title=' + encodeURI("教师资格证查询网址") + '&url=' + encodeURIComponent("http://cjcx.neea.edu.cn/html1/folder/1508/206-1.htm?sid=2nasVMoohJ6cFnsQEIjGYmh")});
+    })
+    $("#a7").on("click", function () {
+        wx.miniProgram.navigateTo({url: '../a0/a0?title=' + encodeURI("计算机等级查询网址") + '&url=' + encodeURIComponent("http://cjcx.neea.edu.cn/ncre/query.html")});
+    })
+</script>
 </html>

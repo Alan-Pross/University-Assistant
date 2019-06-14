@@ -1,7 +1,7 @@
 package com.pross;
 
 public class NetConfig {
-    public final static String UrlMain = "https://www.daohangcn.cn/";
+    public final static String UrlMain = "https://www.jhuncloud.com/";
     public final static String UrlA1 = "transa1";
     public final static String UrlA2 = "transa2";
     public final static String UrlLog = "applog";
