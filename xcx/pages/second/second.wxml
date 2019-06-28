@@ -8,6 +8,8 @@
   <view slot="content">输入寝室楼号</view>
   <view slot="footer">看什么看？空调电费外边不是写着呢吗！？</view>
 </i-card>
+
+<view class="nr"></view>
 <i-card extra="电费查询历史" thumb="../../img/a1log.jpg" bindtap="a1log">
     <view slot="content">输入寝室楼号</view>
     <view slot="footer">要记得多来多查哦！</view>
@@ -28,8 +30,6 @@
 <view class="nr"></view>
 <button open-type="contact">
   <i-card extra="意见建议" thumb="../../img/last.jpg">
-    <view slot="content">小程序不足之处</view>
-    <view slot="footer">麻烦留言告诉我，我们一定会回复</view>
   </i-card>
 </button>
 <view class="nr"></view>
