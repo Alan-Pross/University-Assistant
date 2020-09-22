@@ -10,7 +10,7 @@ public class OpenServer {
             return;
         }
         if(!MainActivity.isJhunWIFI()){
-            MainActivity.print("当前网络非江大WIFI，服务器可能无法正常工作");
+            MainActivity.print("当前网络非校园WIFI，服务器可能无法正常工作");
         }
         new A1Thread().start();
         new A2Thread().start();
@@ -18,7 +18,7 @@ public class OpenServer {
     }
 
     static void print(){
-        MainActivity.print("Jhun-Cloud app by ProSS");
+        MainActivity.print("University-Assistant by ProSS");
         MainActivity.print("|_|   |_|   \\___(______(______/");
         MainActivity.print("| |   | |  | |_| |____) )____) )");
         MainActivity.print("|  ____/ ___) _ \\\\____ \\\\____ \\");
