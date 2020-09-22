@@ -1,4 +1,4 @@
-﻿# 校园云助理（小程序）
+﻿# University-Assistant
 
 > * xcx WeChat MiniApp
 > * yun Spring Boot MainServer
